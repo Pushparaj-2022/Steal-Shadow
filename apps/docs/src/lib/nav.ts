@@ -1,0 +1,176 @@
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export interface NavSection {
+  title: string;
+  items: NavItem[];
+}
+
+export const NAV_CONFIG: NavSection[] = [
+  {
+    title: "Getting Started",
+    items: [
+      { label: "Introduction", href: "/docs" },
+      { label: "Quick Start", href: "/docs/solutions" },
+      { label: "Installation", href: "/docs#installation" },
+      { label: "Theming", href: "/docs#theming" },
+      { label: "TypeScript", href: "/docs#typescript" },
+    ],
+  },
+  {
+    title: "Special",
+    items: [
+      { label: "Dock", href: "/docs/special/dock" },
+      { label: "Tilt Card", href: "/docs/special/tilt-card" },
+      { label: "Infinite Marquee", href: "/docs/special/infinite-marquee" },
+      { label: "Flip Card", href: "/docs/special/flip-card" },
+      { label: "Text Scramble", href: "/docs/special/text-scramble" },
+      { label: "Wave Text", href: "/docs/special/wave-text" },
+      { label: "Number Flow", href: "/docs/special/number-flow" },
+      { label: "Swipe Cards", href: "/docs/special/swipe-cards" },
+      { label: "Multi Select", href: "/docs/special/multi-select" },
+      { label: "Context Menu", href: "/docs/special/context-menu" },
+      { label: "Glowing Orb", href: "/docs/special/glowing-orb" },
+      { label: "Pricing Table", href: "/docs/special/pricing-table" },
+      { label: "Bento Grid", href: "/docs/special/bento-grid" },
+      { label: "Orbiting Circles", href: "/docs/special/orbiting-circles" },
+      { label: "Terminal", href: "/docs/special/terminal" },
+      { label: "Avatar Circles", href: "/docs/special/avatar-circles" },
+      { label: "Confetti", href: "/docs/special/confetti" },
+      { label: "Cursor Trail", href: "/docs/special/cursor-trail" },
+    ],
+  },
+  {
+    title: "Effects",
+    items: [
+      { label: "Glass Card", href: "/docs/effects/glass-card" },
+      { label: "Liquid Glass", href: "/docs/effects/liquid-glass" },
+      { label: "Shimmer Button", href: "/docs/effects/shimmer-button" },
+      { label: "Spotlight Card", href: "/docs/effects/spotlight-card" },
+      { label: "Aurora Background", href: "/docs/effects/aurora-background" },
+      { label: "Neon Glow", href: "/docs/effects/neon-glow" },
+      { label: "Gradient Border", href: "/docs/effects/gradient-border" },
+      { label: "Border Beam", href: "/docs/effects/border-beam" },
+      { label: "Meteors", href: "/docs/effects/meteors" },
+      { label: "Retro Grid", href: "/docs/effects/retro-grid" },
+      { label: "Ripple", href: "/docs/effects/ripple" },
+      { label: "Shine Border", href: "/docs/effects/shine-border" },
+      { label: "Magic Card", href: "/docs/effects/magic-card" },
+      { label: "Hero Highlight", href: "/docs/effects/hero-highlight" },
+      { label: "Animated Beam", href: "/docs/effects/animated-beam" },
+      { label: "Grid Beam", href: "/docs/effects/grid-beam" },
+    ],
+  },
+  {
+    title: "Components",
+    items: [
+      { label: "Overview", href: "/docs/components" },
+      { label: "Button", href: "/docs/components/button" },
+      { label: "Card", href: "/docs/components/card" },
+      { label: "Input", href: "/docs/components/input" },
+      { label: "Badge", href: "/docs/components/badge" },
+      { label: "Avatar", href: "/docs/components/avatar" },
+      { label: "Chip", href: "/docs/components/chip" },
+      { label: "Rating", href: "/docs/components/rating" },
+      { label: "OTP Input", href: "/docs/components/otp-input" },
+      { label: "Tooltip", href: "/docs/components/tooltip" },
+      { label: "Accordion", href: "/docs/components/accordion" },
+      { label: "Tabs", href: "/docs/components/tabs" },
+      { label: "Breadcrumb", href: "/docs/components/breadcrumb" },
+      { label: "Combobox", href: "/docs/components/combobox" },
+      { label: "Command Palette", href: "/docs/components/command-palette" },
+    ],
+  },
+  {
+    title: "Overlays",
+    items: [
+      { label: "Modal", href: "/docs/overlays/modal" },
+      { label: "Drawer", href: "/docs/overlays/drawer" },
+      { label: "Popover", href: "/docs/overlays/popover" },
+      { label: "Toast", href: "/docs/overlays/toast" },
+    ],
+  },
+  {
+    title: "Animations",
+    items: [
+      { label: "Overview", href: "/docs/animations" },
+      { label: "Magnetic Button", href: "/docs/animations/magnetic-button" },
+      { label: "Typewriter", href: "/docs/animations/typewriter" },
+      { label: "Particle Field", href: "/docs/animations/particle-field" },
+      { label: "Scroll Reveal", href: "/docs/animations/scroll-reveal" },
+      { label: "Count Up", href: "/docs/animations/count-up" },
+      { label: "Reveal Text", href: "/docs/animations/reveal-text" },
+      { label: "Glitch Text", href: "/docs/animations/glitch-text" },
+      { label: "Morph Text", href: "/docs/animations/morph-text" },
+      { label: "Floating Elements", href: "/docs/animations/floating-elements" },
+      { label: "Split Text", href: "/docs/animations/split-text" },
+      { label: "Blur Text", href: "/docs/animations/blur-text" },
+      { label: "Animated Icon", href: "/docs/animations/animated-icon" },
+      { label: "Gradient Text", href: "/docs/animations/gradient-text" },
+      { label: "Sparkles Text", href: "/docs/animations/sparkles-text" },
+      { label: "Box Reveal", href: "/docs/animations/box-reveal" },
+      { label: "Word Pull Up", href: "/docs/animations/word-pull-up" },
+      { label: "Animated List", href: "/docs/animations/animated-list" },
+    ],
+  },
+  {
+    title: "Forms",
+    items: [
+      { label: "Overview", href: "/docs/forms" },
+      { label: "Smart Form", href: "/docs/forms/smart-form" },
+      { label: "Checkbox", href: "/docs/forms/checkbox" },
+      { label: "Select", href: "/docs/forms/select" },
+      { label: "Switch", href: "/docs/forms/switch" },
+      { label: "Radio", href: "/docs/forms/radio" },
+      { label: "Textarea", href: "/docs/forms/textarea" },
+      { label: "Range Slider", href: "/docs/forms/range-slider" },
+    ],
+  },
+  {
+    title: "Feedback",
+    items: [
+      { label: "Progress", href: "/docs/feedback/progress" },
+      { label: "Spinner", href: "/docs/feedback/spinner" },
+      { label: "Alert", href: "/docs/feedback/alert" },
+      { label: "Skeleton", href: "/docs/feedback/skeleton" },
+    ],
+  },
+  {
+    title: "Data",
+    items: [
+      { label: "Overview", href: "/docs/data" },
+      { label: "Data Table", href: "/docs/data/data-table" },
+      { label: "Kanban Board", href: "/docs/data/kanban" },
+      { label: "File Uploader", href: "/docs/data/file-uploader" },
+      { label: "Calendar", href: "/docs/data/calendar" },
+      { label: "Rich Editor", href: "/docs/data/rich-editor" },
+      { label: "Timeline", href: "/docs/data/timeline" },
+      { label: "Pagination", href: "/docs/data/pagination" },
+      { label: "Gauge", href: "/docs/data/gauge" },
+    ],
+  },
+  {
+    title: "Layout",
+    items: [
+      { label: "Stepper", href: "/docs/layout/stepper" },
+      { label: "Page Transition", href: "/docs/layout/page-transition" },
+      { label: "Empty State", href: "/docs/layout/empty-state" },
+      { label: "Command Palette", href: "/docs/components/command-palette" },
+      { label: "Scroll Progress", href: "/docs/layout/scroll-progress" },
+    ],
+  },
+  {
+    title: "AI Components",
+    items: [
+      { label: "Overview", href: "/docs/ai" },
+      { label: "Chat", href: "/docs/ai/chat" },
+      { label: "Code Block", href: "/docs/ai/code-block" },
+      { label: "Streaming Text", href: "/docs/ai/streaming-text" },
+      { label: "Agent Status", href: "/docs/ai/agent-status" },
+      { label: "Prompt Editor", href: "/docs/ai/prompt-editor" },
+      { label: "Tool Call Viewer", href: "/docs/ai/tool-call-viewer" },
+    ],
+  },
+];

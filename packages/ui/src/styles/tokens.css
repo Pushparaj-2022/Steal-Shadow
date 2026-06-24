@@ -1,0 +1,107 @@
+/*
+  AnimUI Design Tokens — CSS custom properties.
+  Works with ANY styling approach: Tailwind, CSS Modules, vanilla CSS, CSS-in-JS.
+  Override any token in your root CSS. No Tailwind required.
+*/
+
+:root,
+[data-theme="light"] {
+  /* ── Surface ── */
+  --ui-bg:          #ffffff;
+  --ui-bg-subtle:   #f9fafb;
+  --ui-bg-muted:    #f3f4f6;
+  --ui-bg-hover:    #f1f5f9;
+  --ui-bg-overlay:  rgba(0, 0, 0, 0.5);
+
+  /* ── Foreground ── */
+  --ui-fg:          #0f172a;
+  --ui-fg-muted:    #64748b;
+  --ui-fg-subtle:   #94a3b8;
+  --ui-fg-inverse:  #ffffff;
+
+  /* ── Border ── */
+  --ui-border:      #e2e8f0;
+  --ui-border-strong: #cbd5e1;
+
+  /* ── Brand / Primary ── */
+  --ui-primary:        #7c3aed;
+  --ui-primary-hover:  #6d28d9;
+  --ui-primary-fg:     #ffffff;
+  --ui-primary-subtle: #ede9fe;
+  --ui-primary-muted:  #ddd6fe;
+
+  /* ── Status ── */
+  --ui-success:        #059669;
+  --ui-success-subtle: #d1fae5;
+  --ui-success-fg:     #065f46;
+  --ui-warning:        #d97706;
+  --ui-warning-subtle: #fef3c7;
+  --ui-warning-fg:     #92400e;
+  --ui-danger:         #dc2626;
+  --ui-danger-subtle:  #fee2e2;
+  --ui-danger-fg:      #991b1b;
+  --ui-info:           #2563eb;
+  --ui-info-subtle:    #dbeafe;
+  --ui-info-fg:        #1e40af;
+
+  /* ── Radius ── */
+  --ui-radius-xs:   0.25rem;
+  --ui-radius-sm:   0.5rem;
+  --ui-radius:      0.75rem;
+  --ui-radius-lg:   1rem;
+  --ui-radius-xl:   1.25rem;
+  --ui-radius-full: 9999px;
+
+  /* ── Shadow ── */
+  --ui-shadow-sm:  0 1px 2px rgb(0 0 0 / 0.05);
+  --ui-shadow:     0 1px 3px rgb(0 0 0 / 0.1), 0 1px 2px rgb(0 0 0 / 0.06);
+  --ui-shadow-md:  0 4px 6px rgb(0 0 0 / 0.07), 0 2px 4px rgb(0 0 0 / 0.06);
+  --ui-shadow-lg:  0 10px 15px rgb(0 0 0 / 0.1), 0 4px 6px rgb(0 0 0 / 0.05);
+  --ui-shadow-xl:  0 20px 25px rgb(0 0 0 / 0.1), 0 10px 10px rgb(0 0 0 / 0.04);
+
+  /* ── Timing ── */
+  --ui-duration-fast:   120ms;
+  --ui-duration:        200ms;
+  --ui-duration-slow:   350ms;
+  --ui-ease:            cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Focus Ring ── */
+  --ui-ring:          0 0 0 2px var(--ui-bg), 0 0 0 4px var(--ui-primary);
+
+  /* ── Font ── */
+  --ui-font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ui-font-mono:  ui-monospace, "JetBrains Mono", "Fira Code", monospace;
+}
+
+[data-theme="dark"] {
+  --ui-bg:          #0f172a;
+  --ui-bg-subtle:   #1e293b;
+  --ui-bg-muted:    #334155;
+  --ui-bg-hover:    #1e293b;
+  --ui-bg-overlay:  rgba(0, 0, 0, 0.7);
+
+  --ui-fg:          #f8fafc;
+  --ui-fg-muted:    #94a3b8;
+  --ui-fg-subtle:   #64748b;
+  --ui-fg-inverse:  #0f172a;
+
+  --ui-border:      #1e293b;
+  --ui-border-strong: #334155;
+
+  --ui-primary:        #8b5cf6;
+  --ui-primary-hover:  #7c3aed;
+  --ui-primary-fg:     #ffffff;
+  --ui-primary-subtle: #1e1b4b;
+  --ui-primary-muted:  #2e1065;
+
+  --ui-success-subtle: #064e3b;
+  --ui-warning-subtle: #451a03;
+  --ui-danger-subtle:  #450a0a;
+  --ui-info-subtle:    #1e3a8a;
+
+  --ui-shadow-sm:  0 1px 2px rgb(0 0 0 / 0.3);
+  --ui-shadow:     0 1px 3px rgb(0 0 0 / 0.4), 0 1px 2px rgb(0 0 0 / 0.3);
+  --ui-shadow-md:  0 4px 6px rgb(0 0 0 / 0.3);
+  --ui-shadow-lg:  0 10px 15px rgb(0 0 0 / 0.4);
+  --ui-shadow-xl:  0 20px 25px rgb(0 0 0 / 0.5);
+}

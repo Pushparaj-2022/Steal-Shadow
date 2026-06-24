@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://haftusaar.com/sitemap.xml
-Sitemap: https://haftusaar.com/steal_sitemap.xml
