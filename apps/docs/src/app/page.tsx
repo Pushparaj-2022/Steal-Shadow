@@ -64,7 +64,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO section*/}
       <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex items-center">
         <div className="pointer-events-none absolute inset-0 bg-white dark:bg-zinc-950">
           <div className="absolute inset-x-0 -top-40 h-[640px] bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(99,102,241,0.08),transparent)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(99,102,241,0.18),transparent)]" />
