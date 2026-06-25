@@ -14,7 +14,7 @@ const DOCK_ITEMS = [
   { id: "settings", icon: <div className="w-full h-full bg-neutral-700 rounded-2xl flex items-center justify-center"><Settings className="h-6 w-6 text-white" /></div>, label: "Settings" },
 ];
 
-const BASIC_CODE = `import { Dock } from "@stealshadow/ui";
+const BASIC_CODE = `import { Dock } from "@animui/ui";
 import { Home, Search, Bell, Settings, Star, Layers } from "lucide-react";
 
 const items = [
@@ -71,7 +71,7 @@ export default function DockDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Dock }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Dock }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

@@ -5,7 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
 
-const BASIC_CODE = `import { Tabs, TabsList, TabsTrigger, TabsContent } from "@stealshadow/ui";
+const BASIC_CODE = `import { Tabs, TabsList, TabsTrigger, TabsContent } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -22,22 +22,26 @@ export default function Example() {
   );
 }`;
 
-const CONTROLLED_CODE = `const [tab, setTab] = useState("overview");
-
-<Tabs value={tab} onValueChange={setTab}>
+const VARIANTS_CODE = `{/* Underline (default) */}
+<Tabs defaultValue="overview" variant="underline">
   <TabsList>
     <TabsTrigger value="overview">Overview</TabsTrigger>
     <TabsTrigger value="analytics">Analytics</TabsTrigger>
   </TabsList>
   <TabsContent value="overview">...</TabsContent>
-  <TabsContent value="analytics">...</TabsContent>
-</Tabs>`;
+</Tabs>
+
+{/* Pill */}
+<Tabs defaultValue="overview" variant="pill">...</Tabs>
+
+{/* Enclosed */}
+<Tabs defaultValue="overview" variant="enclosed">...</Tabs>`;
 
 const PROPS = [
-  { name: "defaultValue", type: "string", default: "—", description: "The tab open by default (uncontrolled)." },
-  { name: "value", type: "string", default: "—", description: "Controlled active tab value." },
-  { name: "onValueChange", type: "(value: string) => void", default: "—", description: "Called when the active tab changes." },
+  { name: "defaultValue", type: "string", default: "—", description: "The tab that is active by default." },
+  { name: "variant", type: '"underline" | "pill" | "enclosed"', default: '"underline"', description: "Visual style for the tab list and active indicator." },
   { name: "children", type: "React.ReactNode", default: "—", description: "TabsList and TabsContent elements." },
+  { name: "className", type: "string", default: "—", description: "Additional classes for the wrapper." },
 ];
 
 
@@ -52,13 +56,13 @@ export default function TabsDocsPage() {
         </div>
         <h1 className="text-4xl font-black text-neutral-900 tracking-tight mb-4">Tabs</h1>
         <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
-          Animated tab panels for switching between related views. Supports controlled and uncontrolled modes, keyboard navigation, and custom styling.
+          Animated tab panels for switching between related views. Three built-in style variants, keyboard navigation, and spring-powered indicators.
         </p>
       </div>
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Tabs, TabsList, TabsTrigger, TabsContent }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Tabs, TabsList, TabsTrigger, TabsContent }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -79,17 +83,35 @@ export default function TabsDocsPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Controlled</h2>
-        <p className="text-neutral-500 mb-4">Use <code className="font-mono text-xs bg-neutral-100 px-1 rounded">value</code> + <code className="font-mono text-xs bg-neutral-100 px-1 rounded">onValueChange</code> for full control.</p>
-        <ComponentPreview code={CONTROLLED_CODE}>
-          <Tabs defaultValue="overview" className="w-full max-w-lg">
-            <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            </TabsList>
-            <TabsContent value="overview">Overview content here.</TabsContent>
-            <TabsContent value="analytics">Analytics content here.</TabsContent>
-          </Tabs>
+        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Variants</h2>
+        <p className="text-neutral-500 mb-4">Use the <code className="font-mono text-xs bg-neutral-100 px-1 rounded">variant</code> prop to switch between <code className="font-mono text-xs bg-neutral-100 px-1 rounded">underline</code>, <code className="font-mono text-xs bg-neutral-100 px-1 rounded">pill</code>, and <code className="font-mono text-xs bg-neutral-100 px-1 rounded">enclosed</code> styles.</p>
+        <ComponentPreview code={VARIANTS_CODE}>
+          <div className="w-full max-w-lg space-y-6">
+            <Tabs defaultValue="overview" variant="underline">
+              <TabsList>
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              </TabsList>
+              <TabsContent value="overview">Underline style.</TabsContent>
+              <TabsContent value="analytics">Analytics content.</TabsContent>
+            </Tabs>
+            <Tabs defaultValue="overview" variant="pill">
+              <TabsList>
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              </TabsList>
+              <TabsContent value="overview">Pill style.</TabsContent>
+              <TabsContent value="analytics">Analytics content.</TabsContent>
+            </Tabs>
+            <Tabs defaultValue="overview" variant="enclosed">
+              <TabsList>
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              </TabsList>
+              <TabsContent value="overview">Enclosed style.</TabsContent>
+              <TabsContent value="analytics">Analytics content.</TabsContent>
+            </Tabs>
+          </div>
         </ComponentPreview>
       </section>
 

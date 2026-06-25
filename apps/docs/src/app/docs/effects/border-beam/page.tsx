@@ -4,7 +4,7 @@ import { BorderBeam } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { BorderBeam } from "@stealshadow/ui";
+const BASIC_CODE = `import { BorderBeam } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -55,14 +55,14 @@ export default function BorderBeamDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ BorderBeam }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ BorderBeam }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <BorderBeam className="p-6 max-w-xs">
+          <BorderBeam className="p-6 w-full max-w-sm">
             <h3 className="font-bold text-neutral-800">BorderBeam</h3>
             <p className="text-sm text-neutral-500 mt-1">A spark travels around the border.</p>
           </BorderBeam>
@@ -72,7 +72,7 @@ export default function BorderBeamDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Custom colors</h2>
         <ComponentPreview code={COLORS_CODE}>
-          <BorderBeam colorFrom="#f59e0b" colorTo="#ef4444" duration={2} className="p-5 max-w-xs">
+          <BorderBeam colorFrom="#f59e0b" colorTo="#ef4444" duration={2} className="p-5 w-full max-w-sm">
             <p className="text-sm font-medium text-neutral-800">Amber → Red beam</p>
           </BorderBeam>
         </ComponentPreview>
@@ -81,7 +81,7 @@ export default function BorderBeamDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Staggered grid</h2>
         <ComponentPreview code={STAGGER_CODE}>
-          <div className="grid grid-cols-2 gap-3 max-w-xs w-full">
+          <div className="grid grid-cols-2 gap-3 w-full max-w-sm">
             <BorderBeam delay={0} className="p-4"><p className="text-xs font-semibold text-neutral-600">Card 1</p></BorderBeam>
             <BorderBeam delay={0.75} className="p-4"><p className="text-xs font-semibold text-neutral-600">Card 2</p></BorderBeam>
             <BorderBeam delay={1.5} className="p-4"><p className="text-xs font-semibold text-neutral-600">Card 3</p></BorderBeam>

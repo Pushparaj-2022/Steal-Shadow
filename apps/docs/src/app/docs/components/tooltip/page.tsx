@@ -12,7 +12,7 @@ const TOOLTIP_PROPS = [
   { name: "className", type: "string", default: "—", description: "Extra Tailwind classes applied to the tooltip bubble container." },
 ];
 
-const BASIC_CODE = `import { Tooltip } from "@stealshadow/ui";
+const BASIC_CODE = `import { Tooltip } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -22,7 +22,7 @@ export default function Example() {
   );
 }`;
 
-const PLACEMENT_CODE = `import { Tooltip } from "@stealshadow/ui";
+const PLACEMENT_CODE = `import { Tooltip } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -43,7 +43,7 @@ export default function Example() {
   );
 }`;
 
-const DELAY_CODE = `import { Tooltip } from "@stealshadow/ui";
+const DELAY_CODE = `import { Tooltip } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -74,7 +74,7 @@ export default function TooltipDocsPage() {
       {/* Import callout */}
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Tooltip }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Tooltip }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

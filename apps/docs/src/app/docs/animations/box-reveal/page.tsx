@@ -1,8 +1,8 @@
 "use client";
 
 import { BoxReveal } from "@animui/ui";
-import { ComponentPreview } from "@/components/component-preview";
-import { PropsTable } from "@/components/props-table";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { PropsTable } from "@/components/docs/PropsTable";
 
 const basicCode = `import { BoxReveal } from "@animui/ui";
 
@@ -14,7 +14,7 @@ export default function Example() {
       </BoxReveal>
 
       <BoxReveal boxColor="#7c3aed" duration={0.5} delay={0.2}>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-neutral-500">
           Beautiful animations for your next project.
         </p>
       </BoxReveal>
@@ -65,16 +65,16 @@ export default function BoxRevealPage() {
   return (
     <div className="space-y-10">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1 text-sm text-muted-foreground">
+      <nav className="flex items-center gap-1 text-sm text-neutral-500">
         <span>Animations</span>
         <span>/</span>
-        <span className="text-foreground font-medium">BoxReveal</span>
+        <span className="text-neutral-900 font-medium">BoxReveal</span>
       </nav>
 
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">BoxReveal</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-neutral-500">
           A colored box sweeps across content to reveal it — great for
           staggered hero text entrances and attention-grabbing headings.
         </p>
@@ -83,7 +83,7 @@ export default function BoxRevealPage() {
       {/* Import */}
       <div className="space-y-2">
         <h2 className="text-xl font-semibold">Import</h2>
-        <pre className="rounded-lg border bg-muted px-4 py-3 text-sm overflow-x-auto">
+        <pre className="rounded-lg border bg-neutral-100 px-4 py-3 text-sm overflow-x-auto">
           <code>{`import { BoxReveal } from "@animui/ui";`}</code>
         </pre>
       </div>
@@ -91,9 +91,9 @@ export default function BoxRevealPage() {
       {/* Basic Usage */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Basic</h2>
-        <p className="text-muted-foreground">
-          Wrap each piece of content in a <code className="text-sm font-mono bg-muted px-1 py-0.5 rounded">BoxReveal</code> and
-          stagger the <code className="text-sm font-mono bg-muted px-1 py-0.5 rounded">delay</code> to create a
+        <p className="text-neutral-500">
+          Wrap each piece of content in a <code className="text-sm font-mono bg-neutral-100 px-1 py-0.5 rounded">BoxReveal</code> and
+          stagger the <code className="text-sm font-mono bg-neutral-100 px-1 py-0.5 rounded">delay</code> to create a
           cascading entrance effect.
         </p>
         <ComponentPreview code={basicCode}>
@@ -103,7 +103,7 @@ export default function BoxRevealPage() {
             </BoxReveal>
 
             <BoxReveal boxColor="#7c3aed" duration={0.5} delay={0.2}>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-neutral-500">
                 Beautiful animations for your next project.
               </p>
             </BoxReveal>

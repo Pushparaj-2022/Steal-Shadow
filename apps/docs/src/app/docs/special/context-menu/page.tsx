@@ -5,7 +5,7 @@ import { ContextMenu } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { ContextMenu } from "@stealshadow/ui";
+const BASIC_CODE = `import { ContextMenu } from "@animui/ui";
 import { Copy, Trash, Edit, Star, Share2 } from "lucide-react";
 
 const items = [
@@ -79,7 +79,7 @@ export default function ContextMenuDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ ContextMenu }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ ContextMenu }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

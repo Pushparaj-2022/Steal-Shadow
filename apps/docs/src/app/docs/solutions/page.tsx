@@ -3,10 +3,10 @@
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const INSTALL_CODE = `npm install @stealshadow/ui motion`;
+const INSTALL_CODE = `npm install @animui/ui motion`;
 
 const PROVIDER_CODE = `// app/layout.tsx
-import { ToastProvider } from "@stealshadow/ui";
+import { ToastProvider } from "@animui/ui";
 
 export default function RootLayout({ children }) {
   return (
@@ -20,12 +20,12 @@ export default function RootLayout({ children }) {
 
 const NEXT_CONFIG_CODE = `// next.config.ts
 const nextConfig = {
-  transpilePackages: ["@stealshadow/ui"],
+  transpilePackages: ["@animui/ui"],
 };
 
 export default nextConfig;`;
 
-const BUTTON_USAGE = `import { Button } from "@stealshadow/ui";
+const BUTTON_USAGE = `import { Button } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -37,7 +37,7 @@ export default function Example() {
   );
 }`;
 
-const FORM_USAGE = `import { SmartForm, FormField, FormSubmit } from "@stealshadow/ui";
+const FORM_USAGE = `import { SmartForm, FormField, FormSubmit } from "@animui/ui";
 import { z } from "zod";
 
 const schema = z.object({
@@ -55,7 +55,7 @@ export default function SignupForm() {
   );
 }`;
 
-const MODAL_USAGE = `import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "@stealshadow/ui";
+const MODAL_USAGE = `import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -77,7 +77,7 @@ export default function Example() {
   );
 }`;
 
-const TOAST_USAGE = `import { useToast, Button } from "@stealshadow/ui";
+const TOAST_USAGE = `import { useToast, Button } from "@animui/ui";
 
 export default function Example() {
   const toast = useToast();
@@ -94,7 +94,7 @@ export default function Example() {
   );
 }`;
 
-const DATATABLE_USAGE = `import { DataTable } from "@stealshadow/ui";
+const DATATABLE_USAGE = `import { DataTable } from "@animui/ui";
 
 const columns = [
   { key: "name",   header: "Name" },
@@ -127,7 +127,7 @@ const THEMING_CODE = `/* globals.css — override tokens once, apply everywhere 
   --ui-text:    #fafafa;
 }`;
 
-const CHAT_USAGE = `import { Chat } from "@stealshadow/ui";
+const CHAT_USAGE = `import { Chat } from "@animui/ui";
 
 export default function AIAssistant() {
   return (
@@ -177,7 +177,7 @@ export default function QuickStartPage() {
           <pre className="bg-neutral-950 px-5 py-4 text-sm font-mono text-neutral-200">
             <span className="text-neutral-500 select-none">$ </span>
             <span className="text-green-400">npm install</span>
-            {" @stealshadow/ui motion"}
+            {" @animui/ui motion"}
           </pre>
         </div>
       </section>

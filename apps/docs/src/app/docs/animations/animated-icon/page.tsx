@@ -5,7 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { Star, Bell, Zap, Heart, Rocket, RefreshCw, AlertCircle, Sparkles } from "lucide-react";
 
-const BASIC_CODE = `import { AnimatedIcon } from "@stealshadow/ui";
+const BASIC_CODE = `import { AnimatedIcon } from "@animui/ui";
 import { Star } from "lucide-react";
 
 export default function Example() {
@@ -65,7 +65,7 @@ export default function AnimatedIconDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ AnimatedIcon }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ AnimatedIcon }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

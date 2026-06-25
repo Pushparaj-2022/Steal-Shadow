@@ -5,7 +5,7 @@ import { Stepper } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Stepper } from "@stealshadow/ui";
+const BASIC_CODE = `import { Stepper } from "@animui/ui";
 import { useState } from "react";
 
 const steps = [
@@ -67,7 +67,7 @@ export default function StepperDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Stepper }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Stepper }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

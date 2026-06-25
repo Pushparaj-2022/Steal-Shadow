@@ -5,7 +5,7 @@ import { Drawer, DrawerHeader, DrawerBody, Button } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Drawer, DrawerHeader, DrawerBody } from "@stealshadow/ui";
+const BASIC_CODE = `import { Drawer, DrawerHeader, DrawerBody } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -14,7 +14,7 @@ export default function Example() {
     <>
       <button onClick={() => setOpen(true)}>Open drawer</button>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <DrawerHeader title="Settings" onClose={() => setOpen(false)} />
+        <DrawerHeader onClose={() => setOpen(false)}>Settings</DrawerHeader>
         <DrawerBody>
           <p>Drawer content here.</p>
         </DrawerBody>
@@ -24,7 +24,7 @@ export default function Example() {
 }`;
 
 const PLACEMENT_CODE = `<Drawer open={open} onClose={onClose} side="right">
-  <DrawerHeader title="Notifications" onClose={onClose} />
+  <DrawerHeader onClose={onClose}>Notifications</DrawerHeader>
   <DrawerBody>...</DrawerBody>
 </Drawer>`;
 
@@ -42,7 +42,7 @@ function DrawerBasicPreview() {
     <div className="flex items-center justify-center py-6">
       <Button onClick={() => setOpen(true)}>Open drawer</Button>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <DrawerHeader title="Settings" onClose={() => setOpen(false)} />
+        <DrawerHeader onClose={() => setOpen(false)}>Settings</DrawerHeader>
         <DrawerBody>
           <p className="text-sm text-neutral-500">Drawer content here. Slides in from the right side by default.</p>
         </DrawerBody>
@@ -60,7 +60,7 @@ function DrawerPlacementPreview() {
       ))}
       {side && (
         <Drawer open side={side} onClose={() => setSide(null)}>
-          <DrawerHeader title={`Side: ${side}`} onClose={() => setSide(null)} />
+          <DrawerHeader onClose={() => setSide(null)}>{`Side: ${side}`}</DrawerHeader>
           <DrawerBody>
             <p className="text-sm text-neutral-500">Drawer from the {side}.</p>
           </DrawerBody>
@@ -87,7 +87,7 @@ export default function DrawerDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Drawer, DrawerHeader, DrawerBody }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Drawer, DrawerHeader, DrawerBody }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

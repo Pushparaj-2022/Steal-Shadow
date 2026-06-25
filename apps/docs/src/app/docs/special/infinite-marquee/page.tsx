@@ -4,7 +4,7 @@ import { InfiniteMarquee } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { InfiniteMarquee } from "@stealshadow/ui";
+const BASIC_CODE = `import { InfiniteMarquee } from "@animui/ui";
 
 const logos = ["Vercel", "Linear", "Notion", "Figma", "GitHub", "Stripe", "Tailwind", "Radix"];
 
@@ -59,7 +59,7 @@ export default function InfiniteMarqueeDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ InfiniteMarquee }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ InfiniteMarquee }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

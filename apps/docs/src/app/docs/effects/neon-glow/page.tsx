@@ -4,11 +4,11 @@ import { NeonGlow } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { NeonGlow } from "@stealshadow/ui";
+const BASIC_CODE = `import { NeonGlow } from "@animui/ui";
 
 export default function Example() {
   return (
-    <div className="bg-neutral-950 p-8 rounded-2xl">
+    <div className="bg-neutral-950 p-6 sm:p-8 rounded-xl w-full">
       <NeonGlow as="h2" color="violet" className="text-3xl font-black">
         Neon Glow
       </NeonGlow>
@@ -40,7 +40,7 @@ const PROPS = [
 ];
 
 const DarkBg = ({ children }: { children: React.ReactNode }) => (
-  <div className="w-full rounded-xl bg-neutral-950 p-8 flex flex-wrap gap-6 items-center justify-center">{children}</div>
+  <div className="w-full rounded-xl bg-neutral-950 p-6 flex flex-wrap gap-6 items-center justify-center">{children}</div>
 );
 
 export default function NeonGlowDocsPage() {
@@ -60,7 +60,7 @@ export default function NeonGlowDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ NeonGlow }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ NeonGlow }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

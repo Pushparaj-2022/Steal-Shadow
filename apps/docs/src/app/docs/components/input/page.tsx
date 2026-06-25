@@ -5,7 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { Mail, Eye } from "lucide-react";
 
-const BASIC_CODE = `import { Input } from "@stealshadow/ui";
+const BASIC_CODE = `import { Input } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -25,9 +25,9 @@ const PROPS = [
   { name: "value", type: "string", default: "—", description: "Controlled value." },
   { name: "onChange", type: "(e: React.ChangeEvent<HTMLInputElement>) => void", default: "—", description: "Change handler." },
   { name: "error", type: "string", default: "—", description: "Error message shown below the input with red styling." },
-  { name: "helperText", type: "string", default: "—", description: "Helper text shown below the input in neutral styling." },
+  { name: "hint", type: "string", default: "—", description: "Helper text shown below the input in neutral styling." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the input." },
-  { name: "leftIcon", type: "React.ReactNode", default: "—", description: "Icon rendered inside the input on the left." },
+  { name: "icon", type: "React.ReactNode", default: "—", description: "Icon rendered inside the input on the left." },
   { name: "rightIcon", type: "React.ReactNode", default: "—", description: "Icon rendered inside the input on the right." },
   { name: "className", type: "string", default: "—", description: "Additional classes on the outer wrapper." },
 ];
@@ -51,7 +51,7 @@ export default function InputDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Input }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Input }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -59,8 +59,8 @@ export default function InputDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">States</h2>
         <p className="text-neutral-500 mb-4">Default, with icons, error, and disabled states.</p>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="space-y-4 w-72">
-            <Input label="Email address" placeholder="you@example.com" type="email" leftIcon={<Mail className="h-4 w-4" />} />
+          <div className="space-y-4 w-full max-w-sm">
+            <Input label="Email address" placeholder="you@example.com" type="email" icon={<Mail className="h-4 w-4" />} />
             <Input label="Password" type="password" placeholder="••••••••" rightIcon={<Eye className="h-4 w-4" />} />
             <Input label="With error" placeholder="Enter value" error="This field is required." />
             <Input label="Disabled" placeholder="Not editable" disabled />

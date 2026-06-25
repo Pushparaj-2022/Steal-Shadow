@@ -6,19 +6,16 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
 const BUTTON_PROPS = [
-  { name: "variant", type: '"default" | "outline" | "ghost" | "destructive" | "gradient"', default: '"default"', description: "Controls the visual style of the button." },
-  { name: "size", type: '"sm" | "md" | "lg" | "icon"', default: '"md"', description: "Controls padding and font size." },
+  { name: "variant", type: '"default" | "outline" | "ghost" | "danger" | "gradient" | "glow"', default: '"default"', description: "Controls the visual style of the button." },
+  { name: "size", type: '"xs" | "sm" | "md" | "lg" | "xl" | "icon"', default: '"md"', description: "Controls padding and font size." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables interaction and applies reduced opacity." },
   { name: "loading", type: "boolean", default: "false", description: "Shows a spinner and disables the button while an async operation is in progress." },
-  { name: "leftIcon", type: "React.ReactNode", default: "—", description: "Icon rendered to the left of the button label." },
-  { name: "rightIcon", type: "React.ReactNode", default: "—", description: "Icon rendered to the right of the button label." },
   { name: "className", type: "string", default: "—", description: "Additional Tailwind classes to apply to the button element." },
-  { name: "onClick", type: "(e: React.MouseEvent) => void", default: "—", description: "Click handler for the button." },
+  { name: "onClick", type: "() => void", default: "—", description: "Click handler for the button." },
   { name: "type", type: '"button" | "submit" | "reset"', default: '"button"', description: "HTML button type attribute." },
-  { name: "asChild", type: "boolean", default: "false", description: "When true, renders as a Slot — allowing you to wrap a child element (e.g. a Link) with button styles." },
 ];
 
-const VARIANT_CODE = `import { Button } from "@stealshadow/ui";
+const VARIANT_CODE = `import { Button } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -26,13 +23,13 @@ export default function Example() {
       <Button variant="default">Default</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="destructive">Destructive</Button>
+      <Button variant="danger">Destructive</Button>
       <Button variant="gradient">Gradient</Button>
     </div>
   );
 }`;
 
-const SIZES_CODE = `import { Button } from "@stealshadow/ui";
+const SIZES_CODE = `import { Button } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -44,7 +41,7 @@ export default function Example() {
   );
 }`;
 
-const LOADING_CODE = `import { Button } from "@stealshadow/ui";
+const LOADING_CODE = `import { Button } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -97,7 +94,7 @@ export default function ButtonDocsPage() {
       {/* Install callout */}
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Button }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Button }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -105,14 +102,14 @@ export default function ButtonDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Variants</h2>
         <p className="text-neutral-500 mb-4">
-          Five built-in variants cover the most common use cases.
+          Six built-in variants cover the most common use cases.
         </p>
         <ComponentPreview code={VARIANT_CODE}>
           <div className="flex flex-wrap items-center gap-3">
             <Button variant="default">Default</Button>
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
-            <Button variant="destructive">Destructive</Button>
+            <Button variant="danger">Destructive</Button>
             <Button variant="gradient">Gradient</Button>
           </div>
         </ComponentPreview>

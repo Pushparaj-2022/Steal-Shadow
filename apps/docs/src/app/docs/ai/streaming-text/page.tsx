@@ -26,14 +26,14 @@ function StreamingTextDemo() {
   );
 }
 
-const BASIC_CODE = `import { StreamingText } from "@stealshadow/ui";
+const BASIC_CODE = `import { StreamingText } from "@animui/ui";
 
 export default function Example() {
   return (
     <StreamingText
       text="Steal Shadow is a motion-first React component library..."
       speed={22}
-      showCursor
+      cursor
       onComplete={() => console.log("Done!")}
     />
   );
@@ -41,7 +41,7 @@ export default function Example() {
 
 const STREAM_CODE = `"use client";
 
-import { StreamingText } from "@stealshadow/ui";
+import { StreamingText } from "@animui/ui";
 import { useState } from "react";
 
 export default function Page() {
@@ -62,7 +62,7 @@ export default function Page() {
 
   return (
     <div>
-      <StreamingText text={text} speed={0} showCursor />
+      <StreamingText text={text} speed={0} cursor />
       <button onClick={handleFetch}>Generate</button>
     </div>
   );
@@ -70,9 +70,9 @@ export default function Page() {
 
 const PROPS = [
   { name: "text", type: "string", default: "—", description: "The full text string to animate. Characters are revealed progressively." },
-  { name: "speed", type: "number", default: "30", description: "Milliseconds between each character. Set to 0 to render instantly (for real streaming where text grows externally)." },
-  { name: "showCursor", type: "boolean", default: "true", description: "Shows a blinking cursor at the end of the displayed text while streaming." },
-  { name: "cursorChar", type: "string", default: '"|"', description: "The character used as the blinking cursor." },
+  { name: "speed", type: "number", default: "18", description: "Milliseconds between each character. Set to 0 to render instantly (for real streaming where text grows externally)." },
+  { name: "cursor", type: "boolean", default: "true", description: "Shows a blinking cursor at the end of the displayed text while streaming." },
+  { name: "animate", type: "boolean", default: "true", description: "If true, re-animates whenever text changes." },
   { name: "onComplete", type: "() => void", default: "—", description: "Called when all characters have been displayed." },
   { name: "className", type: "string", default: "—", description: "Additional classes on the text container." },
 ];
@@ -95,7 +95,7 @@ export default function StreamingTextPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ StreamingText }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ StreamingText }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

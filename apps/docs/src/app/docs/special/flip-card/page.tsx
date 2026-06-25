@@ -4,7 +4,7 @@ import { FlipCard } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { FlipCard } from "@stealshadow/ui";
+const BASIC_CODE = `import { FlipCard } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -70,14 +70,14 @@ export default function FlipCardDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ FlipCard }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ FlipCard }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Hover flip</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="flex items-center justify-center gap-8 p-12 bg-neutral-50 rounded-2xl">
+          <div className="flex items-center justify-center gap-6 p-12 bg-neutral-50 rounded-2xl">
             <FlipCard
               className="h-48 w-36"
               front={

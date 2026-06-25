@@ -78,7 +78,7 @@ const MODAL_PROPS = [
   { name: "className", type: "string", default: "—", description: "Extra Tailwind classes applied to the modal panel." },
 ];
 
-const BASIC_CODE = `import { Modal, ModalHeader, ModalBody, ModalFooter } from "@stealshadow/ui";
+const BASIC_CODE = `import { Modal, ModalHeader, ModalBody, ModalFooter } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -102,7 +102,7 @@ export default function Example() {
   );
 }`;
 
-const SIZES_CODE = `import { Modal, ModalHeader, ModalBody } from "@stealshadow/ui";
+const SIZES_CODE = `import { Modal, ModalHeader, ModalBody } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -124,8 +124,8 @@ export default function Example() {
   );
 }`;
 
-const FORM_CODE = `import { Modal, ModalHeader, ModalBody } from "@stealshadow/ui";
-import { Button, Input } from "@stealshadow/ui";
+const FORM_CODE = `import { Modal, ModalHeader, ModalBody } from "@animui/ui";
+import { Button, Input } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -174,7 +174,7 @@ export default function ModalDocsPage() {
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
           import {"{ Modal, ModalHeader, ModalBody, ModalFooter }"} from{" "}
-          <span className="text-blue-400">"@stealshadow/ui"</span>
+          <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

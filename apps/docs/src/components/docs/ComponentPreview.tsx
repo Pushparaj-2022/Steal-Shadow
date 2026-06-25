@@ -59,8 +59,10 @@ export function ComponentPreview({ children, code }: ComponentPreviewProps) {
 
       {/* Preview pane */}
       {tab === "preview" && (
-        <div className="p-8 flex items-center justify-center min-h-[180px] bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-          {children}
+        <div className="p-6 sm:p-10 flex items-center justify-center min-h-[320px] bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] overflow-x-auto">
+          <div className="w-full flex items-center justify-center flex-wrap gap-4">
+            {children}
+          </div>
         </div>
       )}
 

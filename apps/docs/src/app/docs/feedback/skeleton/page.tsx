@@ -4,13 +4,13 @@ import { Skeleton } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Skeleton } from "@stealshadow/ui";
+const BASIC_CODE = `import { Skeleton } from "@animui/ui";
 
 export default function Example() {
   return <Skeleton className="h-4 w-48" />;
 }`;
 
-const CARD_CODE = `import { Skeleton } from "@stealshadow/ui";
+const CARD_CODE = `import { Skeleton } from "@animui/ui";
 
 export default function CardSkeleton() {
   return (
@@ -29,7 +29,7 @@ export default function CardSkeleton() {
   );
 }`;
 
-const TABLE_CODE = `import { Skeleton } from "@stealshadow/ui";
+const TABLE_CODE = `import { Skeleton } from "@animui/ui";
 
 export default function TableSkeleton() {
   return (
@@ -45,7 +45,7 @@ export default function TableSkeleton() {
   );
 }`;
 
-const CONDITIONAL_CODE = `import { Skeleton } from "@stealshadow/ui";
+const CONDITIONAL_CODE = `import { Skeleton } from "@animui/ui";
 
 export default function UserCard({ user, loading }) {
   if (loading) {
@@ -65,9 +65,11 @@ export default function UserCard({ user, loading }) {
 }`;
 
 const PROPS = [
-  { name: "className", type: "string", default: "—", description: "Additional classes applied to the skeleton element, including height/width/rounded shaping." },
-  { name: "variant", type: '"default" | "text" | "circle"', default: '"default"', description: "Preset shape variant. Use className for custom dimensions." },
-  { name: "animated", type: "boolean", default: "true", description: "Whether to show the shimmer animation." },
+  { name: "variant", type: '"rect" | "line" | "circle" | "card"', default: '"rect"', description: "Preset shape variant. rect is a plain block; line renders multiple text lines; circle is round; card renders a full card skeleton." },
+  { name: "width", type: "string | number", default: "—", description: "Width of the skeleton element (used with rect and circle variants)." },
+  { name: "height", type: "string | number", default: "—", description: "Height of the skeleton element (used with rect and circle variants)." },
+  { name: "lines", type: "number", default: "3", description: "Number of text lines rendered when using the line variant." },
+  { name: "className", type: "string", default: "—", description: "Additional classes for custom sizing and shaping." },
 ];
 
 export default function SkeletonDocsPage() {
@@ -87,7 +89,7 @@ export default function SkeletonDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Skeleton }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Skeleton }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -102,7 +104,7 @@ export default function SkeletonDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Card skeleton</h2>
         <p className="text-neutral-500 mb-4 text-sm">Compose Skeleton elements to match your content&apos;s layout exactly.</p>
         <ComponentPreview code={CARD_CODE}>
-          <div className="rounded-xl border border-neutral-100 p-4 space-y-4 max-w-xs">
+          <div className="rounded-xl border border-neutral-100 p-4 space-y-4 w-full max-w-sm">
             <div className="flex items-center gap-3">
               <Skeleton className="h-10 w-10 rounded-full shrink-0" />
               <div className="space-y-2 flex-1">

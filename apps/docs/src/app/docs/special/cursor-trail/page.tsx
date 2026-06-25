@@ -1,23 +1,23 @@
 "use client";
 
 import { CursorTrail } from "@animui/ui";
-import { ComponentPreview } from "@/components/component-preview";
-import { PropsTable } from "@/components/props-table";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { PropsTable } from "@/components/docs/PropsTable";
 
 export default function CursorTrailPage() {
   return (
     <div className="space-y-10 pb-16">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted-foreground">
+      <nav className="flex items-center gap-2 text-sm text-neutral-500">
         <span>Special</span>
         <span>/</span>
-        <span className="text-foreground font-medium">CursorTrail</span>
+        <span className="text-neutral-900 font-medium">CursorTrail</span>
       </nav>
 
       {/* Heading */}
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">CursorTrail</h1>
-        <p className="text-muted-foreground text-lg max-w-2xl">
+        <p className="text-neutral-500 text-lg max-w-2xl">
           A canvas-based cursor trail that renders a smooth, fading sequence of
           dots following the mouse pointer. Move the mouse over the area to see
           the effect. Fully customizable color, size, and trail length.
@@ -27,7 +27,7 @@ export default function CursorTrailPage() {
       {/* Import */}
       <div className="space-y-3">
         <h2 className="text-xl font-semibold">Import</h2>
-        <pre className="rounded-lg border bg-muted px-5 py-4 text-sm overflow-x-auto">
+        <pre className="rounded-lg border bg-neutral-100 px-5 py-4 text-sm overflow-x-auto">
           <code>{`import { CursorTrail } from "@animui/ui";`}</code>
         </pre>
       </div>
@@ -35,7 +35,7 @@ export default function CursorTrailPage() {
       {/* Basic */}
       <div className="space-y-3">
         <h2 className="text-xl font-semibold">Basic</h2>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-neutral-500 text-sm">
           Wrap any content with <code className="font-mono">CursorTrail</code>.
           Move your mouse over the preview area to see the fading dot trail.
         </p>
@@ -46,11 +46,11 @@ export default function Example() {
   return (
     <CursorTrail>
       <div
-        className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-muted/40"
+        className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-neutral-100/40"
       >
         <div className="text-center space-y-2 pointer-events-none select-none">
           <p className="text-lg font-semibold">Move your cursor here</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-neutral-500">
             Watch the purple trail follow your mouse
           </p>
         </div>
@@ -60,10 +60,10 @@ export default function Example() {
 }`}
         >
           <CursorTrail>
-            <div className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-muted/40">
+            <div className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-neutral-100/40">
               <div className="text-center space-y-2 pointer-events-none select-none">
                 <p className="text-lg font-semibold">Move your cursor here</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-neutral-500">
                   Watch the purple trail follow your mouse
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default function Example() {
       {/* Custom color */}
       <div className="space-y-3">
         <h2 className="text-xl font-semibold">Custom Color</h2>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-neutral-500 text-sm">
           Pass RGB values as a comma-separated string to the{" "}
           <code className="font-mono">color</code> prop.
         </p>
@@ -86,11 +86,11 @@ export default function PinkTrail() {
   return (
     <CursorTrail color="236,72,153">
       <div
-        className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-muted/40"
+        className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-neutral-100/40"
       >
         <div className="text-center space-y-2 pointer-events-none select-none">
           <p className="text-lg font-semibold">Pink trail</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-neutral-500">
             color="236,72,153"
           </p>
         </div>
@@ -100,10 +100,10 @@ export default function PinkTrail() {
 }`}
         >
           <CursorTrail color="236,72,153">
-            <div className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-muted/40">
+            <div className="flex h-[300px] w-full items-center justify-center rounded-xl border border-dashed bg-neutral-100/40">
               <div className="text-center space-y-2 pointer-events-none select-none">
                 <p className="text-lg font-semibold">Pink trail</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-neutral-500">
                   color="236,72,153"
                 </p>
               </div>

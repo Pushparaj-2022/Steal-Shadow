@@ -4,7 +4,7 @@ import { FloatingElements } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { FloatingElements } from "@stealshadow/ui";
+const BASIC_CODE = `import { FloatingElements } from "@animui/ui";
 
 const items = [
   { content: <div className="h-12 w-12 rounded-full bg-violet-400/30 blur-sm" />, x: "10%", y: "20%", duration: 4 },
@@ -79,7 +79,7 @@ export default function FloatingElementsDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ FloatingElements }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ FloatingElements }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

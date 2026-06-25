@@ -4,7 +4,7 @@ import { SpotlightCard } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { SpotlightCard } from "@stealshadow/ui";
+const BASIC_CODE = `import { SpotlightCard } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -50,14 +50,14 @@ export default function SpotlightCardDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ SpotlightCard }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ SpotlightCard }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <SpotlightCard className="p-5 max-w-xs">
+          <SpotlightCard className="p-5 w-full max-w-sm">
             <div className="h-7 w-7 rounded-lg bg-violet-100 flex items-center justify-center mb-3">
               <div className="h-3.5 w-3.5 rounded bg-violet-500" />
             </div>

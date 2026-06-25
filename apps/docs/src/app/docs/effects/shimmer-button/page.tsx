@@ -4,7 +4,7 @@ import { ShimmerButton } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { ShimmerButton } from "@stealshadow/ui";
+const BASIC_CODE = `import { ShimmerButton } from "@animui/ui";
 
 export default function Example() {
   return <ShimmerButton>Get started</ShimmerButton>;
@@ -55,7 +55,7 @@ export default function ShimmerButtonDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ ShimmerButton }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ ShimmerButton }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

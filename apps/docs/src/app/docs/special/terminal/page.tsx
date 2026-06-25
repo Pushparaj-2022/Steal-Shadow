@@ -1,162 +1,120 @@
 "use client";
 
-import { Terminal, TerminalLine } from "@animui/ui";
-import { ComponentPreview } from "@/components/component-preview";
-import { PropsTable } from "@/components/props-table";
+import { Terminal } from "@animui/ui";
+import type { TerminalLine } from "@animui/ui";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { PropsTable } from "@/components/docs/PropsTable";
 
-const basicLines: TerminalLine[] = [
-  { type: "input", content: "npm install @animui/ui" },
-  { type: "output", content: "added 42 packages, and audited 43 packages in 3s" },
-  { type: "output", content: "3 packages are looking for funding" },
-  { type: "success", content: "found 0 vulnerabilities" },
-  { type: "input", content: "npm run build" },
-  { type: "success", content: "✓ build complete in 1.2s" },
+const installLines: TerminalLine[] = [
+  { type: "input", text: "npm install @animui/ui" },
+  { type: "output", text: "added 42 packages in 3s" },
+  { type: "info",   text: "3 packages are looking for funding" },
+  { type: "input", text: "npm run build" },
+  { type: "output", text: "  ▸ tsup building entry: src/index.ts" },
+  { type: "output", text: "  ✓ ESM build success in 1.2s" },
 ];
 
-const basicCode = `import { Terminal, TerminalLine } from "@animui/ui";
+const basicCode = `import { Terminal } from "@animui/ui";
+import type { TerminalLine } from "@animui/ui";
 
 const lines: TerminalLine[] = [
-  { type: "input", content: "npm install @animui/ui" },
-  { type: "output", content: "added 42 packages, and audited 43 packages in 3s" },
-  { type: "output", content: "3 packages are looking for funding" },
-  { type: "success", content: "found 0 vulnerabilities" },
-  { type: "input", content: "npm run build" },
-  { type: "success", content: "✓ build complete in 1.2s" },
+  { type: "input",  text: "npm install @animui/ui" },
+  { type: "output", text: "added 42 packages in 3s" },
+  { type: "info",   text: "3 packages are looking for funding" },
+  { type: "input",  text: "npm run build" },
+  { type: "output", text: "✓ build success in 1.2s" },
 ];
 
 export default function Example() {
   return <Terminal lines={lines} />;
 }`;
 
+const loopCode = `<Terminal lines={lines} loop speed={40} title="~/project" />`;
+
 const terminalProps = [
-  {
-    name: "lines",
-    type: "TerminalLine[]",
-    default: "—",
-    description: "Sequence of lines to render.",
-  },
-  {
-    name: "startDelay",
-    type: "number",
-    default: "300",
-    description: "Milliseconds before the first line begins.",
-  },
-  {
-    name: "typingSpeed",
-    type: "number",
-    default: "50",
-    description: "Milliseconds between each typed character for input lines.",
-  },
-  {
-    name: "className",
-    type: "string",
-    default: "—",
-    description: "Additional classes for the terminal window.",
-  },
+  { name: "lines", type: "TerminalLine[]", default: "—", description: "Sequence of lines to render." },
+  { name: "autoPlay", type: "boolean", default: "true", description: "Start typing automatically on mount." },
+  { name: "speed", type: "number", default: "50", description: "Milliseconds between each typed character for input lines." },
+  { name: "loop", type: "boolean", default: "false", description: "Restart the sequence after the last line completes." },
+  { name: "title", type: "string", default: '"terminal"', description: "Text shown in the macOS-style title bar." },
+  { name: "className", type: "string", default: "—", description: "Additional classes for the terminal window." },
+];
+
+const lineTypeRows = [
+  { name: "input", type: '"input"', default: "—", description: "Types out character-by-character with a green prompt." },
+  { name: "output", type: '"output"', default: "—", description: "Appears instantly in muted gray." },
+  { name: "error", type: '"error"', default: "—", description: "Appears in red." },
+  { name: "info", type: '"info"', default: "—", description: "Appears in blue." },
 ];
 
 export default function TerminalPage() {
   return (
     <div className="space-y-10 pb-16">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted-foreground">
+      <nav className="flex items-center gap-2 text-sm text-neutral-500">
         <span>Special</span>
         <span>/</span>
-        <span className="text-foreground font-medium">Terminal</span>
+        <span className="text-neutral-900 font-medium">Terminal</span>
       </nav>
 
-      {/* Heading */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Terminal</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl">
-          An animated terminal window that types out a sequence of input,
-          output, error, and success lines — perfect for onboarding flows,
-          landing pages, and CLI-flavoured demos.
+        <p className="text-lg text-neutral-500">
+          A macOS-style terminal window that plays back a sequence of lines.{" "}
+          <code className="font-mono text-sm bg-neutral-100 px-1 py-0.5 rounded">input</code> lines
+          type out character by character; other types appear instantly. Great for install guides, CLI demos,
+          and onboarding flows.
         </p>
       </div>
 
-      {/* Import */}
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Import</h2>
-        <pre className="rounded-lg bg-muted px-5 py-4 text-sm overflow-x-auto">
-          <code>{`import { Terminal } from "@animui/ui";
-import type { TerminalLine } from "@animui/ui";`}</code>
-        </pre>
+      <div className="rounded-xl bg-zinc-950 px-5 py-4">
+        <code className="font-mono text-sm">
+          <span className="text-blue-400">import</span>{" "}
+          <span className="text-green-400">{"{ Terminal }"}</span>{" "}
+          <span className="text-blue-400">from</span>{" "}
+          <span className="text-amber-300">"@animui/ui"</span>
+        </code>
+      </div>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Basic</h2>
+        <ComponentPreview code={basicCode}>
+          <div className="w-full max-w-xl">
+            <Terminal lines={installLines} />
+          </div>
+        </ComponentPreview>
       </section>
 
-      {/* Basic example */}
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Basic</h2>
-        <p className="text-sm text-muted-foreground">
-          A realistic npm install sequence mixing{" "}
-          <code className="font-mono text-xs bg-muted px-1 py-0.5 rounded">
-            input
-          </code>
-          ,{" "}
-          <code className="font-mono text-xs bg-muted px-1 py-0.5 rounded">
-            output
-          </code>
-          , and{" "}
-          <code className="font-mono text-xs bg-muted px-1 py-0.5 rounded">
-            success
-          </code>{" "}
-          line types.
+        <h2 className="text-2xl font-semibold">Loop &amp; custom title</h2>
+        <p className="text-neutral-500 text-sm">
+          Set <code className="font-mono text-xs bg-neutral-100 px-1 rounded">loop</code> to replay
+          the sequence. Use <code className="font-mono text-xs bg-neutral-100 px-1 rounded">title</code> to
+          change the title bar text.
         </p>
-        <ComponentPreview
-          preview={<Terminal lines={basicLines} />}
-          code={basicCode}
-        />
+        <ComponentPreview code={loopCode}>
+          <div className="w-full max-w-xl">
+            <Terminal lines={installLines} loop speed={40} title="~/project" />
+          </div>
+        </ComponentPreview>
       </section>
 
-      {/* Props table */}
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Props</h2>
+        <h2 className="text-2xl font-semibold">Props</h2>
         <PropsTable props={terminalProps} />
       </section>
 
-      {/* TerminalLine type */}
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">TerminalLine type</h2>
-        <p className="text-sm text-muted-foreground">
-          Each entry in the{" "}
-          <code className="font-mono text-xs bg-muted px-1 py-0.5 rounded">
-            lines
-          </code>{" "}
-          prop is a plain object with two fields:
+        <h2 className="text-2xl font-semibold">TerminalLine type</h2>
+        <p className="text-neutral-500 text-sm">
+          Each item in the <code className="font-mono text-xs bg-neutral-100 px-1 rounded">lines</code> array
+          has the following shape:
         </p>
-        <pre className="rounded-lg bg-muted px-5 py-4 text-sm overflow-x-auto">
-          <code>{`type TerminalLine = {
-  type: "input" | "output" | "error" | "success";
-  content: string;
-};`}</code>
-        </pre>
-        <div className="rounded-lg border divide-y text-sm overflow-x-auto">
-          <div className="grid grid-cols-3 px-4 py-2 font-medium bg-muted/50">
-            <span>Value</span>
-            <span>Appearance</span>
-            <span>Behaviour</span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3">
-            <code className="font-mono text-xs">input</code>
-            <span>Prompt prefix + default text colour</span>
-            <span>Types character by character at <code className="font-mono text-xs">typingSpeed</code></span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3">
-            <code className="font-mono text-xs">output</code>
-            <span>Muted / secondary text colour</span>
-            <span>Appears instantly after the previous line finishes</span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3">
-            <code className="font-mono text-xs">error</code>
-            <span>Destructive / red text colour</span>
-            <span>Appears instantly after the previous line finishes</span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3">
-            <code className="font-mono text-xs">success</code>
-            <span>Success / green text colour</span>
-            <span>Appears instantly after the previous line finishes</span>
-          </div>
-        </div>
+        <pre className="rounded-lg bg-zinc-950 text-zinc-200 px-5 py-4 text-sm font-mono overflow-x-auto">{`type TerminalLine = {
+  text: string;
+  type?: "input" | "output" | "error" | "info";
+  delay?: number; // extra ms pause before this line
+}`}</pre>
+        <PropsTable props={lineTypeRows} />
       </section>
     </div>
   );

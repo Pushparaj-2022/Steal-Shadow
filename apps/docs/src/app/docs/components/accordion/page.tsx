@@ -5,38 +5,39 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
 
-const BASIC_CODE = `import { Accordion, AccordionItem } from "@stealshadow/ui";
+const BASIC_CODE = `import { Accordion, AccordionItem } from "@animui/ui";
 
 export default function Example() {
   return (
-    <Accordion type="single">
-      <AccordionItem title="What is Steal Shadow?">
+    <Accordion>
+      <AccordionItem value="q1" title="What is Steal Shadow?">
         An open-source React component library with 50+ animated components.
       </AccordionItem>
-      <AccordionItem title="Is it free?">
+      <AccordionItem value="q2" title="Is it free?">
         100% free and MIT licensed. No paywalls, no tiers.
       </AccordionItem>
     </Accordion>
   );
 }`;
 
-const MULTIPLE_CODE = `<Accordion type="multiple">
-  <AccordionItem title="Section 1">Content 1</AccordionItem>
-  <AccordionItem title="Section 2">Content 2</AccordionItem>
-  <AccordionItem title="Section 3" defaultOpen>Content 3</AccordionItem>
+const MULTIPLE_CODE = `<Accordion multiple>
+  <AccordionItem value="s1" title="Section 1">Content 1</AccordionItem>
+  <AccordionItem value="s2" title="Section 2">Content 2</AccordionItem>
+  <AccordionItem value="s3" title="Section 3">Content 3</AccordionItem>
 </Accordion>`;
 
 const PROPS = [
-  { name: "type", type: '"single" | "multiple"', default: '"single"', description: "Whether one or multiple items can be open simultaneously." },
+  { name: "multiple", type: "boolean", default: "false", description: "When true, multiple items can be open simultaneously." },
+  { name: "defaultValue", type: "string", default: "—", description: "The value of the item that should be open by default." },
   { name: "children", type: "React.ReactNode", default: "—", description: "AccordionItem children." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the wrapper." },
 ];
 
 const ITEM_PROPS = [
+  { name: "value", type: "string", default: "—", description: "Unique identifier for this item. Required." },
   { name: "title", type: "string | React.ReactNode", default: "—", description: "The trigger label shown in the header." },
   { name: "children", type: "React.ReactNode", default: "—", description: "Content revealed when the item is open." },
-  { name: "defaultOpen", type: "boolean", default: "false", description: "Whether this item starts open." },
-  { name: "disabled", type: "boolean", default: "false", description: "Prevents this item from being toggled." },
+  { name: "className", type: "string", default: "—", description: "Additional classes for this item's wrapper." },
 ];
 
 
@@ -57,21 +58,21 @@ export default function AccordionDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Accordion, AccordionItem }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Accordion, AccordionItem }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <Accordion type="single" className="w-full max-w-lg">
-            <AccordionItem title="What is Steal Shadow?">
+          <Accordion className="w-full max-w-lg">
+            <AccordionItem value="q1" title="What is Steal Shadow?">
               An open-source React component library with 50+ animated, accessible components.
             </AccordionItem>
-            <AccordionItem title="Is it free?">
+            <AccordionItem value="q2" title="Is it free?">
               100% free and MIT licensed. No paywalls, no tiers, no lock-in.
             </AccordionItem>
-            <AccordionItem title="Does it work with Next.js?">
+            <AccordionItem value="q3" title="Does it work with Next.js?">
               Yes. Add transpilePackages to next.config.ts and you&apos;re ready to go.
             </AccordionItem>
           </Accordion>
@@ -80,16 +81,16 @@ export default function AccordionDocsPage() {
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Multiple open</h2>
-        <p className="text-neutral-500 mb-4">Set <code className="font-mono text-xs bg-neutral-100 px-1 rounded">type="multiple"</code> to allow more than one item open at once.</p>
+        <p className="text-neutral-500 mb-4">Set <code className="font-mono text-xs bg-neutral-100 px-1 rounded">multiple</code> to allow more than one item open at once.</p>
         <ComponentPreview code={MULTIPLE_CODE}>
-          <Accordion type="multiple" className="w-full max-w-lg">
-            <AccordionItem title="What is Steal Shadow?">
+          <Accordion multiple className="w-full max-w-lg">
+            <AccordionItem value="m1" title="What is Steal Shadow?">
               An open-source React component library with 50+ animated, accessible components.
             </AccordionItem>
-            <AccordionItem title="Is it free?">
+            <AccordionItem value="m2" title="Is it free?">
               100% free and MIT licensed. No paywalls, no tiers, no lock-in.
             </AccordionItem>
-            <AccordionItem title="Does it work with Next.js?" defaultOpen>
+            <AccordionItem value="m3" title="Does it work with Next.js?">
               Yes. Add transpilePackages to next.config.ts and you&apos;re ready to go.
             </AccordionItem>
           </Accordion>

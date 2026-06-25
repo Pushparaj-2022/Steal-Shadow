@@ -4,12 +4,12 @@ import { RevealText } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { RevealText } from "@stealshadow/ui";
+const BASIC_CODE = `import { RevealText } from "@animui/ui";
 
 export default function Example() {
   return (
     <RevealText>
-      <p>This text fades up into view as it enters the viewport.</p>
+      This text fades up into view as it enters the viewport.
     </RevealText>
   );
 }`;
@@ -20,10 +20,11 @@ const DIRECTION_CODE = `<RevealText direction="up">Slides up</RevealText>
 <RevealText direction="right">Slides right</RevealText>`;
 
 const PROPS = [
-  { name: "children", type: "React.ReactNode", default: "—", description: "The content to animate on reveal." },
+  { name: "children", type: "string", default: "—", description: "The text to animate on reveal. Must be a plain string." },
   { name: "direction", type: '"up" | "down" | "left" | "right"', default: '"up"', description: "Direction the content slides in from." },
-  { name: "delay", type: "number", default: "0", description: "Delay in seconds before the animation starts." },
-  { name: "duration", type: "number", default: "0.6", description: "Animation duration in seconds." },
+  { name: "splitBy", type: '"word" | "char" | "line"', default: '"word"', description: "How to split the text for staggered reveal." },
+  { name: "stagger", type: "number", default: "0.04", description: "Delay between each split unit in seconds." },
+  { name: "delay", type: "number", default: "0", description: "Initial delay in seconds before the animation starts." },
   { name: "once", type: "boolean", default: "true", description: "Whether the animation fires only once." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the wrapper." },
 ];
@@ -45,7 +46,7 @@ export default function RevealTextDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ RevealText }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ RevealText }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -53,8 +54,8 @@ export default function RevealTextDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
           <div className="rounded-xl border border-neutral-200 bg-neutral-50 px-6 py-8 text-center">
-            <RevealText>
-              <p className="text-lg font-semibold text-neutral-900">This text fades up into view as it enters the viewport.</p>
+            <RevealText className="text-lg font-semibold text-neutral-900">
+              This text fades up into view as it enters the viewport.
             </RevealText>
             <p className="mt-2 text-sm text-neutral-400">↑ animated on scroll</p>
           </div>
@@ -68,8 +69,8 @@ export default function RevealTextDocsPage() {
             {([["up","↑"],["down","↓"],["left","←"],["right","→"]] as const).map(([dir, arrow]) => (
               <div key={dir} className="rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-5 text-center">
                 <p className="text-2xl mb-1">{arrow}</p>
-                <RevealText direction={dir}>
-                  <p className="text-sm font-semibold text-neutral-700">Slides {dir}</p>
+                <RevealText direction={dir} className="text-sm font-semibold text-neutral-700">
+                  {`Slides ${dir}`}
                 </RevealText>
               </div>
             ))}
@@ -82,11 +83,8 @@ export default function RevealTextDocsPage() {
         <ComponentPreview code={`{items.map((item, i) => (\n  <RevealText key={i} delay={i * 0.1}>{item}</RevealText>\n))}`}>
           <div className="space-y-3">
             {["First line appears", "Second line follows", "Third line completes"].map((text, i) => (
-              <RevealText key={i} delay={i * 0.1}>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-600">{i + 1}</span>
-                  <p className="text-sm text-neutral-700">{text}</p>
-                </div>
+              <RevealText key={i} delay={i * 0.1} className="text-sm text-neutral-700">
+                {text}
               </RevealText>
             ))}
           </div>

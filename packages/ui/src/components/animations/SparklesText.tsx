@@ -39,18 +39,19 @@ export function SparklesText({
   colors = ["#fbbf24", "#f59e0b", "#fde68a", "#fcd34d"],
   className,
 }: SparklesTextProps) {
-  const [sparkles, setSparkles] = useState<Sparkle[]>(() =>
-    Array.from({ length: sparkleCount }, () => makeSparkle(colors))
-  );
+  // Empty on first render to avoid SSR/hydration mismatch from Math.random()
+  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
 
   useEffect(() => {
+    setSparkles(Array.from({ length: sparkleCount }, () => makeSparkle(colors)));
     const t = setInterval(() => {
       setSparkles((prev) =>
         prev.map((s) => (Math.random() > 0.6 ? makeSparkle(colors) : s))
       );
     }, 600);
     return () => clearInterval(t);
-  }, [colors, sparkleCount]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sparkleCount]);
 
   return (
     <span className={cn("relative inline-block", className)}>

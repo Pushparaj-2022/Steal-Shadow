@@ -4,27 +4,26 @@ import { Badge } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Badge } from "@stealshadow/ui";
+const BASIC_CODE = `import { Badge } from "@animui/ui";
 
 export default function Example() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge variant="default">Default</Badge>
+      <Badge variant="primary">Primary</Badge>
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
-      <Badge variant="error">Error</Badge>
-      <Badge variant="info">Info</Badge>
+      <Badge variant="danger">Danger</Badge>
+      <Badge variant="outline">Outline</Badge>
       <Badge variant="success" dot>Live</Badge>
     </div>
   );
 }`;
 
 const PROPS = [
-  { name: "variant", type: '"default" | "success" | "warning" | "error" | "info"', default: '"default"', description: "Controls the color scheme of the badge." },
-  { name: "size", type: '"sm" | "md"', default: '"md"', description: "Controls padding and font size." },
+  { name: "variant", type: '"default" | "primary" | "success" | "warning" | "danger" | "outline" | "gradient"', default: '"default"', description: "Controls the color scheme of the badge." },
   { name: "dot", type: "boolean", default: "false", description: "Adds an animated dot indicator before the label." },
-  { name: "removable", type: "boolean", default: "false", description: "Shows an X button that calls onRemove when clicked." },
-  { name: "onRemove", type: "() => void", default: "—", description: "Called when the user clicks the remove X button." },
+  { name: "pulse", type: "boolean", default: "false", description: "Applies a pulse animation to the badge." },
   { name: "className", type: "string", default: "—", description: "Additional Tailwind classes." },
   { name: "children", type: "React.ReactNode", default: "—", description: "Badge label content." },
 ];
@@ -41,14 +40,14 @@ export default function BadgeDocsPage() {
         </div>
         <h1 className="text-4xl font-black text-neutral-900 tracking-tight mb-4">Badge</h1>
         <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
-          Compact status labels for conveying state at a glance. Five semantic variants,
-          animated dot indicator, and an optional removable mode.
+          Compact status labels for conveying state at a glance. Seven semantic variants
+          including gradient, animated dot indicator, and optional pulse animation.
         </p>
       </div>
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Badge }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Badge }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -57,10 +56,11 @@ export default function BadgeDocsPage() {
         <ComponentPreview code={BASIC_CODE}>
           <div className="flex flex-wrap gap-2">
             <Badge variant="default">Default</Badge>
+            <Badge variant="primary">Primary</Badge>
             <Badge variant="success">Success</Badge>
             <Badge variant="warning">Warning</Badge>
-            <Badge variant="error">Error</Badge>
-            <Badge variant="info">Info</Badge>
+            <Badge variant="danger">Danger</Badge>
+            <Badge variant="outline">Outline</Badge>
             <Badge variant="success" dot>Live</Badge>
           </div>
         </ComponentPreview>

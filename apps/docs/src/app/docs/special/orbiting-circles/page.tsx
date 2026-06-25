@@ -1,8 +1,8 @@
 "use client";
 
 import { OrbitingCircles } from "@animui/ui";
-import { ComponentPreview } from "@/components/component-preview";
-import { PropsTable } from "@/components/props-table";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { PropsTable } from "@/components/docs/PropsTable";
 
 const basicCode = `import { OrbitingCircles } from "@animui/ui";
 
@@ -62,12 +62,6 @@ const props = [
     description: "Reverse the orbit direction.",
   },
   {
-    name: "startAngle",
-    type: "number",
-    default: "0",
-    description: "Starting angle offset in degrees.",
-  },
-  {
     name: "iconSize",
     type: "number",
     default: "30",
@@ -85,16 +79,16 @@ export default function OrbitingCirclesPage() {
   return (
     <div className="space-y-10">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted-foreground">
+      <nav className="flex items-center gap-2 text-sm text-neutral-500">
         <span>Special</span>
         <span>/</span>
-        <span className="text-foreground font-medium">OrbitingCircles</span>
+        <span className="text-neutral-900 font-medium">OrbitingCircles</span>
       </nav>
 
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">OrbitingCircles</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-neutral-500">
           Arrange child elements evenly along a circular orbit path and animate
           them in a continuous revolution. Works great with icons, images, or
           any inline content.
@@ -104,7 +98,7 @@ export default function OrbitingCirclesPage() {
       {/* Import */}
       <div className="space-y-2">
         <h2 className="text-xl font-semibold">Import</h2>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm overflow-x-auto">
+        <pre className="rounded-lg bg-neutral-100 px-4 py-3 text-sm overflow-x-auto">
           <code>{`import { OrbitingCircles } from "@animui/ui";`}</code>
         </pre>
       </div>
@@ -112,10 +106,10 @@ export default function OrbitingCirclesPage() {
       {/* Basic example */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Basic</h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-neutral-500">
           Provide child elements — icons, emoji, or images — and they will be
           distributed evenly around the orbit at the given{" "}
-          <code className="rounded bg-muted px-1 py-0.5 text-xs">radius</code>.
+          <code className="rounded bg-neutral-100 px-1 py-0.5 text-xs">radius</code>.
         </p>
         <ComponentPreview code={basicCode}>
           <div
@@ -136,12 +130,12 @@ export default function OrbitingCirclesPage() {
       {/* Reverse orbit */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Reverse orbit</h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-neutral-500">
           Set{" "}
-          <code className="rounded bg-muted px-1 py-0.5 text-xs">
+          <code className="rounded bg-neutral-100 px-1 py-0.5 text-xs">
             reverse
           </code>{" "}
-          to <code className="rounded bg-muted px-1 py-0.5 text-xs">true</code>{" "}
+          to <code className="rounded bg-neutral-100 px-1 py-0.5 text-xs">true</code>{" "}
           to spin the orbit counter-clockwise. Useful when composing multiple
           concentric rings.
         </p>

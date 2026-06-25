@@ -59,7 +59,7 @@ export default function AnimationsPage() {
         <p className="text-sm text-amber-700">
           Animation components depend on <code className="font-mono text-xs bg-amber-100 px-1 rounded">motion</code> v12+.
           Install it alongside the package:{" "}
-          <code className="font-mono text-xs bg-amber-100 px-1 rounded">npm install @stealshadow/ui motion</code>
+          <code className="font-mono text-xs bg-amber-100 px-1 rounded">npm install @animui/ui motion</code>
         </p>
       </div>
 

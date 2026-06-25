@@ -4,11 +4,11 @@ import { TiltCard } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { TiltCard } from "@stealshadow/ui";
+const BASIC_CODE = `import { TiltCard } from "@animui/ui";
 
 export default function Example() {
   return (
-    <TiltCard className="rounded-2xl bg-gradient-to-br from-violet-500 to-blue-600 p-8 text-white w-64">
+    <TiltCard className="rounded-2xl bg-gradient-to-br from-violet-500 to-blue-600 p-8 text-white w-full max-w-xs">
       <p className="font-bold text-lg">Hover me</p>
       <p className="text-white/70 text-sm mt-1">Move your cursor around to tilt in 3D. The specular highlight follows your cursor like a real light source.</p>
     </TiltCard>
@@ -52,15 +52,15 @@ export default function TiltCardDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ TiltCard }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ TiltCard }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="flex items-center justify-center p-12 bg-neutral-50 rounded-2xl">
-            <TiltCard className="rounded-2xl bg-gradient-to-br from-violet-500 to-blue-600 p-8 text-white w-64">
+          <div className="flex items-center justify-center py-8 px-6 bg-neutral-50 rounded-xl w-full">
+            <TiltCard className="rounded-2xl bg-gradient-to-br from-violet-500 to-blue-600 p-8 text-white w-full max-w-xs">
               <p className="font-bold text-lg">Hover me</p>
               <p className="text-white/70 text-sm mt-1">Move your cursor around to tilt in 3D. The specular highlight follows your cursor like a real light source.</p>
             </TiltCard>
@@ -71,8 +71,8 @@ export default function TiltCardDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">No shine</h2>
         <ComponentPreview code={SHINE_CODE}>
-          <div className="flex items-center justify-center p-12 bg-neutral-50 rounded-2xl">
-            <TiltCard shine={false} maxTilt={20} className="rounded-2xl border border-neutral-200 bg-white p-6 w-64 shadow-lg">
+          <div className="flex items-center justify-center py-8 px-6 bg-neutral-50 rounded-xl w-full">
+            <TiltCard shine={false} maxTilt={20} className="rounded-2xl border border-neutral-200 bg-white p-6 w-full max-w-xs shadow-lg">
               <h3 className="font-bold text-neutral-900">No shine variant</h3>
               <p className="text-neutral-500 text-sm mt-1">Tilt only, no specular highlight.</p>
             </TiltCard>

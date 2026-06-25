@@ -4,7 +4,7 @@ import { GlassCard } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { GlassCard } from "@stealshadow/ui";
+const BASIC_CODE = `import { GlassCard } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -66,7 +66,7 @@ export default function GlassCardDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ GlassCard }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ GlassCard }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -74,7 +74,7 @@ export default function GlassCardDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
           <GradBg>
-            <GlassCard className="p-6 max-w-xs">
+            <GlassCard className="p-6 w-full max-w-sm">
               <h3 className="text-white font-bold text-lg">Glass Card</h3>
               <p className="text-white/70 text-sm mt-1">Frosted glass effect with backdrop blur.</p>
             </GlassCard>
@@ -86,7 +86,7 @@ export default function GlassCardDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Glow variant</h2>
         <ComponentPreview code={GLOW_CODE}>
           <GradBg>
-            <GlassCard glow glowColor="rgba(139,92,246,0.5)" className="p-6 max-w-xs">
+            <GlassCard glow glowColor="rgba(139,92,246,0.5)" className="p-6 w-full max-w-sm">
               <h3 className="text-white font-bold">Glowing glass card</h3>
               <p className="text-white/70 text-sm mt-1">Extra depth with colored shadow.</p>
             </GlassCard>

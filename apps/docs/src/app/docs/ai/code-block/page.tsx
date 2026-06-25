@@ -4,13 +4,13 @@ import { CodeBlock } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { CodeBlock } from "@stealshadow/ui";
+const BASIC_CODE = `import { CodeBlock } from "@animui/ui";
 
 export default function Example() {
   return (
     <CodeBlock
       language="tsx"
-      code={\`import { Button } from "@stealshadow/ui";
+      code={\`import { Button } from "@animui/ui";
 
 export default function Page() {
   return <Button variant="default">Click me</Button>;
@@ -23,17 +23,16 @@ export default function Page() {
 
 const PROPS = [
   { name: "code", type: "string", default: "—", description: "The code string to display." },
-  { name: "language", type: "string", default: '"text"', description: "Language identifier for syntax highlighting (tsx, ts, js, python, bash, etc.)." },
-  { name: "showLineNumbers", type: "boolean", default: "false", description: "Shows line numbers in a left gutter." },
+  { name: "language", type: "string", default: '"tsx"', description: "Language identifier for syntax highlighting (tsx, ts, js, python, bash, etc.)." },
+  { name: "showLineNumbers", type: "boolean", default: "true", description: "Shows line numbers in a left gutter." },
   { name: "filename", type: "string", default: "—", description: "Filename displayed in the top bar of the code block." },
   { name: "copyable", type: "boolean", default: "true", description: "Shows a copy-to-clipboard button." },
   { name: "theme", type: '"dark" | "light"', default: '"dark"', description: "Color scheme of the code block." },
-  { name: "maxHeight", type: "number", default: "—", description: "Maximum height in pixels before the block scrolls vertically." },
-  { name: "highlight", type: "number[]", default: "—", description: "Array of line numbers to highlight." },
+  { name: "highlightLines", type: "number[]", default: "[]", description: "Array of line numbers to highlight." },
   { name: "className", type: "string", default: "—", description: "Additional classes on the outer wrapper." },
 ];
 
-const SAMPLE_CODE = `import { Button } from "@stealshadow/ui";
+const SAMPLE_CODE = `import { Button } from "@animui/ui";
 
 export default function Page() {
   return <Button variant="default">Click me</Button>;
@@ -57,7 +56,7 @@ export default function CodeBlockPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ CodeBlock }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ CodeBlock }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -87,7 +86,7 @@ export default function CodeBlockPage() {
           code component override. It automatically detects the language from the fenced code block syntax.
         </p>
         <div className="rounded-xl border border-neutral-200 overflow-hidden">
-          <pre className="bg-neutral-950 p-5 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{`import { CodeBlock } from "@stealshadow/ui";
+          <pre className="bg-neutral-950 p-5 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{`import { CodeBlock } from "@animui/ui";
 import Markdown from "react-markdown";
 
 <Markdown

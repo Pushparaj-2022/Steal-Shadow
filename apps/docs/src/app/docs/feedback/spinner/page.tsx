@@ -4,7 +4,7 @@ import { Spinner } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const SIZES_CODE = `import { Spinner } from "@stealshadow/ui";
+const SIZES_CODE = `import { Spinner } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -18,21 +18,21 @@ export default function Example() {
   );
 }`;
 
-const COLORS_CODE = `import { Spinner } from "@stealshadow/ui";
+const COLORS_CODE = `import { Spinner } from "@animui/ui";
 
 export default function Example() {
   return (
     <div className="flex items-center gap-6">
-      <Spinner color="blue" />
-      <Spinner color="emerald" />
-      <Spinner color="rose" />
-      <Spinner color="amber" />
-      <Spinner color="purple" />
+      <Spinner color="#3b82f6" />
+      <Spinner color="#10b981" />
+      <Spinner color="#f43f5e" />
+      <Spinner color="#f59e0b" />
+      <Spinner color="#a855f7" />
     </div>
   );
 }`;
 
-const WITH_TEXT_CODE = `import { Spinner } from "@stealshadow/ui";
+const WITH_TEXT_CODE = `import { Spinner } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -42,11 +42,11 @@ export default function Example() {
         <span className="text-sm text-neutral-600">Loading your data…</span>
       </div>
       <div className="flex items-center gap-3">
-        <Spinner size="md" color="emerald" />
+        <Spinner size="md" color="#10b981" />
         <span className="text-sm text-neutral-600">Saving changes…</span>
       </div>
       <div className="flex items-center gap-3">
-        <Spinner size="lg" color="rose" />
+        <Spinner size="lg" color="#f43f5e" />
         <span className="text-base font-medium text-neutral-700">Processing payment…</span>
       </div>
     </div>
@@ -61,10 +61,16 @@ const PROPS = [
     description: "Controls the diameter of the spinner. xs=12px, sm=16px, md=24px, lg=36px, xl=48px.",
   },
   {
+    name: "variant",
+    type: '"ring" | "dots" | "bars" | "pulse"',
+    default: '"ring"',
+    description: "Animation style of the spinner.",
+  },
+  {
     name: "color",
     type: "string",
-    default: '"blue"',
-    description: "Tailwind color name used for the spinner border. Accepts any valid Tailwind color token.",
+    default: '"currentColor"',
+    description: "CSS color value for the spinner. Defaults to currentColor (inherits from text color). Pass a hex, rgb, or named CSS color.",
   },
   {
     name: "className",
@@ -87,7 +93,7 @@ export default function SpinnerDocsPage() {
         <h1 className="text-4xl font-black text-neutral-900 tracking-tight mb-4">Spinner</h1>
         <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
           A lightweight animated loading indicator that signals asynchronous operations. Available in
-          five sizes and fully colorable via Tailwind tokens.
+          five sizes, four animation variants, and fully colorable via CSS color values.
         </p>
       </div>
 
@@ -95,7 +101,7 @@ export default function SpinnerDocsPage() {
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
           import {'{'}<span className="text-white">Spinner</span>{'}'} from{" "}
-          <span className="text-blue-400">"@stealshadow/ui"</span>
+          <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -135,30 +141,30 @@ export default function SpinnerDocsPage() {
       <div className="space-y-3">
         <h2 className="text-2xl font-bold text-neutral-900">Colors</h2>
         <p className="text-neutral-500 leading-relaxed">
-          Pass any Tailwind color token to the <code className="text-sm font-mono bg-neutral-100 px-1 rounded">color</code> prop
-          to match your brand or surface context.
+          Pass a CSS color value to the <code className="text-sm font-mono bg-neutral-100 px-1 rounded">color</code> prop
+          to match your brand or surface context. Accepts hex, rgb, named colors, or <code className="text-sm font-mono bg-neutral-100 px-1 rounded">currentColor</code>.
         </p>
         <ComponentPreview code={COLORS_CODE}>
           <div className="flex items-center gap-8">
             <div className="flex flex-col items-center gap-2">
-              <Spinner color="blue" />
-              <span className="text-xs text-neutral-400">blue</span>
+              <Spinner color="#3b82f6" />
+              <span className="text-xs text-neutral-400">#3b82f6</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <Spinner color="emerald" />
-              <span className="text-xs text-neutral-400">emerald</span>
+              <Spinner color="#10b981" />
+              <span className="text-xs text-neutral-400">#10b981</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <Spinner color="rose" />
-              <span className="text-xs text-neutral-400">rose</span>
+              <Spinner color="#f43f5e" />
+              <span className="text-xs text-neutral-400">#f43f5e</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <Spinner color="amber" />
-              <span className="text-xs text-neutral-400">amber</span>
+              <Spinner color="#f59e0b" />
+              <span className="text-xs text-neutral-400">#f59e0b</span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <Spinner color="purple" />
-              <span className="text-xs text-neutral-400">purple</span>
+              <Spinner color="#a855f7" />
+              <span className="text-xs text-neutral-400">#a855f7</span>
             </div>
           </div>
         </ComponentPreview>
@@ -171,17 +177,17 @@ export default function SpinnerDocsPage() {
           Combine a Spinner with a label to give users contextual feedback during long operations.
         </p>
         <ComponentPreview code={WITH_TEXT_CODE}>
-          <div className="flex flex-col gap-5 w-full max-w-xs">
+          <div className="flex flex-col gap-5 w-full max-w-sm">
             <div className="flex items-center gap-3">
               <Spinner size="sm" />
               <span className="text-sm text-neutral-600">Loading your data…</span>
             </div>
             <div className="flex items-center gap-3">
-              <Spinner size="md" color="emerald" />
+              <Spinner size="md" color="#10b981" />
               <span className="text-sm text-neutral-600">Saving changes…</span>
             </div>
             <div className="flex items-center gap-3">
-              <Spinner size="lg" color="rose" />
+              <Spinner size="lg" color="#f43f5e" />
               <span className="text-base font-medium text-neutral-700">Processing payment…</span>
             </div>
           </div>

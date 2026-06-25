@@ -4,41 +4,46 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
 const BASIC_CODE = `// app/layout.tsx
-import { PageTransition } from "@stealshadow/ui";
+import { PageTransition } from "@animui/ui";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params }) {
   return (
     <html><body>
-      <PageTransition>{children}</PageTransition>
+      <PageTransition transitionKey={params?.slug ?? "/"}>
+        {children}
+      </PageTransition>
     </body></html>
   );
 }`;
 
 const VARIANTS_CODE = `// Fade (default)
-<PageTransition variant="fade">{children}</PageTransition>
+<PageTransition transitionKey={key} variant="fade">{children}</PageTransition>
 
 // Slide up
-<PageTransition variant="slideUp">{children}</PageTransition>
+<PageTransition transitionKey={key} variant="slide-up">{children}</PageTransition>
 
-// Slide from right (like a browser back/forward)
-<PageTransition variant="slideRight">{children}</PageTransition>
+// Slide left
+<PageTransition transitionKey={key} variant="slide-left">{children}</PageTransition>
 
 // Scale
-<PageTransition variant="scale">{children}</PageTransition>`;
+<PageTransition transitionKey={key} variant="scale">{children}</PageTransition>
+
+// Blur
+<PageTransition transitionKey={key} variant="blur">{children}</PageTransition>`;
 
 const CUSTOM_CODE = `<PageTransition
-  variant="slideUp"
+  transitionKey={key}
+  variant="slide-up"
   duration={0.4}
-  ease="easeOut"
 >
   {children}
 </PageTransition>`;
 
 const PROPS = [
+  { name: "transitionKey", type: "string", default: "—", description: "Required. A unique key per page/route — changing it triggers the enter/exit animation." },
   { name: "children", type: "ReactNode", default: "—", description: "The page content to animate." },
-  { name: "variant", type: '"fade" | "slideUp" | "slideRight" | "scale"', default: '"fade"', description: "The animation type applied on enter and exit." },
-  { name: "duration", type: "number", default: "0.3", description: "Animation duration in seconds." },
-  { name: "ease", type: "string", default: '"easeInOut"', description: "Motion easing string (any valid motion easing value)." },
+  { name: "variant", type: '"fade" | "slide-up" | "slide-left" | "scale" | "blur"', default: '"fade"', description: "The animation type applied on enter and exit." },
+  { name: "duration", type: "number", default: "0.35", description: "Animation duration in seconds." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the animated wrapper." },
 ];
 
@@ -59,7 +64,7 @@ export default function PageTransitionDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ PageTransition }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ PageTransition }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -78,9 +83,10 @@ export default function PageTransitionDocsPage() {
           <div className="grid grid-cols-2 gap-3">
             {[
               { label: "fade", desc: "Opacity 0 → 1" },
-              { label: "slideUp", desc: "Y 24px → 0" },
-              { label: "slideRight", desc: "X -24px → 0" },
+              { label: "slide-up", desc: "Y 24px → 0" },
+              { label: "slide-left", desc: "X 40px → 0" },
               { label: "scale", desc: "Scale 0.96 → 1" },
+              { label: "blur", desc: "Blur 8px → 0" },
             ].map(({ label, desc }) => (
               <div key={label} className="rounded-xl border border-neutral-100 bg-neutral-50 p-4">
                 <p className="text-sm font-bold text-neutral-800 font-mono">{label}</p>
@@ -94,11 +100,11 @@ export default function PageTransitionDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Custom duration</h2>
         <ComponentPreview code={CUSTOM_CODE}>
-          <div className="rounded-xl border border-neutral-100 bg-neutral-50 p-4 max-w-xs">
+          <div className="rounded-xl border border-neutral-100 bg-neutral-50 p-4 w-full max-w-sm">
             <div className="text-xs font-mono text-neutral-500 space-y-1">
-              <p><span className="text-blue-600">variant</span>=<span className="text-emerald-600">"slideUp"</span></p>
+              <p><span className="text-blue-600">transitionKey</span>=<span className="text-emerald-600">"my-page"</span></p>
+              <p><span className="text-blue-600">variant</span>=<span className="text-emerald-600">"slide-up"</span></p>
               <p><span className="text-blue-600">duration</span>=<span className="text-amber-600">{"{"}</span><span className="text-amber-600">0.4</span><span className="text-amber-600">{"}"}</span></p>
-              <p><span className="text-blue-600">ease</span>=<span className="text-emerald-600">"easeOut"</span></p>
             </div>
           </div>
         </ComponentPreview>

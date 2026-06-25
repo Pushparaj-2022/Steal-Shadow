@@ -4,36 +4,40 @@ import { Progress, CircularProgress } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Progress } from "@stealshadow/ui";
+const BASIC_CODE = `import { Progress } from "@animui/ui";
 
 export default function Example() {
   return <Progress value={72} />;
 }`;
 
-const COLORS_CODE = `<Progress value={80} color="blue" />
-<Progress value={65} color="emerald" />
-<Progress value={45} color="amber" />
-<Progress value={90} color="violet" />`;
+const VARIANTS_CODE = `<Progress value={80} variant="default" />
+<Progress value={65} variant="gradient" />
+<Progress value={45} variant="striped" />
+<Progress value={90} variant="glow" />`;
 
-const CIRCULAR_CODE = `import { CircularProgress } from "@stealshadow/ui";
+const CIRCULAR_CODE = `import { CircularProgress } from "@animui/ui";
 
-<CircularProgress value={72} size={80} strokeWidth={6} />`;
+<CircularProgress value={72} />
+<CircularProgress value={45} size={80} strokeWidth={6} />
+<CircularProgress value={90} size={96} label={false} />`;
 
 const PROPS = [
   { name: "value", type: "number", default: "0", description: "Current progress value (0–max)." },
   { name: "max", type: "number", default: "100", description: "Maximum value." },
-  { name: "color", type: '"blue" | "emerald" | "amber" | "violet" | "red"', default: '"blue"', description: "Fill color of the progress bar." },
-  { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Bar height." },
-  { name: "showLabel", type: "boolean", default: "false", description: "Show the percentage label above the bar." },
+  { name: "variant", type: '"default" | "gradient" | "striped" | "glow"', default: '"default"', description: "Visual style of the progress bar fill." },
+  { name: "size", type: '"xs" | "sm" | "md" | "lg"', default: '"md"', description: "Bar height." },
+  { name: "label", type: "boolean", default: "false", description: "Show the percentage label above the bar." },
+  { name: "animated", type: "boolean", default: "true", description: "Use a spring animation when the value changes." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the wrapper." },
 ];
 
 const CIRCULAR_PROPS = [
-  { name: "value", type: "number", default: "0", description: "Progress value (0–100)." },
-  { name: "size", type: "number", default: "64", description: "Diameter in pixels." },
+  { name: "value", type: "number", default: "0", description: "Progress value (0–max)." },
+  { name: "max", type: "number", default: "100", description: "Maximum value." },
+  { name: "size", type: "number", default: "80", description: "Diameter in pixels." },
   { name: "strokeWidth", type: "number", default: "6", description: "Width of the circular track." },
-  { name: "color", type: "string", default: '"blue"', description: "Stroke color." },
-  { name: "showLabel", type: "boolean", default: "true", description: "Show percentage in the center." },
+  { name: "label", type: "boolean", default: "true", description: "Show percentage in the center." },
+  { name: "className", type: "string", default: "—", description: "Additional classes for the wrapper." },
 ];
 
 export default function ProgressDocsPage() {
@@ -53,7 +57,7 @@ export default function ProgressDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Progress, CircularProgress }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Progress, CircularProgress }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -64,19 +68,19 @@ export default function ProgressDocsPage() {
             <div className="flex items-center justify-between text-xs text-neutral-500 mb-1">
               <span>Upload progress</span>
             </div>
-            <Progress value={72} showLabel />
+            <Progress value={72} label />
           </div>
         </ComponentPreview>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Colors</h2>
-        <ComponentPreview code={COLORS_CODE}>
+        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Variants</h2>
+        <ComponentPreview code={VARIANTS_CODE}>
           <div className="w-full max-w-sm space-y-3">
-            <Progress value={80} color="blue" />
-            <Progress value={65} color="emerald" />
-            <Progress value={45} color="amber" />
-            <Progress value={90} color="violet" />
+            <Progress value={80} variant="default" />
+            <Progress value={65} variant="gradient" />
+            <Progress value={45} variant="striped" />
+            <Progress value={90} variant="glow" />
           </div>
         </ComponentPreview>
       </section>
@@ -96,9 +100,9 @@ export default function ProgressDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Circular</h2>
         <ComponentPreview code={CIRCULAR_CODE}>
           <div className="flex items-center gap-6">
-            <CircularProgress value={72} size={80} strokeWidth={6} />
-            <CircularProgress value={45} size={80} strokeWidth={6} color="emerald" />
-            <CircularProgress value={90} size={80} strokeWidth={6} color="violet" />
+            <CircularProgress value={72} />
+            <CircularProgress value={45} size={80} strokeWidth={6} />
+            <CircularProgress value={90} size={96} label={false} />
           </div>
         </ComponentPreview>
       </section>

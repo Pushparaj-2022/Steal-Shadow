@@ -5,7 +5,7 @@ import { Select } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Select } from "@stealshadow/ui";
+const BASIC_CODE = `import { Select } from "@animui/ui";
 
 const options = [
   { value: "react", label: "React" },
@@ -27,12 +27,12 @@ export default function Example() {
 
 const PROPS = [
   { name: "options", type: "Array<{ value: string; label: string; disabled?: boolean }>", default: "—", description: "Array of selectable options." },
-  { name: "value", type: "string | string[]", default: "—", description: "Controlled selected value(s)." },
-  { name: "onChange", type: "(value: string | string[]) => void", default: "—", description: "Called when selection changes." },
+  { name: "value", type: "string", default: "—", description: "Controlled selected value." },
+  { name: "onChange", type: "(value: string) => void", default: "—", description: "Called when selection changes." },
   { name: "label", type: "string", default: "—", description: "Label rendered above the select trigger." },
   { name: "placeholder", type: "string", default: '"Select..."', description: "Placeholder text shown when no option is selected." },
-  { name: "multiple", type: "boolean", default: "false", description: "Enables multi-select mode." },
   { name: "searchable", type: "boolean", default: "false", description: "Adds a search input to filter options." },
+  { name: "clearable", type: "boolean", default: "false", description: "Adds a clear button to reset the selection." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the select." },
   { name: "error", type: "string", default: "—", description: "Error message shown below the select." },
   { name: "className", type: "string", default: "—", description: "Additional classes on the wrapper." },
@@ -55,7 +55,7 @@ function SelectDemo() {
         placeholder="Choose one..."
         options={FRAMEWORK_OPTIONS}
         value={value}
-        onChange={(v) => setValue(v as string)}
+        onChange={(v) => setValue(v)}
       />
     </div>
   );
@@ -72,14 +72,14 @@ export default function SelectPage() {
         </div>
         <h1 className="text-4xl font-black text-neutral-900 tracking-tight mb-4">Select</h1>
         <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
-          Accessible dropdown select with search, multi-select, and keyboard navigation.
+          Accessible dropdown select with optional search, clearable selection, and keyboard navigation.
           A drop-in replacement for the native select element with full styling control.
         </p>
       </div>
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Select }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Select }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

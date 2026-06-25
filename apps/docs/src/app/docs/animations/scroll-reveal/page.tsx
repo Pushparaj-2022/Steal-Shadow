@@ -1,34 +1,36 @@
+"use client";
+
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { ScrollReveal } from "@stealshadow/ui";
+const BASIC_CODE = `import { ScrollReveal } from "@animui/ui";
 
 export default function Example() {
   return (
     <div className="space-y-8">
-      <ScrollReveal effect="fade-up">
-        <div className="p-6 bg-white rounded-xl border">Fades up into view</div>
+      <ScrollReveal direction="up">
+        <div className="p-6 bg-white rounded-xl border">Slides up into view</div>
       </ScrollReveal>
 
-      <ScrollReveal effect="fade-in" delay={0.2}>
+      <ScrollReveal direction="none" delay={0.2}>
         <div className="p-6 bg-white rounded-xl border">Fades in with delay</div>
       </ScrollReveal>
 
-      <ScrollReveal effect="scale" threshold={0.3}>
-        <div className="p-6 bg-white rounded-xl border">Scales up from 95%</div>
+      <ScrollReveal direction="left" distance={48}>
+        <div className="p-6 bg-white rounded-xl border">Slides in from left</div>
       </ScrollReveal>
     </div>
   );
 }`;
 
 const PROPS = [
-  { name: "effect", type: '"fade-up" | "fade-in" | "fade-left" | "fade-right" | "scale"', default: '"fade-up"', description: "The entrance animation applied when the element enters the viewport." },
-  { name: "delay", type: "number", default: "0", description: "Seconds to delay the animation after the element enters the viewport." },
-  { name: "duration", type: "number", default: "0.5", description: "Animation duration in seconds." },
-  { name: "threshold", type: "number", default: "0.15", description: "Fraction of the element visible before the animation triggers (0–1)." },
-  { name: "once", type: "boolean", default: "true", description: "If true, the animation only plays once. If false, it replays when the element re-enters." },
-  { name: "distance", type: "number", default: "24", description: "Pixel distance for slide effects (fade-up, fade-left, fade-right)." },
   { name: "children", type: "React.ReactNode", default: "—", description: "The content to animate into view." },
+  { name: "direction", type: '"up" | "down" | "left" | "right" | "none"', default: '"up"', description: "Direction the element slides in from. Use \"none\" for a pure fade." },
+  { name: "distance", type: "number", default: "32", description: "Pixel distance the element travels during the entrance animation." },
+  { name: "delay", type: "number", default: "0", description: "Seconds to delay the animation after the element enters the viewport." },
+  { name: "duration", type: "number", default: "0.6", description: "Animation duration in seconds." },
+  { name: "once", type: "boolean", default: "true", description: "If true, the animation only plays once. If false, it replays when the element re-enters." },
   { name: "className", type: "string", default: "—", description: "Classes applied to the wrapper div." },
+  { name: "style", type: "React.CSSProperties", default: "—", description: "Inline styles applied to the wrapper div." },
 ];
 
 export default function ScrollRevealPage() {
@@ -49,7 +51,7 @@ export default function ScrollRevealPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ ScrollReveal }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ ScrollReveal }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -78,7 +80,7 @@ export default function ScrollRevealPage() {
         </p>
         <div className="rounded-xl border border-neutral-200 overflow-hidden">
           <pre className="bg-neutral-950 p-5 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{`{items.map((item, i) => (
-  <ScrollReveal key={item.id} effect="fade-up" delay={i * 0.1}>
+  <ScrollReveal key={item.id} direction="up" delay={i * 0.1}>
     <FeatureCard {...item} />
   </ScrollReveal>
 ))}`}</pre>

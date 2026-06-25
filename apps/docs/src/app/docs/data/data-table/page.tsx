@@ -4,13 +4,13 @@ import { DataTable } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { DataTable } from "@stealshadow/ui";
+const BASIC_CODE = `import { DataTable } from "@animui/ui";
 
 const columns = [
   { key: "name", header: "Name", sortable: true },
   { key: "email", header: "Email", sortable: true },
   { key: "role", header: "Role" },
-  { key: "status", header: "Status", render: (v) => <Badge variant={v === "Active" ? "success" : "default"}>{v}</Badge> },
+  { key: "status", header: "Status", cell: (row) => <Badge variant={row.status === "Active" ? "success" : "default"}>{row.status}</Badge> },
 ];
 
 const data = [
@@ -24,20 +24,24 @@ export default function Example() {
       columns={columns}
       data={data}
       searchable
-      pagination={{ pageSize: 10 }}
+      pageSize={10}
     />
   );
 }`;
 
 const PROPS = [
-  { name: "columns", type: "ColumnDef[]", default: "—", description: "Column definitions: key, header, sortable, render (for custom cell rendering)." },
+  { name: "columns", type: "ColumnDef[]", default: "—", description: "Column definitions: key, header, sortable, cell (for custom cell rendering)." },
   { name: "data", type: "Record<string, unknown>[]", default: "—", description: "Array of row objects. Each object's keys map to column keys." },
-  { name: "searchable", type: "boolean", default: "false", description: "Adds a search input that filters rows across all string columns." },
-  { name: "pagination", type: "{ pageSize: number }", default: "—", description: "Enables pagination. pageSize controls how many rows per page." },
-  { name: "selectable", type: "boolean", default: "false", description: "Adds checkboxes for row selection with a select-all header checkbox." },
+  { name: "searchable", type: "boolean", default: "true", description: "Adds a search input that filters rows across all columns." },
+  { name: "pageSize", type: "number", default: "10", description: "Number of rows per page. Set to 0 to disable pagination." },
+  { name: "searchPlaceholder", type: "string", default: '"Search…"', description: "Placeholder text in the search input." },
   { name: "onRowClick", type: "(row: Record<string, unknown>) => void", default: "—", description: "Called when a row is clicked." },
-  { name: "loading", type: "boolean", default: "false", description: "Shows a loading skeleton while data is being fetched." },
+  { name: "loading", type: "boolean", default: "false", description: "Shows a loading spinner while data is being fetched." },
   { name: "emptyMessage", type: "string", default: '"No results found."', description: "Message shown when data is empty or no rows match the search." },
+  { name: "toolbar", type: "React.ReactNode", default: "—", description: "Custom toolbar slot rendered to the right of the search input." },
+  { name: "mobileLayout", type: '"cards" | "scroll"', default: '"cards"', description: "How the table renders on mobile — card list or horizontal scroll." },
+  { name: "rowClassName", type: "(row) => string", default: "—", description: "Function that returns additional classes for each row." },
+  { name: "caption", type: "string", default: "—", description: "Accessible caption for the table (screen reader only)." },
   { name: "className", type: "string", default: "—", description: "Additional classes on the table wrapper." },
 ];
 
@@ -73,7 +77,7 @@ export default function DataTablePage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ DataTable }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ DataTable }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

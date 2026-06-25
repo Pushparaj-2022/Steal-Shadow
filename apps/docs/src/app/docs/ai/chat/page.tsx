@@ -1,110 +1,48 @@
 "use client";
 
 import { useState } from "react";
+import { Chat } from "@animui/ui";
+import type { ChatMessage } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
-import { Send, Bot } from "lucide-react";
 
-// ── Inline Chat preview ───────────────────────────────────────────────────────
-interface Message {
-  id: number;
-  role: "user" | "assistant";
-  content: string;
-}
-
-const INITIAL_MESSAGES: Message[] = [
-  { id: 1, role: "assistant", content: "Hello! I'm your AI assistant. How can I help you today?" },
-  { id: 2, role: "user", content: "Can you show me an example of the Chat component?" },
-  { id: 3, role: "assistant", content: "Of course! This is the Chat component from Steal Shadow. It supports user and assistant messages, a text input, streaming responses, and is styled for both light and dark mode." },
+// ── Live demo ─────────────────────────────────────────────────────────────────
+const SEED_MESSAGES: ChatMessage[] = [
+  { id: "1", role: "assistant", content: "Hello! I'm your AI assistant. How can I help you today?" },
+  { id: "2", role: "user", content: "Can you show me an example of the Chat component?" },
+  { id: "3", role: "assistant", content: "Of course! This is the Chat component from Steal Shadow. It supports user and assistant messages, a textarea input, streaming responses, and is styled for both light and dark mode." },
 ];
 
-function ChatPreview() {
-  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
-  const [input, setInput] = useState("");
+function ChatDemo() {
+  const [messages, setMessages] = useState<ChatMessage[]>(SEED_MESSAGES);
   const [loading, setLoading] = useState(false);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    const userMsg: Message = { id: Date.now(), role: "user", content: input };
-    setMessages((m) => [...m, userMsg]);
-    setInput("");
+  function handleSend(text: string) {
+    const userMsg: ChatMessage = { id: Date.now().toString(), role: "user", content: text };
+    setMessages((prev) => [...prev, userMsg]);
     setLoading(true);
     setTimeout(() => {
-      setMessages((m) => [
-        ...m,
-        { id: Date.now() + 1, role: "assistant", content: "Thanks for your message! In a real implementation, this response would stream in token by token from your LLM API." },
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: "Thanks for your message! In a real implementation, this response would stream in token by token from your LLM API.",
+        },
       ]);
       setLoading(false);
     }, 1200);
-  };
+  }
 
   return (
-    <div className="w-full max-w-md rounded-2xl border border-neutral-200 bg-white overflow-hidden shadow-sm">
-      {/* Chat header */}
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-neutral-100 bg-neutral-50">
-        <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
-          <Bot className="h-4 w-4 text-white" />
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-neutral-900">AI Assistant</p>
-          <p className="text-xs text-green-500 font-medium">● Online</p>
-        </div>
-      </div>
-
-      {/* Messages */}
-      <div className="p-4 space-y-3 h-64 overflow-y-auto">
-        {messages.map((msg) => (
-          <div key={msg.id} className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-            {msg.role === "assistant" && (
-              <div className="h-7 w-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
-                <Bot className="h-3.5 w-3.5 text-blue-500" />
-              </div>
-            )}
-            <div
-              className={`rounded-2xl px-3.5 py-2.5 text-sm max-w-[78%] leading-relaxed ${
-                msg.role === "user"
-                  ? "bg-blue-500 text-white rounded-tr-sm"
-                  : "bg-neutral-100 text-neutral-800 rounded-tl-sm"
-              }`}
-            >
-              {msg.content}
-            </div>
-          </div>
-        ))}
-        {loading && (
-          <div className="flex gap-2.5">
-            <div className="h-7 w-7 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-              <Bot className="h-3.5 w-3.5 text-blue-500" />
-            </div>
-            <div className="bg-neutral-100 rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-neutral-400 animate-bounce [animation-delay:-0.3s]" />
-              <span className="h-1.5 w-1.5 rounded-full bg-neutral-400 animate-bounce [animation-delay:-0.15s]" />
-              <span className="h-1.5 w-1.5 rounded-full bg-neutral-400 animate-bounce" />
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Input */}
-      <div className="p-3 border-t border-neutral-100">
-        <div className="flex items-center gap-2">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Type a message..."
-            className="flex-1 px-3.5 py-2 rounded-xl border border-neutral-200 text-sm focus:outline-none focus:border-blue-400 bg-white"
-          />
-          <button
-            onClick={handleSend}
-            disabled={!input.trim() || loading}
-            className="h-9 w-9 rounded-xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          >
-            <Send className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
+    <div className="w-full max-w-lg h-[480px] flex flex-col">
+      <Chat
+        messages={messages}
+        onSend={handleSend}
+        loading={loading}
+        assistantName="AI Assistant"
+        className="flex-1"
+      />
     </div>
   );
 }
@@ -112,62 +50,109 @@ function ChatPreview() {
 // ── Code examples ─────────────────────────────────────────────────────────────
 const BASIC_CODE = `"use client";
 
-import { Chat } from "@stealshadow/ui";
+import { useState } from "react";
+import { Chat } from "@animui/ui";
+import type { ChatMessage } from "@animui/ui";
 
 export default function Page() {
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSend(text: string) {
+    setMessages((prev) => [...prev, { id: Date.now().toString(), role: "user", content: text }]);
+    setLoading(true);
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      body: JSON.stringify({ message: text }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    setMessages((prev) => [...prev, { id: (Date.now() + 1).toString(), role: "assistant", content: data.reply }]);
+    setLoading(false);
+  }
+
   return (
-    <Chat
-      initialMessages={[
-        {
-          id: "1",
-          role: "assistant",
-          content: "Hello! How can I help you today?",
-        },
-      ]}
-      onSend={async (message) => {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          body: JSON.stringify({ message }),
-        });
-        return res.body; // ReadableStream
-      }}
-    />
+    <div className="h-[600px] flex flex-col">
+      <Chat
+        messages={messages}
+        onSend={handleSend}
+        loading={loading}
+        assistantName="AI Assistant"
+        className="flex-1"
+      />
+    </div>
   );
 }`;
 
 const STREAMING_CODE = `"use client";
 
-import { Chat } from "@stealshadow/ui";
+import { useState } from "react";
+import { Chat } from "@animui/ui";
+import type { ChatMessage } from "@animui/ui";
 
 export default function Page() {
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSend(text: string) {
+    const userMsg: ChatMessage = { id: Date.now().toString(), role: "user", content: text };
+    const assistantId = (Date.now() + 1).toString();
+    setMessages((prev) => [...prev, userMsg]);
+    setLoading(true);
+
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      body: JSON.stringify({ message: text }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const reader = res.body!.getReader();
+    const decoder = new TextDecoder();
+    let accumulated = "";
+
+    setLoading(false);
+    setMessages((prev) => [...prev, { id: assistantId, role: "assistant", content: "", streaming: true }]);
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      accumulated += decoder.decode(value, { stream: true });
+      setMessages((prev) =>
+        prev.map((m) => m.id === assistantId ? { ...m, content: accumulated } : m)
+      );
+    }
+
+    setMessages((prev) =>
+      prev.map((m) => m.id === assistantId ? { ...m, streaming: false } : m)
+    );
+  }
+
   return (
-    <Chat
-      streaming              // enable streaming token mode
-      streamDelay={25}       // ms between tokens (UI rendering speed)
-      showTypingIndicator    // animated dots while waiting for first token
-      onSend={async (message) => {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          body: JSON.stringify({ message }),
-          headers: { "Content-Type": "application/json" },
-        });
-        return res.body;
-      }}
-    />
+    <div className="h-[600px] flex flex-col">
+      <Chat
+        messages={messages}
+        onSend={handleSend}
+        loading={loading}
+        assistantName="AI Assistant"
+        className="flex-1"
+      />
+    </div>
   );
 }`;
 
 const PROPS = [
-  { name: "initialMessages", type: "Message[]", default: "[]", description: "Seed messages shown when the chat first renders. Each message has id, role ('user' | 'assistant'), and content." },
-  { name: "onSend", type: "(message: string) => Promise<ReadableStream | string>", default: "—", description: "Called when the user submits a message. Return a ReadableStream for streaming or a plain string for instant replies." },
-  { name: "streaming", type: "boolean", default: "false", description: "When true, renders assistant responses token by token from the ReadableStream." },
-  { name: "streamDelay", type: "number", default: "25", description: "Milliseconds between token renders in streaming mode." },
-  { name: "showTypingIndicator", type: "boolean", default: "true", description: "Shows animated dots while waiting for the first token from the stream." },
-  { name: "placeholder", type: "string", default: '"Type a message..."', description: "Placeholder text for the message input." },
-  { name: "assistantName", type: "string", default: '"Assistant"', description: "Display name shown in the chat header for the AI agent." },
+  { name: "messages", type: "ChatMessage[]", default: "—", description: "Controlled list of messages. Each message has id, role ('user' | 'assistant' | 'system' | 'tool'), and content." },
+  { name: "onSend", type: "(message: string) => void", default: "—", description: "Called when the user submits a message. Update messages state in this callback." },
+  { name: "loading", type: "boolean", default: "false", description: "When true, shows an animated typing-dots indicator as the last message." },
+  { name: "disabled", type: "boolean", default: "false", description: "Disables the input and send button." },
+  { name: "placeholder", type: "string", default: '"Send a message…"', description: "Placeholder text for the message textarea." },
+  { name: "assistantName", type: "string", default: '"Assistant"', description: "Display name shown next to assistant messages." },
   { name: "assistantAvatar", type: "React.ReactNode", default: "—", description: "Custom avatar element rendered next to assistant messages." },
+  { name: "userAvatar", type: "React.ReactNode", default: "—", description: "Custom avatar element rendered next to user messages." },
+  { name: "renderMessage", type: "(msg: ChatMessage) => React.ReactNode", default: "—", description: "Override the default message renderer for custom markdown, code blocks, etc." },
+  { name: "suggestions", type: "string[]", default: "[]", description: "Suggestion chips shown when there are no messages yet." },
+  { name: "inputFooter", type: "React.ReactNode", default: "—", description: "Extra content rendered below the input (e.g. model selector, disclaimer)." },
   { name: "className", type: "string", default: "—", description: "Additional classes applied to the outer chat container." },
-  { name: "maxMessages", type: "number", default: "—", description: "Truncates the message list to the most recent N messages to manage context length." },
 ];
 
 export default function ChatDocsPage() {
@@ -190,7 +175,7 @@ export default function ChatDocsPage() {
       {/* Import */}
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Chat }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Chat }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -201,7 +186,7 @@ export default function ChatDocsPage() {
           Live demo below — type a message and press Enter or click Send.
         </p>
         <ComponentPreview code={BASIC_CODE}>
-          <ChatPreview />
+          <ChatDemo />
         </ComponentPreview>
       </section>
 
@@ -209,14 +194,14 @@ export default function ChatDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Streaming mode</h2>
         <p className="text-neutral-500 mb-4">
-          Enable the <code className="font-mono text-xs bg-neutral-100 px-1 rounded">streaming</code> prop and
-          return a <code className="font-mono text-xs bg-neutral-100 px-1 rounded">ReadableStream</code> from{" "}
-          <code className="font-mono text-xs bg-neutral-100 px-1 rounded">onSend</code>. The Chat component
-          handles the reader loop internally.
+          Set <code className="font-mono text-xs bg-neutral-100 px-1 rounded">streaming: true</code> on
+          a message to render it with the <code className="font-mono text-xs bg-neutral-100 px-1 rounded">StreamingText</code> component.
+          Append tokens to <code className="font-mono text-xs bg-neutral-100 px-1 rounded">content</code> as they arrive from
+          your ReadableStream, then set <code className="font-mono text-xs bg-neutral-100 px-1 rounded">streaming: false</code> when done.
         </p>
         <ComponentPreview code={STREAMING_CODE}>
           <div className="px-4 py-3 rounded-xl bg-blue-50 border border-blue-100 text-sm text-blue-700 font-medium">
-            Streaming mode renders tokens as they arrive from your API — no additional state management needed.
+            Streaming mode renders tokens as they arrive — no additional state management needed beyond appending to content.
           </div>
         </ComponentPreview>
       </section>
@@ -242,7 +227,7 @@ export default function ChatDocsPage() {
           </li>
           <li className="flex items-start gap-2">
             <span className="text-green-500 font-bold shrink-0">✓</span>
-            Fully keyboard-navigable: Tab to input, Enter to send, Escape to cancel.
+            Fully keyboard-navigable: Tab to textarea, Enter to send, Shift+Enter for newline.
           </li>
         </ul>
       </section>

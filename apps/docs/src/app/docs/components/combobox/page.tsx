@@ -5,7 +5,7 @@ import { Combobox } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Combobox } from "@stealshadow/ui";
+const BASIC_CODE = `import { Combobox } from "@animui/ui";
 
 const frameworks = [
   { value: "next", label: "Next.js" },
@@ -62,14 +62,14 @@ export default function ComboboxDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Combobox }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Combobox }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="w-64">
+          <div className="w-full max-w-xs">
             <Combobox
               options={FRAMEWORKS}
               value={value}
@@ -83,7 +83,7 @@ export default function ComboboxDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">With search</h2>
         <ComponentPreview code={`// Type to filter options — Combobox filters automatically\n<Combobox options={options} value={value} onChange={setValue} placeholder="Search frameworks..." />`}>
-          <div className="w-64">
+          <div className="w-full max-w-xs">
             <Combobox
               options={FRAMEWORKS}
               value={searchValue}
@@ -97,7 +97,7 @@ export default function ComboboxDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Disabled</h2>
         <ComponentPreview code={`<Combobox options={options} value="" onChange={() => {}} disabled />`}>
-          <div className="w-64">
+          <div className="w-full max-w-xs">
             <Combobox options={FRAMEWORKS} value="" onChange={() => {}} disabled />
           </div>
         </ComponentPreview>

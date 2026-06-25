@@ -12,6 +12,7 @@ interface InfiniteMarqueeProps {
   gap?: number;
   fade?: boolean;
   fadeWidth?: number;
+  fadeColor?: string;
   repeat?: number;
 }
 
@@ -31,6 +32,7 @@ export function InfiniteMarquee({
   gap = 24,
   fade = true,
   fadeWidth = 80,
+  fadeColor = "white",
   repeat = 4,
 }: InfiniteMarqueeProps) {
   const duration = typeof speed === "number" ? `${speed}s` : SPEED_MAP[speed] ?? "30s";
@@ -45,7 +47,7 @@ export function InfiniteMarquee({
             className="pointer-events-none absolute inset-y-0 left-0 z-10"
             style={{
               width: fadeWidth,
-              background: "linear-gradient(to right, white 0%, transparent 100%)",
+              background: `linear-gradient(to right, ${fadeColor} 0%, transparent 100%)`,
             }}
           />
           <div
@@ -53,7 +55,7 @@ export function InfiniteMarquee({
             className="pointer-events-none absolute inset-y-0 right-0 z-10"
             style={{
               width: fadeWidth,
-              background: "linear-gradient(to left, white 0%, transparent 100%)",
+              background: `linear-gradient(to left, ${fadeColor} 0%, transparent 100%)`,
             }}
           />
         </>

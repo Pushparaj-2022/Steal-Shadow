@@ -4,7 +4,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { useState } from "react";
 
-const BASIC_CODE = `import { SmartForm, FormField, FormSubmit } from "@stealshadow/ui";
+const BASIC_CODE = `import { SmartForm, FormField, FormSubmit } from "@animui/ui";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -36,8 +36,6 @@ const PROPS = [
   { name: "schema", type: "ZodSchema", default: "—", description: "A Zod schema object. SmartForm infers field types and validation rules automatically." },
   { name: "onSubmit", type: "(data: z.infer<typeof schema>) => Promise<void>", default: "—", description: "Called with validated form data on submit. SmartForm shows a loading state during the async operation." },
   { name: "defaultValues", type: "Partial<z.infer<typeof schema>>", default: "—", description: "Pre-fill form fields with initial values." },
-  { name: "onError", type: "(errors: FieldErrors) => void", default: "—", description: "Called when validation fails. Useful for analytics or custom error handling." },
-  { name: "successMessage", type: "string", default: "—", description: "If provided, shows a success toast after a successful submit." },
   { name: "resetOnSuccess", type: "boolean", default: "false", description: "Resets all fields to defaultValues after a successful submit." },
   { name: "className", type: "string", default: "—", description: "Additional classes on the form element." },
 ];
@@ -136,7 +134,7 @@ export default function SmartFormPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ SmartForm, FormField, FormSubmit }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ SmartForm, FormField, FormSubmit }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

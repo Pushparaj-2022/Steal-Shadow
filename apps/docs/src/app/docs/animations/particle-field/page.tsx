@@ -1,26 +1,26 @@
+"use client";
+
 import { PropsTable } from "@/components/docs/PropsTable";
 
 const PROPS = [
   { name: "count", type: "number", default: "80", description: "Number of particles to render." },
-  { name: "color", type: "string", default: '"#3B82F6"', description: "Particle and connection line color." },
-  { name: "speed", type: "number", default: "0.5", description: "Base movement speed of particles. Higher values are more energetic." },
+  { name: "color", type: "string", default: '"99,102,241"', description: "Particle and connection line color as an RGB string (e.g. \"99,102,241\")." },
+  { name: "speed", type: "number", default: "0.4", description: "Base movement speed of particles. Higher values are more energetic." },
   { name: "connectionDistance", type: "number", default: "120", description: "Maximum pixel distance between particles before a connection line is drawn." },
-  { name: "mouseRadius", type: "number", default: "150", description: "Radius around the cursor within which particles are repelled." },
   { name: "interactive", type: "boolean", default: "true", description: "Whether particles react to mouse movement." },
   { name: "className", type: "string", default: "—", description: "Classes on the canvas wrapper — use to set width and height." },
 ];
 
-const BASIC_CODE = `import { ParticleField } from "@stealshadow/ui";
+const BASIC_CODE = `import { ParticleField } from "@animui/ui";
 
 export default function Example() {
   return (
     <div className="relative h-96 w-full overflow-hidden rounded-2xl bg-neutral-950">
       <ParticleField
         count={80}
-        color="#3B82F6"
-        speed={0.5}
+        color="99,102,241"
+        speed={0.4}
         connectionDistance={120}
-        mouseRadius={150}
         interactive
         className="absolute inset-0 w-full h-full"
       />
@@ -49,7 +49,7 @@ export default function ParticleFieldPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ ParticleField }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ ParticleField }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

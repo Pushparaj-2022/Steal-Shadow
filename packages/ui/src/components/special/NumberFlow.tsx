@@ -1,35 +1,34 @@
 "use client";
 
+import * as React from "react";
 import { useEffect } from "react";
 import { motion, useSpring, useTransform } from "motion/react";
 import { cn } from "../../lib/utils";
 
-interface DigitColumnProps {
-  digit: number;
-  className?: string;
-}
-
-function DigitColumn({ digit, className }: DigitColumnProps) {
-  const spring = useSpring(digit, { stiffness: 200, damping: 28, mass: 0.8 });
+// Keyed by decimal place (0=ones, 1=tens, …) so React never remounts on digit-count changes
+function DigitColumn({ digit }: { digit: number }) {
+  const spring = useSpring(digit, { stiffness: 160, damping: 22, mass: 0.6 });
 
   useEffect(() => { spring.set(digit); }, [digit, spring]);
 
+  // translateY % is relative to the column's OWN height (10 * 1em = 10em).
+  // To show digit v we need to shift -v em, which is -(v/10)*100% = -v*10%.
   const y = useTransform(spring, (v) => `${-v * 10}%`);
 
   return (
     <span
-      className={cn("relative inline-block overflow-hidden tabular-nums", className)}
+      className="relative inline-block overflow-hidden"
+      style={{ lineHeight: "1em" }}
       aria-hidden
-      style={{ lineHeight: 1 }}
     >
-      {/* Visible window */}
-      <span className="opacity-0 select-none" aria-hidden>0</span>
+      {/* Sizer — keeps the column the width/height of one digit */}
+      <span className="invisible select-none">0</span>
       <motion.span
         className="absolute inset-x-0 top-0 flex flex-col items-center"
         style={{ y }}
       >
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
-          <span key={n} className="block w-full text-center" style={{ lineHeight: 1, paddingTop: "0.1em", paddingBottom: "0.1em" }}>
+          <span key={n} className="block w-full text-center" style={{ height: "1em", lineHeight: "1em" }}>
             {n}
           </span>
         ))}
@@ -38,55 +37,68 @@ function DigitColumn({ digit, className }: DigitColumnProps) {
   );
 }
 
-interface NumberFlowProps {
+export interface NumberFlowProps {
   value: number;
-  className?: string;
   prefix?: string;
   suffix?: string;
-  separator?: string;
   decimals?: number;
-  format?: (value: number) => string;
+  className?: string;
 }
 
 export function NumberFlow({
   value,
-  className,
   prefix = "",
   suffix = "",
-  separator = ",",
   decimals = 0,
-  format,
+  className,
 }: NumberFlowProps) {
-  const formatted = format
-    ? format(value)
-    : value.toLocaleString("en-US", {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-      });
+  const isNeg    = value < 0;
+  const abs      = Math.abs(value);
+  const intPart  = Math.floor(abs);
+  const decDigits = decimals > 0
+    ? Math.round((abs - intPart) * Math.pow(10, decimals))
+        .toString()
+        .padStart(decimals, "0")
+        .split("")
+        .map(Number)
+    : [];
 
-  // Split into individual characters, keep track of which are digits
-  const parts = formatted.split("").map((char) => ({
-    char,
-    isDigit: /\d/.test(char),
-    digit: /\d/.test(char) ? parseInt(char, 10) : 0,
-  }));
+  // Left-to-right array of integer digits
+  const intStr    = intPart.toString();
+  const intDigits = intStr.split("").map(Number);
+  const total     = intDigits.length;
 
   return (
     <span
-      className={cn("inline-flex items-center", className)}
-      aria-label={`${prefix}${formatted}${suffix}`}
+      className={cn("inline-flex items-center tabular-nums", className)}
+      aria-label={`${prefix}${isNeg ? "-" : ""}${value.toFixed(decimals)}${suffix}`}
     >
-      {prefix && <span>{prefix}</span>}
-      {parts.map((p, i) =>
-        p.isDigit ? (
-          <DigitColumn key={i} digit={p.digit} />
-        ) : (
-          <span key={i} aria-hidden className="select-none">
-            {p.char}
-          </span>
-        )
+      {isNeg  && <span className="select-none">-</span>}
+      {prefix && <span className="select-none">{prefix}</span>}
+
+      {intDigits.map((digit, idx) => {
+        // Comma before this digit when it starts a new thousands group (but not first)
+        const needComma = idx > 0 && (total - idx) % 3 === 0;
+        // Stable key = place from right (0 = ones, 1 = tens, …)
+        const place = total - 1 - idx;
+        return (
+          <React.Fragment key={`int-${place}`}>
+            {needComma && <span className="select-none">,</span>}
+            <DigitColumn digit={digit} />
+          </React.Fragment>
+        );
+      })}
+
+      {decimals > 0 && (
+        <>
+          <span className="select-none">.</span>
+          {decDigits.map((digit, i) => (
+            <DigitColumn key={`dec-${i}`} digit={digit} />
+          ))}
+        </>
       )}
-      {suffix && <span>{suffix}</span>}
+
+      {suffix && <span className="select-none">{suffix}</span>}
     </span>
   );
 }

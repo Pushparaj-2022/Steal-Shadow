@@ -4,7 +4,7 @@ import { GradientBorder } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { GradientBorder } from "@stealshadow/ui";
+const BASIC_CODE = `import { GradientBorder } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -60,7 +60,7 @@ export default function GradientBorderDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ GradientBorder }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ GradientBorder }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -90,7 +90,7 @@ export default function GradientBorderDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Premium card</h2>
         <ComponentPreview code={CARD_CODE}>
-          <GradientBorder borderWidth={2} className="w-64">
+          <GradientBorder borderWidth={2} className="w-full max-w-xs">
             <div className="p-5">
               <h3 className="font-bold text-neutral-800">Premium Card</h3>
               <p className="text-sm text-neutral-500 mt-1">Highlight important content.</p>

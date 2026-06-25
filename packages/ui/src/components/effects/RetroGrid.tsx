@@ -7,6 +7,7 @@ interface RetroGridProps {
   angle?: number;
   cellSize?: number;
   color?: string;
+  fadeColor?: string;
 }
 
 export function RetroGrid({
@@ -14,6 +15,7 @@ export function RetroGrid({
   angle = 65,
   cellSize = 60,
   color = "rgba(99,102,241,0.2)",
+  fadeColor = "white",
 }: RetroGridProps) {
   return (
     <div
@@ -33,8 +35,7 @@ export function RetroGrid({
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(to top, white 15%, transparent 80%)",
+          background: `linear-gradient(to top, ${fadeColor} 15%, transparent 80%)`,
         }}
       />
     </div>

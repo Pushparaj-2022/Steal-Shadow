@@ -148,10 +148,10 @@ const CATEGORIES = [
 // ── Problems solved ───────────────────────────────────────────────────────────
 
 // ── Quick start code ──────────────────────────────────────────────────────────
-const INSTALL_CMD = `npm install @stealshadow/ui motion`;
+const INSTALL_CMD = `npm install @animui/ui motion`;
 
 const QUICK_START = `// 1. Wrap your app  (app/providers.tsx)
-import { ThemeProvider, ToastProvider } from "@stealshadow/ui";
+import { ThemeProvider, ToastProvider } from "@animui/ui";
 
 export function Providers({ children }) {
   return (
@@ -162,7 +162,7 @@ export function Providers({ children }) {
 }
 
 // 2. Import and use components
-import { Button, Modal, SmartForm, Chat } from "@stealshadow/ui";
+import { Button, Modal, SmartForm, Chat } from "@animui/ui";
 
 // Simple modal - one line
 <Modal title="Delete user" onConfirm={handleDelete} />

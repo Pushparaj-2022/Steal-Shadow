@@ -4,7 +4,7 @@ import { Textarea } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Textarea } from "@stealshadow/ui";
+const BASIC_CODE = `import { Textarea } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -23,13 +23,16 @@ const ERROR_CODE = `<Textarea
 />`;
 
 const PROPS = [
+  { name: "label", type: "string", default: "—", description: "Label rendered above the textarea." },
   { name: "placeholder", type: "string", default: "—", description: "Placeholder text shown when empty." },
   { name: "value", type: "string", default: "—", description: "Controlled value." },
   { name: "onChange", type: "React.ChangeEventHandler", default: "—", description: "Change handler." },
   { name: "rows", type: "number", default: "3", description: "Number of visible text rows." },
   { name: "disabled", type: "boolean", default: "false", description: "Prevents interaction." },
   { name: "error", type: "string", default: "—", description: "Error message shown below the textarea." },
-  { name: "resize", type: '"none" | "both" | "vertical"', default: '"vertical"', description: "Controls CSS resize behaviour." },
+  { name: "hint", type: "string", default: "—", description: "Helper text shown below the textarea in neutral styling." },
+  { name: "maxLength", type: "number", default: "—", description: "Maximum character count. Shows a character counter when set." },
+  { name: "autoResize", type: "boolean", default: "false", description: "When true, the textarea grows vertically as the user types." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the textarea element." },
 ];
 
@@ -50,7 +53,7 @@ export default function TextareaDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Textarea }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Textarea }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

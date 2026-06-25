@@ -5,7 +5,7 @@ import { PromptEditor } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { PromptEditor } from "@stealshadow/ui";
+const BASIC_CODE = `import { PromptEditor } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -73,14 +73,14 @@ export default function PromptEditorDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ PromptEditor }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ PromptEditor }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="max-w-lg w-full">
+          <div className="w-full max-w-lg">
             <PromptEditor
               value={value}
               onChange={setValue}
@@ -97,7 +97,7 @@ export default function PromptEditorDocsPage() {
           The counter turns amber at 80% capacity and red when you exceed the limit.
         </p>
         <ComponentPreview code={MAXLENGTH_CODE}>
-          <div className="max-w-lg w-full">
+          <div className="w-full max-w-lg">
             <PromptEditor
               value={limited}
               onChange={setLimited}

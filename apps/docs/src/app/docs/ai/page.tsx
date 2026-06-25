@@ -98,7 +98,7 @@ export default function AIOverviewPage() {
           <div className="flex items-center gap-2 px-4 py-2 border-b border-neutral-200 bg-neutral-50">
             <span className="text-xs font-mono text-neutral-500">app/api/chat/route.ts</span>
           </div>
-          <pre className="bg-neutral-950 p-5 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{`import { StreamingText } from "@stealshadow/ui";
+          <pre className="bg-neutral-950 p-5 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{`import { StreamingText } from "@animui/ui";
 
 // In your component
 const [text, setText] = useState("");
@@ -116,7 +116,7 @@ const handleStream = async () => {
 };
 
 // Render the streaming response
-<StreamingText text={text} speed={30} showCursor />`}</pre>
+<StreamingText text={text} speed={30} cursor />`}</pre>
         </div>
       </section>
     </div>

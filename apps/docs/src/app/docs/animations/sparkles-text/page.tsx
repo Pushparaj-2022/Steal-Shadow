@@ -1,8 +1,8 @@
 "use client";
 
 import { SparklesText } from "@animui/ui";
-import { ComponentPreview } from "@/components/component-preview";
-import { PropsTable } from "@/components/props-table";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { PropsTable } from "@/components/docs/PropsTable";
 
 const basicCode = `import { SparklesText } from "@animui/ui";
 
@@ -14,124 +14,71 @@ export default function Example() {
   );
 }`;
 
-const moreSparklesCode = `import { SparklesText } from "@animui/ui";
-
-export default function Example() {
-  return (
-    <SparklesText sparkleCount={12}>
-      <h2 className="text-4xl font-bold">More Sparkles!</h2>
-    </SparklesText>
-  );
-}`;
+const moreSparklesCode = `<SparklesText sparkleCount={12}>
+  <h2 className="text-4xl font-bold">More Sparkles!</h2>
+</SparklesText>`;
 
 const props = [
-  {
-    name: "children",
-    type: "ReactNode",
-    default: "—",
-    description: "Text or content around which sparkles appear.",
-  },
-  {
-    name: "sparkleCount",
-    type: "number",
-    default: "6",
-    description: "Number of simultaneous sparkle particles.",
-  },
-  {
-    name: "colors",
-    type: "string[]",
-    default: '["#fbbf24","#f59e0b","#fde68a"]',
-    description: "Pool of colors randomly assigned to sparkles.",
-  },
-  {
-    name: "minSize",
-    type: "number",
-    default: "8",
-    description: "Minimum sparkle size in pixels.",
-  },
-  {
-    name: "maxSize",
-    type: "number",
-    default: "16",
-    description: "Maximum sparkle size in pixels.",
-  },
-  {
-    name: "className",
-    type: "string",
-    default: "—",
-    description: "Additional classes.",
-  },
+  { name: "children", type: "ReactNode", default: "—", description: "Text or content around which sparkles appear." },
+  { name: "sparkleCount", type: "number", default: "6", description: "Number of simultaneous sparkle particles." },
+  { name: "colors", type: "string[]", default: '["#fbbf24","#f59e0b","#fde68a","#fcd34d"]', description: "Pool of colors randomly assigned to sparkles." },
+  { name: "className", type: "string", default: "—", description: "Additional classes." },
 ];
 
 export default function SparklesTextPage() {
   return (
-    <div className="space-y-10">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-muted-foreground">
+    <div className="space-y-10 pb-16">
+      <nav className="text-sm text-neutral-500">
         <span>Animations</span>
         <span className="mx-2">/</span>
-        <span className="text-foreground font-medium">SparklesText</span>
+        <span className="text-neutral-900 font-medium">SparklesText</span>
       </nav>
 
-      {/* Header */}
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">SparklesText</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-neutral-500">
           Wraps any text or content with randomly repositioning sparkle star
-          particles that animate around it continuously.
+          particles that animate continuously around it.
         </p>
       </div>
 
-      {/* Import */}
-      <div className="space-y-2">
-        <h2 className="text-xl font-semibold">Import</h2>
-        <pre className="rounded-lg border bg-muted px-4 py-3 text-sm overflow-x-auto">
-          <code>{`import { SparklesText } from "@animui/ui";`}</code>
-        </pre>
+      <div className="rounded-xl bg-zinc-950 px-5 py-4">
+        <code className="font-mono text-sm">
+          <span className="text-blue-400">import</span>{" "}
+          <span className="text-green-400">{"{ SparklesText }"}</span>{" "}
+          <span className="text-blue-400">from</span>{" "}
+          <span className="text-amber-300">"@animui/ui"</span>
+        </code>
       </div>
 
-      {/* Basic */}
-      <div className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-xl font-semibold">Basic</h2>
-          <p className="text-sm text-muted-foreground">
-            Wrap any heading or text element to add the default six sparkles.
-          </p>
-        </div>
-        <ComponentPreview
-          code={basicCode}
-          preview={
-            <SparklesText>
-              <h2 className="text-4xl font-bold">Hello, Sparkles!</h2>
-            </SparklesText>
-          }
-        />
-      </div>
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold">Basic</h2>
+        <p className="text-sm text-neutral-500">
+          Wrap any heading to add the default six sparkles.
+        </p>
+        <ComponentPreview code={basicCode}>
+          <SparklesText>
+            <h2 className="text-4xl font-bold">Hello, Sparkles!</h2>
+          </SparklesText>
+        </ComponentPreview>
+      </section>
 
-      {/* More sparkles */}
-      <div className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-xl font-semibold">More sparkles</h2>
-          <p className="text-sm text-muted-foreground">
-            Increase <code className="text-sm font-mono">sparkleCount</code> for
-            a denser, more energetic effect.
-          </p>
-        </div>
-        <ComponentPreview
-          code={moreSparklesCode}
-          preview={
-            <SparklesText sparkleCount={12}>
-              <h2 className="text-4xl font-bold">More Sparkles!</h2>
-            </SparklesText>
-          }
-        />
-      </div>
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold">More sparkles</h2>
+        <p className="text-sm text-neutral-500">
+          Increase <code className="text-sm font-mono bg-neutral-100 px-1 rounded">sparkleCount</code> for a denser, more energetic effect.
+        </p>
+        <ComponentPreview code={moreSparklesCode}>
+          <SparklesText sparkleCount={12}>
+            <h2 className="text-4xl font-bold">More Sparkles!</h2>
+          </SparklesText>
+        </ComponentPreview>
+      </section>
 
-      {/* Props */}
-      <div className="space-y-4">
+      <section className="space-y-4">
         <h2 className="text-xl font-semibold">Props</h2>
         <PropsTable props={props} />
-      </div>
+      </section>
     </div>
   );
 }

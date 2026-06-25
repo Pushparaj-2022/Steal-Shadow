@@ -8,6 +8,7 @@ interface ShineBorderProps {
   color?: string | string[];
   duration?: number;
   borderWidth?: number;
+  bgColor?: string;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export function ShineBorder({
   color = ["#7c3aed", "#3b82f6", "#06b6d4"],
   duration = 4,
   borderWidth = 2,
+  bgColor = "white",
   className,
 }: ShineBorderProps) {
   const gradient = Array.isArray(color) ? color.join(", ") : color;
@@ -34,14 +36,11 @@ export function ShineBorder({
         }
       `}</style>
       <div
-        className={cn(
-          "relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900",
-          className
-        )}
+        className={cn("relative overflow-hidden rounded-2xl", className)}
         style={
           {
             padding: borderWidth,
-            background: `linear-gradient(white, white) padding-box, conic-gradient(from var(--shine-angle-${id}, 0deg), ${gradient}) border-box`,
+            background: `linear-gradient(${bgColor}, ${bgColor}) padding-box, conic-gradient(from var(--shine-angle-${id}, 0deg), ${gradient}) border-box`,
             border: `${borderWidth}px solid transparent`,
             animation: `shine-${id} ${duration}s linear infinite`,
           } as React.CSSProperties

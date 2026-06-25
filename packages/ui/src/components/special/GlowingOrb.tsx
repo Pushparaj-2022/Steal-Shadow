@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { cn } from "../../lib/utils";
 
@@ -11,8 +11,15 @@ interface GlowingOrbProps {
   opacity?: number;
   stiffness?: number;
   damping?: number;
-  className?: string;
   followMouse?: boolean;
+  /**
+   * false (default) — position:fixed, follows the global cursor across the whole page.
+   * true            — position:absolute relative to the nearest positioned parent,
+   *                   follows the cursor only within that parent. The parent must have
+   *                   position:relative and overflow:hidden.
+   */
+  contained?: boolean;
+  className?: string;
 }
 
 export function GlowingOrb({
@@ -22,34 +29,68 @@ export function GlowingOrb({
   opacity = 0.12,
   stiffness = 60,
   damping = 20,
-  className,
   followMouse = true,
+  contained = false,
+  className,
 }: GlowingOrbProps) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
   const x = useSpring(mouseX, { stiffness, damping });
   const y = useSpring(mouseY, { stiffness, damping });
 
+  // Set initial centre position
   useEffect(() => {
-    mouseX.set(window.innerWidth / 2);
-    mouseY.set(window.innerHeight / 2);
-  }, [mouseX, mouseY]);
+    if (contained) {
+      const parent = wrapRef.current?.parentElement;
+      if (parent) {
+        const r = parent.getBoundingClientRect();
+        mouseX.set(r.width / 2);
+        mouseY.set(r.height / 2);
+      }
+    } else {
+      mouseX.set(window.innerWidth / 2);
+      mouseY.set(window.innerHeight / 2);
+    }
+  // run once on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contained]);
 
+  // Track cursor
   useEffect(() => {
     if (!followMouse) return;
-    const handler = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", handler, { passive: true });
-    return () => window.removeEventListener("mousemove", handler);
-  }, [followMouse, mouseX, mouseY]);
+
+    if (contained) {
+      // Listen on the parent so pointer-events-none on our div doesn't block events
+      const parent = wrapRef.current?.parentElement;
+      if (!parent) return;
+      const onMove = (e: MouseEvent) => {
+        const r = parent.getBoundingClientRect();
+        mouseX.set(e.clientX - r.left);
+        mouseY.set(e.clientY - r.top);
+      };
+      parent.addEventListener("mousemove", onMove, { passive: true });
+      return () => parent.removeEventListener("mousemove", onMove);
+    } else {
+      const onMove = (e: MouseEvent) => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+      };
+      window.addEventListener("mousemove", onMove, { passive: true });
+      return () => window.removeEventListener("mousemove", onMove);
+    }
+  }, [followMouse, contained, mouseX, mouseY]);
 
   return (
-    <motion.div
+    <div
+      ref={wrapRef}
       aria-hidden
-      className={cn("pointer-events-none fixed inset-0 z-0 overflow-hidden", className)}
+      className={cn(
+        "pointer-events-none overflow-hidden",
+        contained ? "absolute inset-0" : "fixed inset-0 z-0",
+        className,
+      )}
     >
       <motion.div
         className="absolute rounded-full"
@@ -65,6 +106,6 @@ export function GlowingOrb({
           opacity,
         }}
       />
-    </motion.div>
+    </div>
   );
 }

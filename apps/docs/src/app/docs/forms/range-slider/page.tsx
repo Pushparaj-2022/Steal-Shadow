@@ -5,7 +5,7 @@ import { RangeSlider } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { RangeSlider } from "@stealshadow/ui";
+const BASIC_CODE = `import { RangeSlider } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -72,14 +72,14 @@ export default function RangeSliderDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ RangeSlider }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ RangeSlider }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="w-full max-w-xs">
+          <div className="w-full max-w-md">
             <RangeSliderBasicDemo />
           </div>
         </ComponentPreview>
@@ -88,7 +88,7 @@ export default function RangeSliderDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Color variants</h2>
         <ComponentPreview code={COLORS_CODE}>
-          <div className="w-full max-w-xs space-y-5">
+          <div className="w-full max-w-md space-y-5">
             <RangeSlider color="blue"   label="Blue"   defaultValue={40} />
             <RangeSlider color="violet" label="Violet" defaultValue={65} />
             <RangeSlider color="green"  label="Green"  defaultValue={80} />
@@ -100,7 +100,7 @@ export default function RangeSliderDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">With format</h2>
         <ComponentPreview code={FORMAT_CODE}>
-          <div className="w-full max-w-xs space-y-5">
+          <div className="w-full max-w-md space-y-5">
             <RangeSlider label="Price range" min={0} max={1000} step={10} defaultValue={350} formatValue={(v) => `$${v}`} />
             <RangeSlider label="Opacity" min={0} max={100} defaultValue={75} formatValue={(v) => `${v}%`} />
           </div>

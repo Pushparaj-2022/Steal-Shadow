@@ -5,7 +5,7 @@ import { OTPInput } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { OTPInput } from "@stealshadow/ui";
+const BASIC_CODE = `import { OTPInput } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -20,7 +20,7 @@ export default function Example() {
   );
 }`;
 
-const VERIFY_CODE = `import { OTPInput } from "@stealshadow/ui";
+const VERIFY_CODE = `import { OTPInput } from "@animui/ui";
 import { useState } from "react";
 
 export default function VerifyPage() {
@@ -85,7 +85,7 @@ export default function OTPInputDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ OTPInput }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ OTPInput }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

@@ -4,7 +4,7 @@ import { CountUp } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { CountUp } from "@stealshadow/ui";
+const BASIC_CODE = `import { CountUp } from "@animui/ui";
 
 export default function Example() {
   return <CountUp to={1284} />;
@@ -17,11 +17,13 @@ const PREFIX_CODE = `<CountUp to={49200} prefix="$" />
 const PROPS = [
   { name: "to", type: "number", default: "—", description: "The target number to count up to." },
   { name: "from", type: "number", default: "0", description: "Starting value." },
-  { name: "duration", type: "number", default: "2", description: "Animation duration in seconds." },
+  { name: "duration", type: "number", default: "2000", description: "Animation duration in milliseconds." },
   { name: "prefix", type: "string", default: "—", description: "String prepended to the number (e.g. '$')." },
   { name: "suffix", type: "string", default: "—", description: "String appended to the number (e.g. '%')." },
   { name: "decimals", type: "number", default: "0", description: "Number of decimal places to display." },
-  { name: "once", type: "boolean", default: "true", description: "Whether the animation fires only once when entering the viewport." },
+  { name: "separator", type: "string", default: '","', description: "Thousands separator character." },
+  { name: "easing", type: '"linear" | "ease-out" | "ease-in-out"', default: '"ease-out"', description: "Easing function for the count animation." },
+  { name: "triggerOnce", type: "boolean", default: "true", description: "Whether the animation fires only once when entering the viewport." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the span element." },
 ];
 
@@ -42,14 +44,14 @@ export default function CountUpDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ CountUp }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ CountUp }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6 flex-wrap justify-center">
             <div className="text-center">
               <p className="text-4xl font-black text-neutral-900"><CountUp to={1284} /></p>
               <p className="text-sm text-neutral-400 mt-1">Users</p>
@@ -69,7 +71,7 @@ export default function CountUpDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Prefix &amp; Suffix</h2>
         <ComponentPreview code={PREFIX_CODE}>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6 flex-wrap justify-center">
             <div className="text-center">
               <p className="text-3xl font-black text-blue-600"><CountUp to={49200} prefix="$" /></p>
               <p className="text-xs text-neutral-400 mt-1">Revenue</p>
@@ -88,19 +90,19 @@ export default function CountUpDocsPage() {
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Custom duration</h2>
-        <ComponentPreview code={`<CountUp to={1000} duration={0.5} />\n<CountUp to={1000} duration={2} />\n<CountUp to={1000} duration={5} />`}>
+        <ComponentPreview code={`<CountUp to={1000} duration={500} />\n<CountUp to={1000} duration={2000} />\n<CountUp to={1000} duration={5000} />`}>
           <div className="flex items-center gap-4 text-sm text-neutral-600">
             <div className="rounded-xl border border-neutral-200 px-4 py-3 text-center">
-              <p className="text-2xl font-black text-neutral-900"><CountUp to={1000} duration={0.5} /></p>
-              <p className="text-xs text-neutral-400 mt-1">0.5s — fast</p>
+              <p className="text-2xl font-black text-neutral-900"><CountUp to={1000} duration={500} /></p>
+              <p className="text-xs text-neutral-400 mt-1">500ms — fast</p>
             </div>
             <div className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-center">
-              <p className="text-2xl font-black text-blue-600"><CountUp to={1000} duration={2} /></p>
-              <p className="text-xs text-neutral-400 mt-1">2s — default</p>
+              <p className="text-2xl font-black text-blue-600"><CountUp to={1000} duration={2000} /></p>
+              <p className="text-xs text-neutral-400 mt-1">2000ms — default</p>
             </div>
             <div className="rounded-xl border border-neutral-200 px-4 py-3 text-center">
-              <p className="text-2xl font-black text-neutral-900"><CountUp to={1000} duration={5} /></p>
-              <p className="text-xs text-neutral-400 mt-1">5s — slow</p>
+              <p className="text-2xl font-black text-neutral-900"><CountUp to={1000} duration={5000} /></p>
+              <p className="text-xs text-neutral-400 mt-1">5000ms — slow</p>
             </div>
           </div>
         </ComponentPreview>

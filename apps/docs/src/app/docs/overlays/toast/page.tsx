@@ -1,10 +1,11 @@
 "use client";
 
+import { useToast, ToastProvider } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
 const SETUP_CODE = `// app/layout.tsx — wrap once at root
-import { ToastProvider } from "@stealshadow/ui";
+import { ToastProvider } from "@animui/ui";
 
 export default function RootLayout({ children }) {
   return (
@@ -14,138 +15,168 @@ export default function RootLayout({ children }) {
   );
 }`;
 
-const BASIC_CODE = `import { useToast } from "@stealshadow/ui";
+const BASIC_CODE = `import { useToast } from "@animui/ui";
 
 export default function Example() {
-  const toast = useToast();
+  const { toast } = useToast();
   return (
-    <button onClick={() => toast.success("Saved!")}>
+    <button onClick={() => toast({ message: "Saved!", variant: "success" })}>
       Save
     </button>
   );
 }`;
 
-const VARIANTS_CODE = `const toast = useToast();
+const VARIANTS_CODE = `const { toast } = useToast();
 
-toast.success("Changes saved!", { description: "Your profile has been updated." });
-toast.error("Upload failed", { description: "File exceeds 10 MB limit." });
-toast.warning("Storage 80% full", { description: "Consider upgrading." });
-toast.info("New version available", { description: "v0.2.0 is out." });`;
+toast({ message: "Changes saved!",       variant: "success", description: "Your profile has been updated." });
+toast({ message: "Upload failed",         variant: "error",   description: "File exceeds 10 MB limit." });
+toast({ message: "Storage 80% full",      variant: "warning", description: "Consider upgrading." });
+toast({ message: "New version available", variant: "info",    description: "v0.2.0 is out." });`;
 
-const PROMISE_CODE = `toast.promise(uploadFile(file), {
-  loading: "Uploading…",
-  success: "Upload complete!",
-  error:   "Upload failed.",
+const ACTION_CODE = `const { toast } = useToast();
+
+toast({
+  message: "File deleted",
+  variant: "error",
+  action: { label: "Undo", onClick: () => restoreFile() },
 });`;
 
 const HOOK_PROPS = [
-  { name: "toast.success(title, opts?)", type: "function", default: "—", description: "Show a green success notification." },
-  { name: "toast.error(title, opts?)", type: "function", default: "—", description: "Show a red error notification." },
-  { name: "toast.warning(title, opts?)", type: "function", default: "—", description: "Show an amber warning notification." },
-  { name: "toast.info(title, opts?)", type: "function", default: "—", description: "Show a blue info notification." },
-  { name: "toast.promise(promise, msgs)", type: "function", default: "—", description: "Show loading → success/error based on promise resolution." },
-  { name: "toast.dismiss(id?)", type: "function", default: "—", description: "Dismiss a specific toast, or all if no id given." },
+  { name: "toast(opts)", type: "function", default: "—", description: "Show a notification. Pass a ToastOptions object (see below)." },
+  { name: "dismiss(id)", type: "function", default: "—", description: "Dismiss the toast with the given id." },
 ];
 
 const OPT_PROPS = [
-  { name: "description", type: "string", default: "—", description: "Secondary text shown below the title." },
-  { name: "duration", type: "number", default: "4000", description: "Auto-dismiss time in milliseconds." },
-  { name: "action", type: "{ label: string; onClick: () => void }", default: "—", description: "An action button inside the toast." },
-  { name: "position", type: '"top-right" | "top-center" | "bottom-right" | "bottom-center"', default: '"bottom-right"', description: "Where the toast stack appears." },
+  { name: "message", type: "string", default: "—", description: "Primary text shown in the toast." },
+  { name: "variant", type: '"default" | "success" | "error" | "warning" | "info"', default: '"default"', description: "Controls the icon and border colour." },
+  { name: "description", type: "string", default: "—", description: "Secondary text shown below the message." },
+  { name: "duration", type: "number", default: "4000", description: "Auto-dismiss time in milliseconds. Pass 0 to disable auto-dismiss." },
+  { name: "action", type: "{ label: string; onClick: () => void }", default: "—", description: "An action button rendered inside the toast." },
 ];
+
+// ── Live demo components ──────────────────────────────────────────────────────
+function BasicDemo() {
+  const { toast } = useToast();
+  return (
+    <button
+      onClick={() => toast({ message: "Saved!", variant: "success" })}
+      className="px-4 py-2 rounded-lg bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-colors"
+    >
+      Save
+    </button>
+  );
+}
+
+function VariantsDemo() {
+  const { toast } = useToast();
+  const variants: Array<{ label: string; variant: "success" | "error" | "warning" | "info"; message: string; description: string }> = [
+    { label: "Success", variant: "success", message: "Changes saved!", description: "Your profile has been updated." },
+    { label: "Error",   variant: "error",   message: "Upload failed",  description: "File exceeds 10 MB limit." },
+    { label: "Warning", variant: "warning", message: "Storage 80% full", description: "Consider upgrading." },
+    { label: "Info",    variant: "info",    message: "New version available", description: "v0.2.0 is out." },
+  ];
+  const colours: Record<string, string> = {
+    success: "bg-emerald-500 hover:bg-emerald-600",
+    error:   "bg-red-500 hover:bg-red-600",
+    warning: "bg-amber-500 hover:bg-amber-600",
+    info:    "bg-blue-500 hover:bg-blue-600",
+  };
+  return (
+    <div className="flex flex-wrap gap-2">
+      {variants.map((v) => (
+        <button
+          key={v.variant}
+          onClick={() => toast({ message: v.message, variant: v.variant, description: v.description })}
+          className={`px-4 py-2 rounded-lg text-white text-sm font-semibold transition-colors ${colours[v.variant]}`}
+        >
+          {v.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function ActionDemo() {
+  const { toast } = useToast();
+  return (
+    <button
+      onClick={() =>
+        toast({
+          message: "File deleted",
+          variant: "error",
+          action: { label: "Undo", onClick: () => toast({ message: "Restored!", variant: "success" }) },
+        })
+      }
+      className="px-4 py-2 rounded-lg bg-red-500 text-white text-sm font-semibold hover:bg-red-600 transition-colors"
+    >
+      Delete file
+    </button>
+  );
+}
 
 export default function ToastDocsPage() {
   return (
-    <div className="space-y-10">
-      <div>
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Overlays</span>
-          <span className="text-neutral-300">/</span>
-          <span className="text-xs font-semibold text-blue-600">Toast</span>
+    <ToastProvider>
+      <div className="space-y-10">
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Overlays</span>
+            <span className="text-neutral-300">/</span>
+            <span className="text-xs font-semibold text-blue-600">Toast</span>
+          </div>
+          <h1 className="text-4xl font-black text-neutral-900 tracking-tight mb-4">Toast</h1>
+          <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
+            Imperative notification toasts triggered via a hook. Supports success, error, warning, info, and default variants with optional action buttons.
+          </p>
         </div>
-        <h1 className="text-4xl font-black text-neutral-900 tracking-tight mb-4">Toast</h1>
-        <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
-          Imperative notification toasts triggered via a hook. Supports success, error, warning, info, and promise variants with optional action buttons.
-        </p>
-      </div>
 
-      <div className="rounded-xl bg-neutral-950 px-5 py-4">
-        <code className="text-sm font-mono text-green-400">
-          import {"{ useToast, ToastProvider }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
-        </code>
-      </div>
-
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Setup</h2>
-        <p className="text-neutral-500 mb-4 text-sm">Add <code className="font-mono text-xs bg-neutral-100 px-1 rounded">ToastProvider</code> once at the root of your app.</p>
-        <div className="rounded-xl border border-neutral-200 overflow-hidden">
-          <div className="px-4 py-2 bg-neutral-50 border-b border-neutral-100"><span className="text-xs font-mono text-neutral-500">app/layout.tsx</span></div>
-          <pre className="bg-neutral-950 px-5 py-4 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{SETUP_CODE}</pre>
+        <div className="rounded-xl bg-neutral-950 px-5 py-4">
+          <code className="text-sm font-mono text-green-400">
+            import {"{ useToast, ToastProvider }"} from <span className="text-blue-400">"@animui/ui"</span>
+          </code>
         </div>
-      </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic usage</h2>
-        <ComponentPreview code={BASIC_CODE}>
-          <div className="space-y-2">
-            <div className="flex items-start gap-3 rounded-xl border border-neutral-100 bg-white shadow-sm p-3.5 max-w-xs">
-              <div className="h-7 w-7 shrink-0 rounded-xl bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">✓</div>
-              <div>
-                <p className="text-sm font-semibold text-neutral-900">Saved!</p>
-              </div>
-              <button className="ml-auto text-neutral-300 hover:text-neutral-500 text-xs">✕</button>
-            </div>
+        <section>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-2">Setup</h2>
+          <p className="text-neutral-500 mb-4 text-sm">Add <code className="font-mono text-xs bg-neutral-100 px-1 rounded">ToastProvider</code> once at the root of your app.</p>
+          <div className="rounded-xl border border-neutral-200 overflow-hidden">
+            <div className="px-4 py-2 bg-neutral-50 border-b border-neutral-100"><span className="text-xs font-mono text-neutral-500">app/layout.tsx</span></div>
+            <pre className="bg-neutral-950 px-5 py-4 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{SETUP_CODE}</pre>
           </div>
-        </ComponentPreview>
-      </section>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Variants</h2>
-        <ComponentPreview code={VARIANTS_CODE}>
-          <div className="space-y-2 max-w-sm">
-            {[
-              { bg: "bg-emerald-500", icon: "✓", title: "Changes saved!", desc: "Your profile has been updated." },
-              { bg: "bg-red-500",     icon: "✕", title: "Upload failed",   desc: "File exceeds 10 MB limit." },
-              { bg: "bg-amber-500",   icon: "⚠", title: "Storage 80% full", desc: "Consider upgrading." },
-              { bg: "bg-blue-500",    icon: "i", title: "New version available", desc: "v0.2.0 is out." },
-            ].map((t, i) => (
-              <div key={i} className="flex items-start gap-3 rounded-xl border border-neutral-100 bg-white shadow-sm p-3">
-                <div className={`h-7 w-7 shrink-0 rounded-lg ${t.bg} flex items-center justify-center text-white text-xs font-bold`}>{t.icon}</div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold text-neutral-900 truncate">{t.title}</p>
-                  <p className="text-xs text-neutral-500 mt-0.5 truncate">{t.desc}</p>
-                </div>
-                <button className="text-neutral-300 text-xs shrink-0">✕</button>
-              </div>
-            ))}
-          </div>
-        </ComponentPreview>
-      </section>
+        <section>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic usage</h2>
+          <ComponentPreview code={BASIC_CODE}>
+            <BasicDemo />
+          </ComponentPreview>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Promise</h2>
-        <p className="text-neutral-500 mb-4 text-sm">Pass a promise and the toast automatically transitions through loading → success/error.</p>
-        <ComponentPreview code={PROMISE_CODE}>
-          <div className="space-y-2 max-w-xs">
-            <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-50 p-3">
-              <div className="h-7 w-7 shrink-0 rounded-lg bg-blue-500 flex items-center justify-center">
-                <svg className="h-3.5 w-3.5 text-white animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
-              </div>
-              <p className="text-xs font-semibold text-blue-700">Uploading…</p>
-            </div>
-          </div>
-        </ComponentPreview>
-      </section>
+        <section>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-2">Variants</h2>
+          <ComponentPreview code={VARIANTS_CODE}>
+            <VariantsDemo />
+          </ComponentPreview>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-4">useToast methods</h2>
-        <PropsTable props={HOOK_PROPS} />
-      </section>
+        <section>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-2">Action button</h2>
+          <p className="text-neutral-500 mb-4 text-sm">Pass an <code className="font-mono text-xs bg-neutral-100 px-1 rounded">action</code> option to add a clickable button inside the toast.</p>
+          <ComponentPreview code={ACTION_CODE}>
+            <ActionDemo />
+          </ComponentPreview>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-4">Options</h2>
-        <PropsTable props={OPT_PROPS} />
-      </section>
-    </div>
+        <section>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-4">useToast return values</h2>
+          <PropsTable props={HOOK_PROPS} />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-4">Toast options</h2>
+          <PropsTable props={OPT_PROPS} />
+        </section>
+      </div>
+    </ToastProvider>
   );
 }

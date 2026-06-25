@@ -6,7 +6,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { Tag } from "lucide-react";
 
-const BASIC_CODE = `import { Chip } from "@stealshadow/ui";
+const BASIC_CODE = `import { Chip } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -19,7 +19,7 @@ export default function Example() {
   );
 }`;
 
-const REMOVABLE_CODE = `import { Chip } from "@stealshadow/ui";
+const REMOVABLE_CODE = `import { Chip } from "@animui/ui";
 import { useState } from "react";
 
 export default function TagsInput() {
@@ -78,7 +78,7 @@ export default function ChipDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Chip }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Chip }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

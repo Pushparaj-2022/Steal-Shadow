@@ -5,7 +5,7 @@ import { MultiSelect } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { MultiSelect } from "@stealshadow/ui";
+const BASIC_CODE = `import { MultiSelect } from "@animui/ui";
 import { useState } from "react";
 
 const frameworks = [
@@ -80,14 +80,14 @@ export default function MultiSelectDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ MultiSelect }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ MultiSelect }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="flex flex-col items-center p-8 bg-neutral-50 rounded-2xl gap-4">
+          <div className="flex flex-col items-center p-6 bg-neutral-50 rounded-2xl gap-4 w-full">
             <div className="w-80">
               <MultiSelect
                 label="Frameworks"

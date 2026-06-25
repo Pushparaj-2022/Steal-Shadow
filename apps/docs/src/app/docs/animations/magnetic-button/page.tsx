@@ -7,7 +7,7 @@ import { PropsTable } from "@/components/docs/PropsTable";
 
 const MAGNETIC_CODE = `"use client";
 
-import { MagneticButton } from "@stealshadow/ui";
+import { MagneticButton } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -20,7 +20,7 @@ export default function Example() {
   );
 }`;
 
-const CUSTOM_STRENGTH_CODE = `import { MagneticButton } from "@stealshadow/ui";
+const CUSTOM_STRENGTH_CODE = `import { MagneticButton } from "@animui/ui";
 
 // Stronger pull
 <MagneticButton strength={0.6}>Strong pull</MagneticButton>
@@ -32,13 +32,10 @@ const CUSTOM_STRENGTH_CODE = `import { MagneticButton } from "@stealshadow/ui";
 <MagneticButton strength={0}>No magnetism</MagneticButton>`;
 
 const PROPS = [
-  { name: "strength", type: "number", default: "0.35", description: "How strongly the button is pulled toward the cursor. 0 = no pull, 1 = full pull. Values between 0.2–0.5 feel natural." },
   { name: "children", type: "React.ReactNode", default: "—", description: "The content rendered inside the button." },
+  { name: "strength", type: "number", default: "0.4", description: "How strongly the button is pulled toward the cursor. 0 = no pull, 1 = full pull. Values between 0.2–0.5 feel natural." },
   { name: "className", type: "string", default: "—", description: "Tailwind classes applied to the button element." },
-  { name: "onClick", type: "(e: React.MouseEvent) => void", default: "—", description: "Click handler." },
-  { name: "disabled", type: "boolean", default: "false", description: "Disables magnetic effect and interaction." },
-  { name: "springConfig", type: "{ stiffness: number; damping: number; mass: number }", default: "{ stiffness: 150, damping: 15, mass: 0.1 }", description: "Override the Motion spring configuration for the return animation." },
-  { name: "as", type: "\"button\" | \"a\" | \"div\"", default: "\"button\"", description: "Render the magnetic element as a different HTML tag. Use \"a\" with href for link buttons." },
+  { name: "onClick", type: "() => void", default: "—", description: "Click handler." },
 ];
 
 export default function MagneticButtonPage() {
@@ -61,7 +58,7 @@ export default function MagneticButtonPage() {
       {/* Import */}
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ MagneticButton }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ MagneticButton }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

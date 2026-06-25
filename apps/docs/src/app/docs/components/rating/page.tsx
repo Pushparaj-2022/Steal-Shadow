@@ -5,7 +5,7 @@ import { Rating } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { Rating } from "@stealshadow/ui";
+const BASIC_CODE = `import { Rating } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -64,7 +64,7 @@ export default function RatingDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Rating }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Rating }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -115,7 +115,7 @@ export default function RatingDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">In a form</h2>
         <ComponentPreview code={FORM_CODE}>
-          <div className="space-y-4 max-w-xs">
+          <div className="space-y-4 w-full max-w-sm">
             <div>
               <p className="text-sm font-semibold text-neutral-700 mb-1.5">Overall experience</p>
               <Rating onChange={setRating} showValue />

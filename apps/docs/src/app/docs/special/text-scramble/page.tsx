@@ -4,7 +4,7 @@ import { TextScramble } from "@animui/ui";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const BASIC_CODE = `import { TextScramble } from "@stealshadow/ui";
+const BASIC_CODE = `import { TextScramble } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -58,7 +58,7 @@ export default function TextScrambleDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ TextScramble }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ TextScramble }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -75,7 +75,7 @@ export default function TextScrambleDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Hover trigger</h2>
         <ComponentPreview code={HOVER_CODE}>
-          <div className="flex items-center justify-center p-8 bg-neutral-50 rounded-2xl">
+          <div className="flex items-center justify-center p-6 bg-neutral-50 rounded-2xl">
             <TextScramble text="Hover to scramble" trigger="hover" className="text-2xl font-bold text-violet-600 cursor-pointer" />
           </div>
         </ComponentPreview>

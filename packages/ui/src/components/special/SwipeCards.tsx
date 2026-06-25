@@ -13,6 +13,7 @@ interface SwipeCardsProps {
   cards: SwipeCard[];
   onSwipe?: (card: SwipeCard, direction: "left" | "right") => void;
   onEmpty?: () => void;
+  emptyContent?: React.ReactNode;
   className?: string;
   cardClassName?: string;
   threshold?: number;
@@ -39,67 +40,88 @@ function CardItem({
   visibleCount,
 }: CardItemProps) {
   const x = useMotionValue(0);
-  const y = useMotionValue(0);
 
-  const rotate = useTransform(x, [-200, 0, 200], [-18, 0, 18]);
-  const opacity = useTransform(x, [-threshold * 1.5, -threshold, 0, threshold, threshold * 1.5], [0, 1, 1, 1, 0]);
+  const rotate = useTransform(x, [-250, 0, 250], [-20, 0, 20]);
+  const opacity = useTransform(
+    x,
+    [-threshold * 1.8, -threshold * 0.8, 0, threshold * 0.8, threshold * 1.8],
+    [0, 1, 1, 1, 0],
+  );
 
-  // Left/right indicator opacity
-  const leftOpacity = useTransform(x, [-threshold, -threshold * 0.3], [1, 0], { clamp: true });
-  const rightOpacity = useTransform(x, [threshold * 0.3, threshold], [0, 1], { clamp: true });
+  const leftOpacity  = useTransform(x, [-threshold, -threshold * 0.25], [1, 0], { clamp: true });
+  const rightOpacity = useTransform(x, [threshold * 0.25, threshold],   [0, 1], { clamp: true });
 
-  const isTop = index === total - 1;
+  const isTop  = index === total - 1;
   const offset = total - 1 - index;
+
+  if (offset >= visibleCount) return null;
+
+  const scale   = 1 - offset * 0.05;
+  const yOffset = offset * 14;
 
   const handleDragEnd = () => {
     const xVal = x.get();
     if (Math.abs(xVal) > threshold) {
       const dir = xVal > 0 ? "right" : "left";
-      animate(x, dir === "right" ? 600 : -600, { duration: 0.3, ease: "easeOut" });
-      animate(y, 80, { duration: 0.3, ease: "easeOut" });
+      // Fly off screen
+      animate(x, dir === "right" ? 700 : -700, { duration: 0.35, ease: "easeOut" });
       onSwipe(dir);
     } else {
-      animate(x, 0, { type: "spring", stiffness: 300, damping: 25 });
-      animate(y, 0, { type: "spring", stiffness: 300, damping: 25 });
+      // Spring back
+      animate(x, 0, { type: "spring", stiffness: 350, damping: 28 });
     }
   };
-
-  if (offset >= visibleCount) return null;
-
-  const scale = 1 - offset * 0.05;
-  const yOffset = offset * 12;
 
   return (
     <motion.div
       className={cn(
-        "absolute inset-0 rounded-2xl overflow-hidden select-none",
+        "absolute inset-0 select-none overflow-hidden rounded-2xl",
         isTop ? "cursor-grab active:cursor-grabbing" : "pointer-events-none",
-        cardClassName
+        cardClassName,
       )}
       style={{
-        x: isTop ? x : 0,
-        y: isTop ? y : yOffset,
+        x:     isTop ? x : 0,
+        y:     yOffset,
         rotate: isTop ? rotate : 0,
         opacity: isTop ? opacity : 1,
         scale,
         zIndex: index,
-        transformOrigin: "50% 110%",
+        transformOrigin: "50% 120%",
       }}
-      drag={isTop ? true : false}
+      // Horizontal-only drag; disable post-release momentum so our animate() controls snap/fly
+      drag={isTop ? "x" : false}
+      dragMomentum={false}
+      dragElastic={0.25}
       onDragEnd={handleDragEnd}
-      dragElastic={0.15}
     >
-      {/* Swipe color wash */}
+      {/* Swipe indicators */}
       {isTop && (
         <>
           <motion.div
-            className="absolute inset-0 z-10 rounded-2xl bg-red-500/20 pointer-events-none"
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 rounded-2xl bg-red-500/25"
             style={{ opacity: leftOpacity }}
           />
           <motion.div
-            className="absolute inset-0 z-10 rounded-2xl bg-emerald-500/20 pointer-events-none"
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 rounded-2xl bg-emerald-500/25"
             style={{ opacity: rightOpacity }}
           />
+          {/* NOPE / LIKE labels */}
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute left-4 top-4 z-20 rounded-lg border-2 border-red-500 px-3 py-1 text-sm font-black uppercase text-red-500"
+            style={{ opacity: leftOpacity, rotate: -12 }}
+          >
+            Nope
+          </motion.span>
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute right-4 top-4 z-20 rounded-lg border-2 border-emerald-500 px-3 py-1 text-sm font-black uppercase text-emerald-500"
+            style={{ opacity: rightOpacity, rotate: 12 }}
+          >
+            Like
+          </motion.span>
         </>
       )}
       {card.content}
@@ -111,6 +133,7 @@ export function SwipeCards({
   cards: initialCards,
   onSwipe,
   onEmpty,
+  emptyContent,
   className,
   cardClassName,
   threshold = 100,
@@ -119,17 +142,22 @@ export function SwipeCards({
   const [cards, setCards] = useState(initialCards);
 
   const handleSwipe = (card: SwipeCard, direction: "left" | "right") => {
+    onSwipe?.(card, direction);
+    // Remove card after fly-off animation completes
     setTimeout(() => {
       setCards((prev) => {
         const next = prev.filter((c) => c.id !== card.id);
         if (next.length === 0) onEmpty?.();
         return next;
       });
-    }, 350);
-    onSwipe?.(card, direction);
+    }, 380);
   };
 
-  if (cards.length === 0) return null;
+  if (cards.length === 0) {
+    return emptyContent ? (
+      <div className={cn("relative", className)}>{emptyContent}</div>
+    ) : null;
+  }
 
   return (
     <div className={cn("relative", className)}>

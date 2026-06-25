@@ -21,11 +21,12 @@ const ALERT_PROPS = [
   { name: "variant", type: '"info" | "success" | "warning" | "error"', default: '"info"', description: "Controls the color scheme and icon of the alert." },
   { name: "title", type: "string", default: "—", description: "Optional bold heading rendered above the message body." },
   { name: "children", type: "React.ReactNode", default: "—", description: "The message content of the alert." },
+  { name: "icon", type: "React.ReactNode", default: "—", description: "Custom icon. Defaults to a built-in icon matching the variant." },
   { name: "onClose", type: "() => void", default: "—", description: "When provided, renders a dismiss button in the top-right corner." },
   { name: "className", type: "string", default: "—", description: "Additional Tailwind classes applied to the alert container." },
 ];
 
-const VARIANTS_CODE = `import { Alert } from "@stealshadow/ui";
+const VARIANTS_CODE = `import { Alert } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -38,7 +39,7 @@ export default function Example() {
   );
 }`;
 
-const WITH_TITLE_CODE = `import { Alert } from "@stealshadow/ui";
+const WITH_TITLE_CODE = `import { Alert } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -48,7 +49,7 @@ export default function Example() {
   );
 }`;
 
-const DISMISSIBLE_CODE = `import { Alert } from "@stealshadow/ui";
+const DISMISSIBLE_CODE = `import { Alert } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -88,7 +89,7 @@ export default function AlertDocsPage() {
       {/* Install callout */}
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Alert }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Alert }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

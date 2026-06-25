@@ -4,8 +4,8 @@ import { Card, CardHeader, CardContent, CardFooter, Button, Badge } from "@animu
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 
-const PREVIEW_CODE = `import { Card, CardHeader, CardContent, CardFooter } from "@stealshadow/ui";
-import { Button, Badge } from "@stealshadow/ui";
+const PREVIEW_CODE = `import { Card, CardHeader, CardContent, CardFooter } from "@animui/ui";
+import { Button, Badge } from "@animui/ui";
 
 export default function Example() {
   return (
@@ -31,12 +31,10 @@ export default function Example() {
 }`;
 
 const PROPS = [
-  { name: "className", type: "string", default: "—", description: "Additional Tailwind classes applied to the card container." },
+  { name: "variant", type: '"default" | "glass" | "gradient" | "dark" | "outline"', default: '"default"', description: "Visual style of the card surface." },
+  { name: "hover", type: '"none" | "lift" | "glow" | "tilt"', default: '"lift"', description: "Hover animation applied to the card." },
   { name: "children", type: "React.ReactNode", default: "—", description: "Card content — use CardHeader, CardContent, and CardFooter sub-components." },
-  { name: "shadow", type: '"none" | "sm" | "md" | "lg"', default: '"sm"', description: "Box shadow level." },
-  { name: "padding", type: '"none" | "sm" | "md" | "lg"', default: '"md"', description: "Inner padding applied to Card when not using sub-components." },
-  { name: "bordered", type: "boolean", default: "true", description: "Renders a 1px border around the card." },
-  { name: "hover", type: "boolean", default: "false", description: "Adds a subtle lift animation on hover." },
+  { name: "className", type: "string", default: "—", description: "Additional Tailwind classes applied to the card container." },
 ];
 
 
@@ -58,7 +56,7 @@ export default function CardDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Card, CardHeader, CardContent, CardFooter }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Card, CardHeader, CardContent, CardFooter }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 
@@ -66,7 +64,7 @@ export default function CardDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic usage</h2>
         <p className="text-neutral-500 mb-4">Compose Card with its slot sub-components.</p>
         <ComponentPreview code={PREVIEW_CODE}>
-          <Card className="w-72">
+          <Card className="w-full max-w-sm">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-sm">Card title</h3>

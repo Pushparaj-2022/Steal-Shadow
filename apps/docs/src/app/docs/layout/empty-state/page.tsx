@@ -5,7 +5,7 @@ import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { Inbox, Search, FolderOpen } from "lucide-react";
 
-const BASIC_CODE = `import { EmptyState } from "@stealshadow/ui";
+const BASIC_CODE = `import { EmptyState } from "@animui/ui";
 import { Inbox } from "lucide-react";
 
 export default function Example() {
@@ -19,7 +19,7 @@ export default function Example() {
   );
 }`;
 
-const TABLE_CODE = `import { EmptyState } from "@stealshadow/ui";
+const TABLE_CODE = `import { EmptyState } from "@animui/ui";
 import { Search } from "lucide-react";
 
 // Inside a DataTable with no results:
@@ -66,7 +66,7 @@ export default function EmptyStateDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ EmptyState }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ EmptyState }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

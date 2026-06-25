@@ -10,7 +10,7 @@ function SwitchDemo() {
   return <Switch checked={on} onChange={setOn} label="Enable notifications" />;
 }
 
-const BASIC_CODE = `import { Switch } from "@stealshadow/ui";
+const BASIC_CODE = `import { Switch } from "@animui/ui";
 import { useState } from "react";
 
 export default function Example() {
@@ -30,10 +30,13 @@ const SIZES_CODE = `<Switch size="sm" checked={on} onChange={setOn} />
 
 const PROPS = [
   { name: "checked", type: "boolean", default: "false", description: "Whether the switch is on." },
+  { name: "defaultChecked", type: "boolean", default: "false", description: "Initial checked state (uncontrolled)." },
   { name: "onChange", type: "(checked: boolean) => void", default: "—", description: "Called when the switch is toggled." },
   { name: "label", type: "string", default: "—", description: "Visible label rendered next to the switch." },
+  { name: "description", type: "string", default: "—", description: "Secondary description text rendered below the label." },
   { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Controls the size of the toggle track and thumb." },
   { name: "disabled", type: "boolean", default: "false", description: "Prevents interaction and applies reduced opacity." },
+  { name: "name", type: "string", default: "—", description: "HTML name attribute for form submission." },
   { name: "className", type: "string", default: "—", description: "Additional classes for the wrapper element." },
 ];
 
@@ -54,7 +57,7 @@ export default function SwitchDocsPage() {
 
       <div className="rounded-xl bg-neutral-950 px-5 py-4">
         <code className="text-sm font-mono text-green-400">
-          import {"{ Switch }"} from <span className="text-blue-400">"@stealshadow/ui"</span>
+          import {"{ Switch }"} from <span className="text-blue-400">"@animui/ui"</span>
         </code>
       </div>
 

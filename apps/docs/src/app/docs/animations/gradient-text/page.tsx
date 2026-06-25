@@ -1,23 +1,23 @@
 "use client";
 
 import { GradientText } from "@animui/ui";
-import { ComponentPreview } from "@/components/component-preview";
-import { PropsTable } from "@/components/props-table";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { PropsTable } from "@/components/docs/PropsTable";
 
 export default function GradientTextPage() {
   return (
     <div className="space-y-10 pb-16">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-sm text-muted-foreground">
+      <nav className="flex items-center gap-1.5 text-sm text-neutral-500">
         <span>Animations</span>
         <span>/</span>
-        <span className="text-foreground font-medium">GradientText</span>
+        <span className="text-neutral-900 font-medium">GradientText</span>
       </nav>
 
       {/* Heading + description */}
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">GradientText</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-neutral-500">
           Animated gradient text that smoothly cycles through a set of color
           stops using the background-clip text technique and a keyframed
           background-position animation.
@@ -27,7 +27,7 @@ export default function GradientTextPage() {
       {/* Import snippet */}
       <div className="space-y-2">
         <h2 className="text-xl font-semibold">Import</h2>
-        <pre className="rounded-lg border bg-muted px-4 py-3 text-sm overflow-x-auto">
+        <pre className="rounded-lg border bg-neutral-100 px-4 py-3 text-sm overflow-x-auto">
           <code>{`import { GradientText } from "@animui/ui";`}</code>
         </pre>
       </div>
@@ -90,7 +90,7 @@ export default function Example() {
               description: "Gradient color stops, evenly distributed.",
             },
             {
-              name: "duration",
+              name: "animationSpeed",
               type: "number",
               default: "4",
               description: "Full animation cycle in seconds.",
