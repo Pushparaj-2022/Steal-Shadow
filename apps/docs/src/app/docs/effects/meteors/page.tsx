@@ -51,7 +51,7 @@ export default function MeteorsDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <p className="text-neutral-500 mb-4 text-sm">Meteors is an overlay — it must be inside a <code className="font-mono text-xs bg-neutral-100 px-1 rounded">position:relative overflow:hidden</code> parent.</p>
         <ComponentPreview code={BASIC_CODE}>
-          <div className="relative overflow-hidden rounded-xl bg-neutral-950 h-44 flex items-center justify-center">
+          <div className="relative w-full overflow-hidden rounded-xl bg-neutral-950 h-44 flex items-center justify-center">
             <Meteors count={20} />
             <h2 className="relative text-3xl font-black text-white">Meteors</h2>
           </div>
@@ -61,7 +61,7 @@ export default function MeteorsDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Colored meteors</h2>
         <ComponentPreview code={COLORED_CODE}>
-          <div className="relative overflow-hidden rounded-xl bg-indigo-950 h-32 flex items-center justify-center">
+          <div className="relative w-full overflow-hidden rounded-xl bg-indigo-950 h-44 flex items-center justify-center">
             <Meteors count={12} color="rgba(167,139,250,0.8)" />
             <p className="relative text-white/80 font-semibold">Violet meteors</p>
           </div>

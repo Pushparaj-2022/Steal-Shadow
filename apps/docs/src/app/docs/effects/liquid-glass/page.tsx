@@ -36,7 +36,7 @@ const PROPS = [
 ];
 
 const GradBg = ({ children }: { children: React.ReactNode }) => (
-  <div className="w-full rounded-xl overflow-hidden bg-gradient-to-br from-indigo-900 to-violet-900 p-8 flex items-center justify-center">
+  <div className="flex w-full min-h-[220px] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-indigo-900 to-violet-900 p-4 sm:p-8">
     {children}
   </div>
 );
@@ -89,18 +89,15 @@ export default function LiquidGlassDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Intensity levels</h2>
         <ComponentPreview code={INTENSITY_CODE}>
           <GradBg>
-            <div className="flex gap-3 flex-wrap justify-center">
-              <LiquidGlass intensity="low" color="#10b981" className="px-4 py-3">
+            <div className="flex flex-wrap items-stretch justify-center gap-3">
+              <LiquidGlass intensity="low" color="#10b981" className="w-28 shrink-0 px-3 py-3 text-center">
                 <p className="text-white text-xs font-bold">Subtle</p>
-                <p className="text-white/50 text-[10px]">intensity: low</p>
               </LiquidGlass>
-              <LiquidGlass intensity="medium" color="#8b5cf6" className="px-4 py-3">
+              <LiquidGlass intensity="medium" color="#8b5cf6" className="w-28 shrink-0 px-3 py-3 text-center">
                 <p className="text-white text-xs font-bold">Standard</p>
-                <p className="text-white/50 text-[10px]">intensity: medium</p>
               </LiquidGlass>
-              <LiquidGlass intensity="high" color="#ef4444" className="px-4 py-3">
+              <LiquidGlass intensity="high" color="#ef4444" className="w-28 shrink-0 px-3 py-3 text-center">
                 <p className="text-white text-xs font-bold">Bold</p>
-                <p className="text-white/50 text-[10px]">intensity: high</p>
               </LiquidGlass>
             </div>
           </GradBg>

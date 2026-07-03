@@ -13,7 +13,7 @@ function BasicDemo() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-40 flex items-center justify-between px-10"
+      className="relative w-full h-40 flex items-center justify-between px-4 sm:px-10"
     >
       <div
         ref={fromRef}
@@ -47,7 +47,7 @@ function Demo() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-40 flex items-center justify-between px-10"
+      className="relative w-full h-40 flex items-center justify-between px-4 sm:px-10"
     >
       <div ref={fromRef} className="w-12 h-12 rounded-full bg-violet-600" />
       <div ref={toRef} className="w-12 h-12 rounded-full bg-blue-500" />

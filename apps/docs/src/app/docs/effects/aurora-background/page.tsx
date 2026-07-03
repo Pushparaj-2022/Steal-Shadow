@@ -61,7 +61,7 @@ export default function AuroraBackgroundDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Basic</h2>
         <ComponentPreview code={BASIC_CODE}>
-          <AuroraBackground className="rounded-xl bg-neutral-950 h-44 flex items-center justify-center">
+          <AuroraBackground className="w-full rounded-xl bg-neutral-950 h-44 flex items-center justify-center">
             <div className="relative text-center">
               <h3 className="text-3xl font-black text-white">Build faster</h3>
               <p className="text-neutral-400 mt-2 text-sm">Beautiful components.</p>
@@ -76,7 +76,7 @@ export default function AuroraBackgroundDocsPage() {
           <AuroraBackground
             colors={["#f59e0b", "#ef4444", "#ec4899"]}
             speed="slow"
-            className="rounded-xl bg-neutral-950 h-36 flex items-center justify-center"
+            className="w-full rounded-xl bg-neutral-950 h-44 flex items-center justify-center"
           >
             <p className="text-white/50 text-xs font-mono">colors: amber / red / pink</p>
           </AuroraBackground>

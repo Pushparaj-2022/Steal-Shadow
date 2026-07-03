@@ -81,7 +81,7 @@ export default function BorderBeamDocsPage() {
       <section>
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Staggered grid</h2>
         <ComponentPreview code={STAGGER_CODE}>
-          <div className="grid grid-cols-2 gap-3 w-full max-w-sm">
+          <div className="grid grid-cols-1 gap-3 w-full max-w-sm sm:grid-cols-2">
             <BorderBeam delay={0} className="p-4"><p className="text-xs font-semibold text-neutral-600">Card 1</p></BorderBeam>
             <BorderBeam delay={0.75} className="p-4"><p className="text-xs font-semibold text-neutral-600">Card 2</p></BorderBeam>
             <BorderBeam delay={1.5} className="p-4"><p className="text-xs font-semibold text-neutral-600">Card 3</p></BorderBeam>

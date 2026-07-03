@@ -9,7 +9,9 @@ const clickCode = `import { Confetti } from "@animui/ui";
 
 export default function Example() {
   return (
-    <Confetti count={100}>
+    // Confetti's canvas fills its wrapper, so give the wrapper real
+    // dimensions — otherwise the burst is clipped to the button's size.
+    <Confetti count={100} className="flex h-64 w-full items-center justify-center">
       <button className="px-6 py-2 rounded-lg bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors">
         Click me 🎉
       </button>
@@ -29,12 +31,14 @@ export default function Example() {
   }
 
   return (
-    <>
-      <Confetti trigger={trigger} count={120} colors={["#ff6b6b","#ffd93d","#6bcb77","#4d96ff"]} />
-      <button onClick={fire} className="px-6 py-2 rounded-lg bg-violet-600 text-white font-medium">
+    // Standalone (childless) Confetti has no intrinsic size, so give it an
+    // absolutely-positioned overlay inside a sized, relative parent.
+    <div className="relative h-64 w-full flex items-center justify-center">
+      <Confetti trigger={trigger} count={120} colors={["#ff6b6b","#ffd93d","#6bcb77","#4d96ff"]} className="absolute inset-0" />
+      <button onClick={fire} className="relative px-6 py-2 rounded-lg bg-violet-600 text-white font-medium">
         Fire confetti
       </button>
-    </>
+    </div>
   );
 }`;
 
@@ -54,11 +58,11 @@ function ProgrammaticDemo() {
     setTimeout(() => setTrigger(false), 100);
   }
   return (
-    <div className="flex flex-col items-center gap-4">
-      <Confetti trigger={trigger} count={120} colors={["#ff6b6b","#ffd93d","#6bcb77","#4d96ff"]} />
+    <div className="relative flex h-64 w-full flex-col items-center justify-center gap-4">
+      <Confetti trigger={trigger} count={120} colors={["#ff6b6b","#ffd93d","#6bcb77","#4d96ff"]} className="absolute inset-0" />
       <button
         onClick={fire}
-        className="px-6 py-2 rounded-lg bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors"
+        className="relative px-6 py-2 rounded-lg bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors"
       >
         Fire confetti
       </button>
@@ -99,7 +103,7 @@ export default function ConfettiPage() {
           Clicking the child fires the burst.
         </p>
         <ComponentPreview code={clickCode}>
-          <Confetti count={100}>
+          <Confetti count={100} className="flex h-64 w-full items-center justify-center">
             <button className="px-6 py-2 rounded-lg bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors">
               Click me 🎉
             </button>

@@ -42,7 +42,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
           <DocsBreadcrumb />
 
-          <div className="ml-auto flex items-center gap-3">
+          <div className="ml-auto flex shrink-0 items-center gap-3">
             <a
               href="https://github.com/Pushparaj-2022/Steal-Shadow"
               target="_blank"

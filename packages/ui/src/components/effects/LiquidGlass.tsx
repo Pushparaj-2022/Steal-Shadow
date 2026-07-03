@@ -36,7 +36,7 @@ export function LiquidGlass({
   const blobX = useTransform(x, [0, 1], ["20%", "80%"]);
   const blobY = useTransform(y, [0, 1], ["20%", "80%"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     mouseX.set((e.clientX - rect.left) / rect.width);
@@ -44,13 +44,13 @@ export function LiquidGlass({
   };
 
   return (
-    <div
-      ref={ref}
+    <Tag
+      ref={ref as React.RefObject<HTMLDivElement & HTMLButtonElement>}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
       onClick={onClick}
-      className={cn("relative overflow-hidden rounded-2xl", onClick && "cursor-pointer", className)}
+      className={cn("relative overflow-hidden rounded-2xl", onClick && "cursor-pointer")}
     >
       {/* Liquid blob */}
       <motion.div
@@ -70,10 +70,10 @@ export function LiquidGlass({
         transition={{ type: "spring", stiffness: 120, damping: 18 }}
       />
 
-      {/* Frosted glass layer */}
-      <div className="relative z-10 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl">
+      {/* Frosted glass layer — sizing/padding classes belong here, since this is the visible card */}
+      <div className={cn("relative z-10 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl", className)}>
         {children}
       </div>
-    </div>
+    </Tag>
   );
 }

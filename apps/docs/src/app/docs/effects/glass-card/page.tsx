@@ -98,7 +98,7 @@ export default function GlassCardDocsPage() {
         <h2 className="text-2xl font-bold text-neutral-900 mb-2">Blur levels</h2>
         <ComponentPreview code={BLUR_CODE}>
           <GradBg>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
               <GlassCard blur="sm" className="p-3"><p className="text-white/80 text-xs font-mono">blur: sm</p></GlassCard>
               <GlassCard blur="md" className="p-3"><p className="text-white/80 text-xs font-mono">blur: md</p></GlassCard>
               <GlassCard blur="xl" className="p-3"><p className="text-white/80 text-xs font-mono">blur: xl (default)</p></GlassCard>

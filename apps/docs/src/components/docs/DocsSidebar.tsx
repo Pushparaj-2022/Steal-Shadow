@@ -53,7 +53,7 @@ export function DocsSidebar() {
                       {active && (
                         <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
                       )}
-                      {item.label}
+                      <span className="truncate">{item.label}</span>
                     </Link>
                   </li>
                 );
