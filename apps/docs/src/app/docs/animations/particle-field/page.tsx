@@ -1,6 +1,8 @@
 "use client";
 
 import { PropsTable } from "@/components/docs/PropsTable";
+import { ComponentPreview } from "@/components/docs/ComponentPreview";
+import { ParticleField } from "@animui/ui";
 
 const PROPS = [
   { name: "count", type: "number", default: "80", description: "Number of particles to render." },
@@ -54,32 +56,26 @@ export default function ParticleFieldPage() {
       </div>
 
       <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Usage</h2>
+        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Live demo</h2>
         <p className="text-neutral-500 mb-4">
           Place ParticleField absolutely inside a relative container. Stack your content above it
-          with <code className="font-mono text-xs bg-neutral-100 px-1 rounded">relative z-10</code>.
+          with <code className="font-mono text-xs bg-neutral-100 px-1 rounded">relative z-10</code>. Move your cursor over the canvas to see it react.
         </p>
-        <div className="rounded-xl border border-neutral-200 overflow-hidden">
-          <div className="flex items-center px-4 py-2 border-b border-neutral-200 bg-neutral-50">
-            <span className="text-xs font-mono text-neutral-500">example.tsx</span>
-          </div>
-          <pre className="bg-neutral-950 p-5 overflow-x-auto text-sm font-mono text-neutral-200 leading-relaxed">{BASIC_CODE}</pre>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Preview (static)</h2>
-        <div className="relative h-56 w-full overflow-hidden rounded-2xl bg-neutral-950 border border-neutral-800 flex items-center justify-center">
-          {/* Static dots to represent the particle field */}
-          {Array.from({ length: 30 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute h-1 w-1 rounded-full bg-blue-500 opacity-70"
-              style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
+        <ComponentPreview code={BASIC_CODE}>
+          <div className="relative h-72 w-full overflow-hidden rounded-2xl bg-neutral-950">
+            <ParticleField
+              count={80}
+              color="99,102,241"
+              speed={0.4}
+              connectionDistance={120}
+              interactive
+              className="absolute inset-0 h-full w-full"
             />
-          ))}
-          <p className="relative z-10 text-white/60 text-sm">Live canvas renders in the browser</p>
-        </div>
+            <div className="relative z-10 flex h-full items-center justify-center">
+              <h2 className="text-3xl font-black text-white">Your headline here</h2>
+            </div>
+          </div>
+        </ComponentPreview>
       </section>
 
       <section>

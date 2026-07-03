@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import {
   IcArrow, IcCheck, IcGithub, IcChevR,
   IcLayers, IcCode,
@@ -9,12 +8,9 @@ import { ThemeToggle } from "@/components/home/theme-toggle";
 import { InstallCommand } from "@/components/home/install-command";
 import { MarqueeStrip } from "@/components/home/marquee-strip";
 import { FaqItem } from "@/components/home/faq-item";
+import { ComponentLibraryLazy } from "@/components/home/component-library-lazy";
 
 const GH = "https://github.com/Pushparaj-2022/Steal-Shadow";
-
-const ComponentLibrarySection = dynamic(
-  () => import("@/components/home/component-library").then((m) => m.ComponentLibrarySection)
-);
 
 const FAQS = [
   { q: "Does it work with Next.js App Router?",  a: "Yes. Add transpilePackages: ['@stealshadow/ui'] to your next.config.ts. All interactive components already include 'use client'; wrap providers in a client boundary." },
@@ -32,8 +28,8 @@ export default function HomePage() {
       <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-zinc-100 dark:border-zinc-800/70 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl">
         <div className="mx-auto flex h-full max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
           <Link href="/" className="shrink-0">
-            <Image src="/logo.png" alt="Steal Shadow" width={662} height={151} className="h-8 w-auto dark:hidden" style={{ width: "auto" }} quality={100} priority />
-            <Image src="/logo-icon.png" alt="Steal Shadow" width={662} height={151} className="hidden dark:block h-8 w-auto" style={{ width: "auto" }} quality={100} priority />
+            <Image src="/logo.png" alt="Steal Shadow" width={662} height={151} className="h-8 w-auto dark:hidden" style={{ width: "auto" }} priority />
+            <Image src="/logo-icon.png" alt="Steal Shadow" width={662} height={151} className="hidden dark:block h-8 w-auto" style={{ width: "auto" }} loading="lazy" />
           </Link>
           <nav className="hidden md:flex items-center gap-0.5">
             {([["Docs","/docs"],["Components","/docs/components"],["Animations","/docs/animations"],["AI","/docs/ai"]] as [string,string][]).map(([l,h]) => (
@@ -404,7 +400,7 @@ export default function HomePage() {
       <MarqueeStrip />
 
       {/* COMPONENT LIBRARY: lazy loaded, below fold */}
-      <ComponentLibrarySection />
+      <ComponentLibraryLazy />
 
       {/* FAQ */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -435,7 +431,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:40px_40px]" />
             </div>
             <div className="relative">
-              <Image src="/logo-icon.png" alt="Steal Shadow" width={662} height={151} className="mx-auto mb-8 h-10 w-auto" style={{ width: "auto" }} quality={100} />
+              <Image src="/logo-icon.png" alt="Steal Shadow" width={662} height={151} className="mx-auto mb-8 h-10 w-auto" style={{ width: "auto" }} />
               <h2 className="mb-3 text-3xl font-black tracking-tight text-white sm:text-4xl">Start building today.</h2>
               <p className="mx-auto mb-10 max-w-sm text-sm text-zinc-400">One install. 45+ components. No paywalls, no tiers, no lock-in.</p>
               <div className="mb-8 flex justify-center">
@@ -461,8 +457,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <Link href="/" className="mb-4 inline-block">
-              <Image src="/logo.png" alt="Steal Shadow" width={662} height={151} className="h-7 w-auto dark:hidden" style={{ width: "auto" }} quality={100} />
-              <Image src="/logo-icon.png" alt="Steal Shadow" width={662} height={151} className="hidden dark:block h-7 w-auto" style={{ width: "auto" }} quality={100} />
+              <Image src="/logo.png" alt="Steal Shadow" width={662} height={151} className="h-7 w-auto dark:hidden" style={{ width: "auto" }} loading="lazy" />
+              <Image src="/logo-icon.png" alt="Steal Shadow" width={662} height={151} className="hidden dark:block h-7 w-auto" style={{ width: "auto" }} loading="lazy" />
             </Link>
             <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
               Open source React component library. Animated, accessible, styling-agnostic.

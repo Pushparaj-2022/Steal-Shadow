@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { ComponentPreview } from "@/components/docs/ComponentPreview";
 import { PropsTable } from "@/components/docs/PropsTable";
 import { Search, Settings, User, FileText, LogOut, Zap } from "lucide-react";
+import { CommandPalette, useCommandPalette, type CommandItem } from "@animui/ui";
 
 const BASIC_CODE = `import { CommandPalette, useCommandPalette } from "@animui/ui";
 import { Settings, User, FileText } from "lucide-react";
@@ -75,16 +75,16 @@ const ITEM_PROPS = [
   { name: "onSelect", type: "() => void", default: "—", description: "Action to run when selected." },
 ];
 
-const COMMANDS = [
-  { id: "profile", label: "Go to profile", desc: "View your public profile", icon: <User className="h-4 w-4" />, group: "Navigation", shortcut: ["G","P"] },
-  { id: "settings", label: "Open settings", desc: "Manage account preferences", icon: <Settings className="h-4 w-4" />, group: "Navigation", shortcut: ["G","S"] },
-  { id: "docs", label: "Documentation", desc: "Read the component docs", icon: <FileText className="h-4 w-4" />, group: "Navigation" },
-  { id: "upgrade", label: "Upgrade plan", desc: "Unlock premium features", icon: <Zap className="h-4 w-4" />, group: "Account" },
-  { id: "logout", label: "Sign out", icon: <LogOut className="h-4 w-4" />, group: "Account" },
+const COMMANDS: CommandItem[] = [
+  { id: "profile", label: "Go to profile", description: "View your public profile", icon: <User className="h-4 w-4" />, group: "Navigation", shortcut: ["G","P"], onSelect: () => {} },
+  { id: "settings", label: "Open settings", description: "Manage account preferences", icon: <Settings className="h-4 w-4" />, group: "Navigation", shortcut: ["G","S"], onSelect: () => {} },
+  { id: "docs", label: "Documentation", description: "Read the component docs", icon: <FileText className="h-4 w-4" />, group: "Navigation", onSelect: () => {} },
+  { id: "upgrade", label: "Upgrade plan", description: "Unlock premium features", icon: <Zap className="h-4 w-4" />, group: "Account", onSelect: () => {} },
+  { id: "logout", label: "Sign out", icon: <LogOut className="h-4 w-4" />, group: "Account", onSelect: () => {} },
 ];
 
 export default function CommandPaletteDocsPage() {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen, close } = useCommandPalette();
 
   return (
     <div className="space-y-10">
@@ -121,50 +121,7 @@ export default function CommandPaletteDocsPage() {
             </button>
           </div>
 
-          {open && (
-            <div className="fixed inset-0 z-50">
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setOpen(false)} />
-              <div className="absolute inset-0 flex items-start justify-center pt-[15vh] px-4 pointer-events-none">
-                <div className="pointer-events-auto w-full max-w-xl rounded-2xl border border-neutral-200 bg-white shadow-2xl overflow-hidden">
-                  <div className="flex items-center gap-3 border-b border-neutral-100 px-4 py-3.5">
-                    <Search className="h-4 w-4 shrink-0 text-neutral-400" />
-                    <input autoFocus placeholder="Search commands…" className="flex-1 bg-transparent text-sm text-neutral-900 placeholder:text-neutral-400 outline-none" />
-                    <kbd className="text-[10px] font-mono border border-neutral-200 rounded px-1.5 py-0.5 text-neutral-400">ESC</kbd>
-                  </div>
-                  <div className="max-h-80 overflow-y-auto py-2">
-                    {Object.entries(COMMANDS.reduce((acc, c) => { (acc[c.group]??=[]).push(c); return acc; }, {} as Record<string, typeof COMMANDS>)).map(([group, items]) => (
-                      <div key={group}>
-                        <p className="px-4 pb-1 pt-3 text-[10px] font-bold uppercase tracking-widest text-neutral-400">{group}</p>
-                        {items.map((item, j) => (
-                          <button key={item.id} onClick={() => setOpen(false)}
-                            className={`flex w-full items-center gap-3 rounded-lg mx-1 px-3 py-2.5 text-left hover:bg-neutral-100 transition-colors ${j===0 && group==="Navigation" ? "bg-neutral-100":""}`}
-                            style={{ width: "calc(100% - 8px)" }}>
-                            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-100 text-neutral-500">{item.icon}</span>
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-semibold text-neutral-800">{item.label}</p>
-                              {"desc" in item && <p className="text-xs text-neutral-400">{(item as {desc: string}).desc}</p>}
-                            </div>
-                            {"shortcut" in item && (
-                              <div className="flex gap-0.5">
-                                {((item as {shortcut: string[]}).shortcut).map((k: string, ki: number) => (
-                                  <kbd key={ki} className="rounded border border-neutral-200 px-1.5 py-0.5 text-[10px] font-mono text-neutral-400">{k}</kbd>
-                                ))}
-                              </div>
-                            )}
-                          </button>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="border-t border-neutral-100 px-4 py-2 flex items-center gap-3 text-[10px] text-neutral-400">
-                    <span><kbd className="font-mono">↑↓</kbd> navigate</span>
-                    <span><kbd className="font-mono">↵</kbd> select</span>
-                    <span><kbd className="font-mono">esc</kbd> close</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          <CommandPalette open={open} onClose={close} items={COMMANDS} />
         </ComponentPreview>
       </section>
 

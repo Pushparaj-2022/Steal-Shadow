@@ -4,7 +4,10 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@animui/ui"],
   devIndicators: false,
   images: {
-    qualities: [75, 100],
+    qualities: [75],
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react", "@animui/ui"],
   },
 };
 

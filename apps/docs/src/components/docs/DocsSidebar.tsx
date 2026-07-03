@@ -24,7 +24,6 @@ export function DocsSidebar() {
             alt="Steal Shadow"
             height={151}
             width={662}
-            quality={100}
             className="h-7 w-auto"
             priority
           />

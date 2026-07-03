@@ -48,7 +48,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <Image src="/logo.png" alt="Steal Shadow" height={151} width={662} className="h-7 w-auto" quality={100} />
+              <Image src="/logo.png" alt="Steal Shadow" height={151} width={662} className="h-7 w-auto" loading="lazy" />
             </Link>
             <p className="text-sm text-neutral-500 leading-relaxed max-w-xs mb-2">
               Open source React component library. Motion-first, accessible, zero lock-in.

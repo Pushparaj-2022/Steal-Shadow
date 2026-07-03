@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Bot, Grid2x2 } from "lucide-react";
 import { IcArrow, IcLayers, IcCode, IcStar, IcCheck, IcSearch, IcSparkle } from "@/components/icons";
 import {
   Dock, type DockItem,
@@ -11,10 +10,6 @@ import {
   ShimmerButton,
   BorderBeam,
   SparklesText,
-  Chat,
-  type ChatMessage,
-  Skeleton,
-  Button,
 } from "@animui/ui";
 
 /* ---- Dock ---- */
@@ -104,62 +99,6 @@ const SHOWCASE = [
   { name: "SparklesText", category: "Animation", desc: "Text with looping, randomly-placed sparkle particles.", href: "/docs/animations/sparkles-text", demo: <SparklesTextDemo /> },
 ];
 
-/* ---- Category cards ---- */
-function ChatCategoryDemo() {
-  const messages: ChatMessage[] = [
-    { id: "1", role: "assistant", content: "How can I help you today?" },
-  ];
-  return (
-    <div className="w-full rounded-xl bg-zinc-100 p-3 dark:bg-zinc-800/60">
-      <Chat
-        messages={messages}
-        onSend={() => {}}
-        className="h-auto border-none bg-transparent p-0 shadow-none"
-      />
-      <div className="mt-2 flex justify-end">
-        <Button size="sm" variant="gradient">Build a dashboard</Button>
-      </div>
-    </div>
-  );
-}
-
-function OverlayCategoryDemo() {
-  return (
-    <div className="w-full rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
-      <Skeleton variant="line" lines={2} className="mb-4" />
-      <div className="flex justify-end gap-2">
-        <Button size="sm" variant="outline">Cancel</Button>
-        <Button size="sm" variant="danger">Confirm</Button>
-      </div>
-    </div>
-  );
-}
-
-const CATEGORIES = [
-  {
-    name: "AI Components",
-    titleColor: "text-zinc-900 dark:text-white",
-    icon: <Bot className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />,
-    iconBg: "bg-indigo-100 dark:bg-indigo-500/15",
-    badge: "bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400",
-    count: "6 components",
-    items: "Chat, StreamingText, CodeBlock, PromptEditor, ToolCallViewer, AgentStatus",
-    href: "/docs/ai",
-    demo: <ChatCategoryDemo />,
-  },
-  {
-    name: "Overlays & Feedback",
-    titleColor: "text-blue-600 dark:text-blue-400",
-    icon: <Grid2x2 className="h-5 w-5 text-rose-600 dark:text-rose-400" />,
-    iconBg: "bg-rose-100 dark:bg-rose-500/15",
-    badge: "bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-400",
-    count: "9 components",
-    items: "Modal, Drawer, Toast, Tooltip, Popover, Skeleton, Progress, Spinner, Alert",
-    href: "/docs/overlays",
-    demo: <OverlayCategoryDemo />,
-  },
-];
-
 export function ComponentLibrarySection() {
   return (
     <section className="border-b border-zinc-100 py-24 px-4 sm:px-6 lg:px-8 dark:border-zinc-800">
@@ -191,29 +130,6 @@ export function ComponentLibrarySection() {
 
               <h3 className="mb-1 text-base font-bold text-zinc-900 dark:text-white">{item.name}</h3>
               <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {CATEGORIES.map((cat) => (
-            <div
-              key={cat.name}
-              className="flex flex-col rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
-            >
-              <div className="mb-4 flex items-center justify-between">
-                <span className={`flex h-9 w-9 items-center justify-center rounded-full ${cat.iconBg}`}>
-                  {cat.icon}
-                </span>
-                <Link href={cat.href} className={`rounded-full px-3 py-1 text-xs font-semibold transition-opacity hover:opacity-80 ${cat.badge}`}>
-                  {cat.count}
-                </Link>
-              </div>
-              <h3 className={`mb-1 text-lg font-black ${cat.titleColor}`}>{cat.name}</h3>
-              <p className="mb-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{cat.items}</p>
-              <div className="mt-auto flex items-center justify-center rounded-xl border border-zinc-100 bg-zinc-50/60 p-4 dark:border-zinc-800 dark:bg-zinc-950/40">
-                {cat.demo}
-              </div>
             </div>
           ))}
         </div>
