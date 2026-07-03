@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Tailwind v4 skips anything covered by .gitignore, which excludes node_modules
+   (and therefore the @stealshadow/ui workspace package symlinked into it). Without
+   this, every class name used inside the real UI components never gets scanned,
+   so they render with real data but zero generated CSS. */
+@source "../../../../packages/ui/dist/**/*.{js,mjs}";
+
 /* Class-based dark mode for Tailwind v4 */
 @variant dark (&:where(.dark, .dark *));
 
@@ -81,6 +87,11 @@
 @keyframes ping-dot {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.4; }
+}
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(0.85) translateY(10px); }
+  65%  { opacity: 1; transform: scale(1.03) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @layer utilities {

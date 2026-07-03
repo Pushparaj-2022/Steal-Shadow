@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalPassThroughEnv": ["PATHEXT", "COMSPEC", "SystemRoot", "TEMP", "TMP"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GitBranch, Share2, Play } from "lucide-react";
+import { Share2, Play } from "lucide-react";
+import { IcGithub } from "@/components/icons";
 
 const GITHUB = "https://github.com/Pushparaj-2022/Steal-Shadow";
 
@@ -35,7 +36,7 @@ const FOOTER_COLUMNS = [
 ];
 
 const SOCIAL_LINKS = [
-  { Icon: GitBranch, href: GITHUB, label: "GitHub" },
+  { Icon: IcGithub, href: GITHUB, label: "GitHub" },
   { Icon: Share2, href: "https://twitter.com/stealshadow", label: "Twitter" },
   { Icon: Play, href: "https://youtube.com/@stealshadow", label: "YouTube" },
 ];
@@ -96,7 +97,7 @@ export function Footer() {
             © 2026 Steal Shadow. Released under the MIT License.
           </p>
           <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="text-xs text-neutral-400 hover:text-neutral-700 transition-colors flex items-center gap-1.5">
-            <GitBranch className="h-3 w-3" />
+            <IcGithub className="h-3 w-3" />
             github.com/Pushparaj-2022/Steal-Shadow
           </a>
         </div>

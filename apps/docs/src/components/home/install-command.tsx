@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { IcCopy, IcCheckDbl } from "@/components/icons";
 
-export function InstallCommand() {
+export function InstallCommand({ variant = "default" }: { variant?: "default" | "bare" }) {
   const [copied, setCopied] = useState(false);
   const cmd = "npm install @stealshadow/ui motion";
   const copy = () => {
@@ -11,10 +11,13 @@ export function InstallCommand() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  const shell = variant === "bare"
+    ? "px-4 py-2.5"
+    : "rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 px-5 py-3 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors";
   return (
     <button
       onClick={copy}
-      className="group inline-flex items-center gap-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 px-5 py-3 font-mono text-sm hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors text-left"
+      className={`group inline-flex items-center gap-3 font-mono text-sm text-left ${shell}`}
     >
       <span className="text-zinc-400">$</span>
       <span className="text-emerald-600 dark:text-emerald-400">npm install</span>
