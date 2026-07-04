@@ -45,143 +45,241 @@ Whether you're creating dashboards, landing pages, SaaS products, AI tools, port
 
 Designed with simplicity, accessibility, animation, and performance in mind.
 
----
+# 🚀 Installation
 
-# ⚡ Why Steal Shadow UI?
+Install Steal Shadow and its required peer dependency:
 
-✅ Beautiful Components
-
-✅ Smooth Animations
-
-✅ Accessible by Default
-
-✅ Fully Responsive
-
-✅ TypeScript Support
-
-✅ Dark Mode Ready
-
-✅ Open Source
-
-✅ Lightweight
-
-✅ Production Ready
-
----
-
-# 🎯 Features
-
-| Feature | Description |
-|----------|-------------|
-| 🎨 Modern Design | Clean, minimal and elegant UI components |
-| ⚡ High Performance | Optimized for speed |
-| 📱 Responsive | Works perfectly on all devices |
-| 🌙 Dark Mode | Supports dark & light themes |
-| ♿ Accessibility | Keyboard navigation & ARIA support |
-| 🧩 Reusable | Drop-in components |
-| 🎬 Animations | Beautiful motion effects |
-| 🔥 Easy Installation | Install only what you need |
-
-
-Installation
+```bash
 npm install @stealshadow/ui lucide-react
-Requires: React 18+, Tailwind CSS 3+, lucide-react 1+
+```
 
-Setup
-1. Add CSS tokens (optional but recommended)
-// app/layout.tsx or _app.tsx
+### Requirements
+
+- React 18+
+- Tailwind CSS 3+
+- lucide-react 1+
+
+---
+
+# ⚡ Quick Start
+
+## 1. Import the Styles
+
+Import the default stylesheet once in your application.
+
+```tsx
+// app/layout.tsx or pages/_app.tsx
 import "@stealshadow/ui/styles";
-2. Wrap your app with ThemeProvider
+```
+
+---
+
+## 2. Wrap Your Application
+
+Wrap your application with the `ThemeProvider`.
+
+```tsx
 import { ThemeProvider } from "@stealshadow/ui";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ThemeProvider>
       {children}
     </ThemeProvider>
   );
 }
-3. Import and use components
-import { Button, Card, Badge } from "@stealshadow/ui";
+```
+
+---
+
+## 3. Start Using Components
+
+```tsx
+import { Badge, Button, Card } from "@stealshadow/ui";
 
 export default function Example() {
   return (
     <Card>
       <Badge color="green">New</Badge>
-      <Button variant="primary">Get started</Button>
+
+      <Button variant="primary">
+        Get Started
+      </Button>
     </Card>
   );
 }
-Components
-Primitives
-Button · Card · Input · Badge · Avatar · Chip · Combobox · Breadcrumb · OTPInput · Rating
-
-Forms
-Checkbox · Switch · RadioGroup · Select · Textarea · RangeSlider · SmartForm
-
-Overlays
-Modal · Drawer · Tooltip · Popover · ToastProvider
-
-Feedback
-Spinner · Skeleton · Progress · CircularProgress · Alert
-
-Layout
-Accordion · Tabs · Stepper · EmptyState · CommandPalette · PageTransition
-
-Data
-DataTable · KanbanBoard · Calendar · FileUploader · RichEditor · Timeline · Pagination
-
-Animations
-BlurText · GlitchText · MorphText · TypewriterText · SplitText · RevealText · CountUp · MagneticButton · FloatingElements · ScrollReveal · ParticleField · AnimatedIcon
-
-Effects
-GlassCard · LiquidGlass · ShimmerButton · SpotlightCard · AuroraBackground · NeonGlow · GradientBorder · BorderBeam · Meteors
-
-Special
-Dock · TiltCard · FlipCard · InfiniteMarquee · SwipeCards · NumberFlow · WaveText · TextScramble · MultiSelect · ContextMenu · GlowingOrb · PricingTable
-
-AI
-Chat · CodeBlock · StreamingText · PromptEditor · AgentStatus · ToolCallViewer
-
-Tailwind CSS
-Components use Tailwind utility classes. Add the package to your tailwind.config.js content paths:
-
-// tailwind.config.js
-module.exports = {
-  content: [
-    "./src/**/*.{ts,tsx}",
-    "./node_modules/@stealshadow/ui/dist/**/*.js",  // ← add this
-  ],
-
+```
 
 ---
 
-# 🧩 Components
+# 📦 Components
 
-Current library includes components like:
+## 🧩 Primitives
 
-- Buttons
-- Cards
-- Dialogs
-- Forms
-- Inputs
-- Badges
-- Tooltips
+- Button
+- Card
+- Input
+- Badge
+- Avatar
+- Chip
+- Combobox
+- Breadcrumb
+- OTPInput
+- Rating
+
+---
+
+## 📝 Forms
+
+- Checkbox
+- Switch
+- RadioGroup
+- Select
+- Textarea
+- RangeSlider
+- SmartForm
+
+---
+
+## 🎭 Overlays
+
+- Modal
+- Drawer
+- Tooltip
+- Popover
+- ToastProvider
+
+---
+
+## 💬 Feedback
+
+- Spinner
+- Skeleton
+- Progress
+- CircularProgress
+- Alert
+
+---
+
+## 📐 Layout
+
+- Accordion
 - Tabs
-- Popovers
-- Accordions
-- Navigation
-- Hero Sections
-- Dashboard Widgets
-- Loading Animations
-- Skeletons
-- AI Components
-- Pricing Sections
-- Feature Cards
-- Authentication UI
-- Data Tables
-- And many more...
+- Stepper
+- EmptyState
+- CommandPalette
+- PageTransition
 
+---
+
+## 📊 Data Display
+
+- DataTable
+- KanbanBoard
+- Calendar
+- FileUploader
+- RichEditor
+- Timeline
+- Pagination
+
+---
+
+## ✨ Animated Components
+
+- BlurText
+- GlitchText
+- MorphText
+- TypewriterText
+- SplitText
+- RevealText
+- CountUp
+- MagneticButton
+- FloatingElements
+- ScrollReveal
+- ParticleField
+- AnimatedIcon
+
+---
+
+## 🌈 Visual Effects
+
+- GlassCard
+- LiquidGlass
+- ShimmerButton
+- SpotlightCard
+- AuroraBackground
+- NeonGlow
+- GradientBorder
+- BorderBeam
+- Meteors
+
+---
+
+## 🎨 Advanced Components
+
+- Dock
+- TiltCard
+- FlipCard
+- InfiniteMarquee
+- SwipeCards
+- NumberFlow
+- WaveText
+- TextScramble
+- MultiSelect
+- ContextMenu
+- GlowingOrb
+- PricingTable
+
+---
+
+## 🤖 AI Components
+
+- Chat
+- CodeBlock
+- StreamingText
+- PromptEditor
+- AgentStatus
+- ToolCallViewer
+
+---
+
+# 🎨 Tailwind CSS Configuration
+
+Add the compiled package to your Tailwind content paths so Tailwind can detect all utility classes.
+
+```js
+// tailwind.config.js
+
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@stealshadow/ui/dist/**/*.js",
+  ],
+};
+```
+
+---
+
+# 💙 You're Ready
+
+```tsx
+import { Button } from "@stealshadow/ui";
+
+export default function App() {
+  return (
+    <Button>
+      Hello, Steal Shadow!
+    </Button>
+  );
+}
+```
+
+Build beautiful, animated interfaces with production-ready React components.
 
 # 🤝 Contributing
 
