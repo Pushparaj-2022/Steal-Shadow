@@ -83,25 +83,76 @@ Designed with simplicity, accessibility, animation, and performance in mind.
 | 🔥 Easy Installation | Install only what you need |
 
 
-# Quick Start
+Installation
+npm install @stealshadow/ui lucide-react
+Requires: React 18+, Tailwind CSS 3+, lucide-react 1+
 
-## Installation
+Setup
+1. Add CSS tokens (optional but recommended)
+// app/layout.tsx or _app.tsx
+import "@stealshadow/ui/styles";
+2. Wrap your app with ThemeProvider
+import { ThemeProvider } from "@stealshadow/ui";
 
-```bash
-npm install @stealshadow/ui
-```
-
-```tsx
-import { Button } from "@stealshadow/ui";
-
-export default function App() {
+export default function RootLayout({ children }) {
   return (
-    <Button>
-      Get Started
-    </Button>
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
   );
 }
-```
+3. Import and use components
+import { Button, Card, Badge } from "@stealshadow/ui";
+
+export default function Example() {
+  return (
+    <Card>
+      <Badge color="green">New</Badge>
+      <Button variant="primary">Get started</Button>
+    </Card>
+  );
+}
+Components
+Primitives
+Button · Card · Input · Badge · Avatar · Chip · Combobox · Breadcrumb · OTPInput · Rating
+
+Forms
+Checkbox · Switch · RadioGroup · Select · Textarea · RangeSlider · SmartForm
+
+Overlays
+Modal · Drawer · Tooltip · Popover · ToastProvider
+
+Feedback
+Spinner · Skeleton · Progress · CircularProgress · Alert
+
+Layout
+Accordion · Tabs · Stepper · EmptyState · CommandPalette · PageTransition
+
+Data
+DataTable · KanbanBoard · Calendar · FileUploader · RichEditor · Timeline · Pagination
+
+Animations
+BlurText · GlitchText · MorphText · TypewriterText · SplitText · RevealText · CountUp · MagneticButton · FloatingElements · ScrollReveal · ParticleField · AnimatedIcon
+
+Effects
+GlassCard · LiquidGlass · ShimmerButton · SpotlightCard · AuroraBackground · NeonGlow · GradientBorder · BorderBeam · Meteors
+
+Special
+Dock · TiltCard · FlipCard · InfiniteMarquee · SwipeCards · NumberFlow · WaveText · TextScramble · MultiSelect · ContextMenu · GlowingOrb · PricingTable
+
+AI
+Chat · CodeBlock · StreamingText · PromptEditor · AgentStatus · ToolCallViewer
+
+Tailwind CSS
+Components use Tailwind utility classes. Add the package to your tailwind.config.js content paths:
+
+// tailwind.config.js
+module.exports = {
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@stealshadow/ui/dist/**/*.js",  // ← add this
+  ],
+
 
 ---
 
