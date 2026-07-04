@@ -50,7 +50,7 @@ Designed with simplicity, accessibility, animation, and performance in mind.
 Install Steal Shadow and its required peer dependency:
 
 ```bash
-npm install @stealshadow/ui lucide-react
+npm install @stealshadow/ui  
 ```
 
 ### Requirements
