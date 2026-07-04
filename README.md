@@ -16,9 +16,7 @@ A collection of beautifully designed, animated, accessible and production-ready 
 <img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
 <img src="https://img.shields.io/badge/Open_Source-MIT-success?style=for-the-badge"/>
-<img src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPOSITORY?style=for-the-badge"/>
-<img src="https://img.shields.io/github/forks/YOUR_USERNAME/YOUR_REPOSITORY?style=for-the-badge"/>
-
+ 
 </p>
 
 <p>
