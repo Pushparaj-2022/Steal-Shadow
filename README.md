@@ -27,7 +27,7 @@ A collection of beautifully designed, animated, accessible and production-ready 
 <img src="https://img.shields.io/badge/🌐_Website-Live-blue?style=for-the-badge"/>
 </a>
 
-<a href="github.com/Pushparaj-2022/Steal-Shadow">
+ 
 <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github"/>
 </a>
 
