@@ -83,9 +83,13 @@ Designed with simplicity, accessibility, animation, and performance in mind.
 | 🔥 Easy Installation | Install only what you need |
 
 
-# 🚀 Quick Start
+# Quick Start
 
-npm install @stealshadow
+## Installation
+
+```bash
+npm install @stealshadow/ui
+```
 
 ```tsx
 import { Button } from "@stealshadow/ui";
