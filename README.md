@@ -85,6 +85,8 @@ Designed with simplicity, accessibility, animation, and performance in mind.
 
 # 🚀 Quick Start
 
+npm install @stealshadow
+
 ```tsx
 import { Button } from "@stealshadow/ui";
 
