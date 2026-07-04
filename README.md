@@ -1,141 +1,216 @@
-# AnimUI
+ <div align="center">
 
-A React component library built around one idea: animation shouldn't be an afterthought you bolt on later. Every component in here — buttons, cards, modals, data tables, whatever — comes with motion baked in from the start, using [Motion](https://motion.dev) under the hood.
+# 🚀 Steal Shadow UI
 
-It started as a personal collection of components I kept rebuilding across projects, and turned into a full library with 80+ pieces covering pretty much everything you'd need for a modern UI: form controls, overlays, layout primitives, data-heavy components, and a set of standalone animation/effect components for the flashier stuff.
+### Build beautiful interfaces faster with modern React components.
 
-**Live demo:** https://steal-shadow.vercel.app/
+<p>
+A collection of beautifully designed, animated, accessible and production-ready React components built for modern web applications.
+</p>
 
-## What's in the repo
+<p>
 
-It's a small monorepo, managed with Turborepo + npm workspaces:
+<img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
+<img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js"/>
+<img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/Open_Source-MIT-success?style=for-the-badge"/>
+<img src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPOSITORY?style=for-the-badge"/>
+<img src="https://img.shields.io/github/forks/YOUR_USERNAME/YOUR_REPOSITORY?style=for-the-badge"/>
 
-```
-Steal-Shadow/
-├── apps/docs/       Next.js site — the live demo and component playground
-├── packages/ui/     @animui/ui, the actual component library
-└── public/          logos, favicons, shared images
-```
+</p>
 
-`packages/ui` is the part that gets published/consumed; `apps/docs` just exists to showcase it and give people something to copy-paste from.
+<p>
 
-## Why you might want this
+<a href="https://steal-shadow.vercel.app">
+<img src="https://img.shields.io/badge/🌐_Website-Live-blue?style=for-the-badge"/>
+</a>
 
-- **80+ components**, from basic primitives up through data tables, kanban boards, calendars, and a rich text editor
-- **Animations are part of the component**, not a wrapper you add afterward — powered by Motion
-- **Tailwind-based styling**, so it's easy to theme or override instead of fighting a CSS-in-JS system
-- **Written in TypeScript** end to end, with proper `.d.ts` output
-- **Accessible markup** — keyboard nav and focus handling are treated as requirements, not nice-to-haves
-- Ships as ESM and CJS via `tsup`, so it works in most setups without config gymnastics
+<a href="github.com/Pushparaj-2022/Steal-Shadow">
+<img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github"/>
+</a>
 
-## Component catalog
+<a href="ithub.com/Pushparaj-2022/Steal-Shadow">
+<img src="https://img.shields.io/badge/Issues-Welcome-orange?style=for-the-badge"/>
+</a>
 
-| Category | What's in it |
-|---|---|
-| Primitives | Button, Card, Input, Badge, Avatar, Chip, Combobox, Breadcrumb, OTPInput, Rating |
-| Forms | Checkbox, Switch, RadioGroup, Select, Textarea, RangeSlider, SmartForm |
-| Overlays | Modal, Drawer, Tooltip, Popover, ToastProvider |
-| Feedback | Spinner, Skeleton, Progress, CircularProgress, Alert |
-| Layout | Accordion, Tabs, Stepper, EmptyState, CommandPalette, PageTransition |
-| Data | DataTable, KanbanBoard, Calendar, FileUploader, RichEditor, Timeline, Pagination |
-| Animations | BlurText, GlitchText, MorphText, TypewriterText, SplitText, RevealText, CountUp, MagneticButton, FloatingElements, ScrollReveal, ParticleField, AnimatedIcon |
-| Effects | GlassCard, LiquidGlass, ShimmerButton, SpotlightCard, AuroraBackground, NeonGlow, GradientBorder, BorderBeam, Meteors |
-| Special | Dock, TiltCard, FlipCard, InfiniteMarquee, SwipeCards, NumberFlow, WaveText, TextScramble, MultiSelect, ContextMenu, GlowingOrb, PricingTable |
-| AI | Chat, CodeBlock, StreamingText, PromptEditor, AgentStatus, ToolCallViewer |
+</p>
 
-You can see all of these live, with code you can copy, at [steal-shadow.vercel.app](https://steal-shadow.vercel.app/).
+</div>
 
-## Stack
+---
 
-React 19, TypeScript, Tailwind CSS, Motion for animation, Next.js for the docs site, Turborepo to tie the workspaces together, and tsup for bundling the library.
+# ✨ Preview
 
-## Running it locally
+<p align="center">
+<img src="./public/banner.png" width="100%" alt="Steal Shadow UI Preview"/>
+</p>
 
-You'll need Node 20+ and npm 11+.
+---
 
-```bash
-git clone https://github.com/Pushparaj-2022/Steal-Shadow.git
-cd Steal-Shadow
-npm install
-npm run dev
-```
+# 📖 About
 
-That spins up the docs app at `http://localhost:3000`.
+Steal Shadow UI is a modern open-source React component library designed to help developers build beautiful interfaces without reinventing the wheel.
 
-Other useful scripts, all run from the root:
+Whether you're creating dashboards, landing pages, SaaS products, AI tools, portfolios, or enterprise applications, the library provides reusable components that are easy to customize and production-ready.
 
-| Command | What it does |
-|---|---|
-| `npm run build` | Builds the library and the docs app (via Turborepo) |
-| `npm run lint` | Lints everything |
-| `npm run type-check` | Type-checks everything |
-| `npm run clean` | Wipes build output |
+Designed with simplicity, accessibility, animation, and performance in mind.
 
-## Using the library in your own project
+---
 
-```bash
-npm install @animui/ui lucide-react
-```
+# ⚡ Why Steal Shadow UI?
 
-You'll need React 18+, Tailwind 3+, and `lucide-react` — that last one is a hard dependency, not optional.
+✅ Beautiful Components
 
-Pull in the base styles somewhere near the top of your app:
+✅ Smooth Animations
+
+✅ Accessible by Default
+
+✅ Fully Responsive
+
+✅ TypeScript Support
+
+✅ Dark Mode Ready
+
+✅ Open Source
+
+✅ Lightweight
+
+✅ Production Ready
+
+---
+
+# 🎯 Features
+
+| Feature | Description |
+|----------|-------------|
+| 🎨 Modern Design | Clean, minimal and elegant UI components |
+| ⚡ High Performance | Optimized for speed |
+| 📱 Responsive | Works perfectly on all devices |
+| 🌙 Dark Mode | Supports dark & light themes |
+| ♿ Accessibility | Keyboard navigation & ARIA support |
+| 🧩 Reusable | Drop-in components |
+| 🎬 Animations | Beautiful motion effects |
+| 🔥 Easy Installation | Install only what you need |
+
+
+# 🚀 Quick Start
 
 ```tsx
-import "@animui/ui/styles";
-```
+import { Button } from "@stealshadow/ui";
 
-Wrap your app in the `ThemeProvider`:
-
-```tsx
-import { ThemeProvider } from "@animui/ui";
-
-export default function RootLayout({ children }) {
-  return <ThemeProvider>{children}</ThemeProvider>;
-}
-```
-
-Then just import what you need:
-
-```tsx
-import { Button, Card, Badge } from "@animui/ui";
-
-export default function Example() {
+export default function App() {
   return (
-    <Card>
-      <Badge color="green">New</Badge>
-      <Button variant="primary">Get started</Button>
-    </Card>
+    <Button>
+      Get Started
+    </Button>
   );
 }
 ```
 
-One more thing — add the package to your Tailwind content paths, otherwise the utility classes used inside the components will get purged:
+---
 
-```js
-// tailwind.config.js
-module.exports = {
-  content: [
-    "./src/**/*.{ts,tsx}",
-    "./node_modules/@animui/ui/dist/**/*.js",
-  ],
-};
+# 🧩 Components
+
+Current library includes components like:
+
+- Buttons
+- Cards
+- Dialogs
+- Forms
+- Inputs
+- Badges
+- Tooltips
+- Tabs
+- Popovers
+- Accordions
+- Navigation
+- Hero Sections
+- Dashboard Widgets
+- Loading Animations
+- Skeletons
+- AI Components
+- Pricing Sections
+- Feature Cards
+- Authentication UI
+- Data Tables
+- And many more...
+
+
+# 🤝 Contributing
+
+We welcome contributions from everyone.
+
+1. Fork the repository
+
+2. Create your feature branch
+
+```bash
+git checkout -b feature/amazing-feature
 ```
 
-More detail on individual components lives in [`packages/ui/README.md`](./packages/ui/README.md) and on the [docs site](https://steal-shadow.vercel.app/).
+3. Commit your changes
 
-## Contributing
+```bash
+git commit -m "Added amazing feature"
+```
 
-Happy to take PRs. The general flow:
+4. Push your branch
 
-1. Fork it, branch off `main`
-2. `npm install` at the root
-3. Make your change in `packages/ui` (the library) or `apps/docs` (demos/docs)
-4. Make sure `npm run lint` and `npm run type-check` are clean
-5. Open a PR with a short description of what and why
+```bash
+git push origin feature/amazing-feature
+```
 
-For anything bigger than a small fix, open an issue first so we're not working at cross purposes.
+5. Open a Pull Request
 
-## License
+---
 
-MIT — see [LICENSE](./LICENSE).
+# 🐞 Found a Bug?
+
+Please create an issue with:
+
+- Description
+- Screenshots
+- Steps to reproduce
+- Expected behavior
+
+---
+
+# ⭐ Show Your Support
+
+If this project helped you, please consider giving it a ⭐ on GitHub.
+
+It helps the project grow and motivates future development.
+
+
+
+---
+
+# ❤️ Community
+
+- Report Issues
+- Feature Requests
+- Discussions
+- Pull Requests
+
+Everyone is welcome.
+
+---
+
+# 📜 License
+
+Distributed under the **MIT License**.
+
+See `LICENSE` for more information.
+
+---
+
+<div align="center">
+
+## ⭐ Build Faster. Design Better.
+
+Made with ❤️
+
+**Happy Coding! 🚀**
+
+</div>
