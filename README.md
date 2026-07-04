@@ -1,6 +1,6 @@
  <div align="center">
 
-# 🚀 Steal Shadow UI
+ <img src="[https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white](https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75)"/> 
 
 ### Build beautiful interfaces faster with modern React components.
 
@@ -43,7 +43,7 @@ A collection of beautifully designed, animated, accessible and production-ready 
 # ✨ Preview
 
 <p align="center">
-<img src="./public/banner.png" width="100%" alt="Steal Shadow UI Preview"/>
+<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75"/>
 </p>
 
 ---
