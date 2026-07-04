@@ -1,6 +1,9 @@
  <div align="center">
 
 ### Build beautiful interfaces faster with modern React components.
+<p align="center">
+<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75"/>
+</p>
 
 <p>
 A collection of beautifully designed, animated, accessible and production-ready React components built for modern web applications.
@@ -38,11 +41,9 @@ A collection of beautifully designed, animated, accessible and production-ready 
 
 ---
 
-# ✨ Preview
+ 
 
-<p align="center">
-<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=55"/>
-</p>
+
 
 ---
 
