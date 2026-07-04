@@ -40,6 +40,7 @@ export const NAV_CONFIG: NavSection[] = [
       { label: "Avatar Circles", href: "/docs/special/avatar-circles" },
       { label: "Confetti", href: "/docs/special/confetti" },
       { label: "Cursor Trail", href: "/docs/special/cursor-trail" },
+      { label: "Carousel", href: "/docs/special/carousel" },
     ],
   },
   {
@@ -81,6 +82,8 @@ export const NAV_CONFIG: NavSection[] = [
       { label: "Breadcrumb", href: "/docs/components/breadcrumb" },
       { label: "Combobox", href: "/docs/components/combobox" },
       { label: "Command Palette", href: "/docs/components/command-palette" },
+      { label: "Separator", href: "/docs/components/separator" },
+      { label: "Label", href: "/docs/components/label" },
     ],
   },
   {
@@ -90,6 +93,9 @@ export const NAV_CONFIG: NavSection[] = [
       { label: "Drawer", href: "/docs/overlays/drawer" },
       { label: "Popover", href: "/docs/overlays/popover" },
       { label: "Toast", href: "/docs/overlays/toast" },
+      { label: "Dropdown Menu", href: "/docs/overlays/dropdown-menu" },
+      { label: "Hover Card", href: "/docs/overlays/hover-card" },
+      { label: "Menubar", href: "/docs/overlays/menubar" },
     ],
   },
   {
@@ -126,6 +132,10 @@ export const NAV_CONFIG: NavSection[] = [
       { label: "Radio", href: "/docs/forms/radio" },
       { label: "Textarea", href: "/docs/forms/textarea" },
       { label: "Range Slider", href: "/docs/forms/range-slider" },
+      { label: "Slider", href: "/docs/forms/slider" },
+      { label: "Toggle", href: "/docs/forms/toggle" },
+      { label: "Toggle Group", href: "/docs/forms/toggle-group" },
+      { label: "Date Picker", href: "/docs/forms/date-picker" },
     ],
   },
   {
@@ -159,6 +169,11 @@ export const NAV_CONFIG: NavSection[] = [
       { label: "Empty State", href: "/docs/layout/empty-state" },
       { label: "Command Palette", href: "/docs/components/command-palette" },
       { label: "Scroll Progress", href: "/docs/layout/scroll-progress" },
+      { label: "Aspect Ratio", href: "/docs/layout/aspect-ratio" },
+      { label: "Scroll Area", href: "/docs/layout/scroll-area" },
+      { label: "Collapsible", href: "/docs/layout/collapsible" },
+      { label: "Navigation Menu", href: "/docs/layout/navigation-menu" },
+      { label: "Sidebar", href: "/docs/layout/sidebar" },
     ],
   },
   {

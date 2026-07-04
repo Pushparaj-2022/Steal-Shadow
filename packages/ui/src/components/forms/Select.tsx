@@ -193,9 +193,9 @@ export function Select({
                     )}
                   >
                     {opt.icon && <span className="shrink-0">{opt.icon}</span>}
-                    <div>
-                      <div>{opt.label}</div>
-                      {opt.description && <div className="text-xs text-neutral-400 mt-0.5">{opt.description}</div>}
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate">{opt.label}</div>
+                      {opt.description && <div className="text-xs text-neutral-400 mt-0.5 truncate">{opt.description}</div>}
                     </div>
                     {opt.value === value && (
                       <svg className="h-4 w-4 text-violet-600 ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

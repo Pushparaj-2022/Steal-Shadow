@@ -38,6 +38,8 @@ export type { BreadcrumbItem } from "./components/primitives/Breadcrumb";
 export { Chip } from "./components/primitives/Chip";
 export { OTPInput } from "./components/primitives/OTPInput";
 export { Rating } from "./components/primitives/Rating";
+export { Separator } from "./components/primitives/Separator";
+export { Label } from "./components/primitives/Label";
 
 // ─── Form Controls ───────────────────────────────────────────────────────────
 export { Checkbox } from "./components/forms/Checkbox";
@@ -53,6 +55,10 @@ export {
   FormSubmit,
   FormError,
 } from "./components/forms/SmartForm";
+export { Slider } from "./components/forms/Slider";
+export { Toggle, toggleVariants } from "./components/forms/Toggle";
+export { ToggleGroup, ToggleGroupItem } from "./components/forms/ToggleGroup";
+export { DatePicker } from "./components/forms/DatePicker";
 
 // ─── Overlay Components ──────────────────────────────────────────────────────
 export {
@@ -69,6 +75,10 @@ export {
 export { ToastProvider, useToast } from "./components/overlays/Toast";
 export { Tooltip } from "./components/overlays/Tooltip";
 export { Popover } from "./components/overlays/Popover";
+export { DropdownMenu } from "./components/overlays/DropdownMenu";
+export type { DropdownMenuItem } from "./components/overlays/DropdownMenu";
+export { HoverCard } from "./components/overlays/HoverCard";
+export { Menubar, MenubarMenu } from "./components/overlays/Menubar";
 
 // ─── Feedback Components ─────────────────────────────────────────────────────
 export { Skeleton } from "./components/feedback/Skeleton";
@@ -93,6 +103,12 @@ export type { Step } from "./components/layout/Stepper";
 export { EmptyState } from "./components/layout/EmptyState";
 export { CommandPalette, useCommandPalette } from "./components/layout/CommandPalette";
 export type { CommandItem } from "./components/layout/CommandPalette";
+export { AspectRatio } from "./components/layout/AspectRatio";
+export { ScrollArea } from "./components/layout/ScrollArea";
+export { Collapsible } from "./components/layout/Collapsible";
+export { NavigationMenu } from "./components/layout/NavigationMenu";
+export type { NavigationMenuItem } from "./components/layout/NavigationMenu";
+export { Sidebar, SidebarItem } from "./components/layout/Sidebar";
 
 // ─── Data Components ─────────────────────────────────────────────────────────
 export { DataTable } from "./components/data/DataTable";
@@ -164,6 +180,7 @@ export type { AvatarData } from "./components/special/AvatarCircles";
 export { Confetti } from "./components/special/Confetti";
 export type { ConfettiProps } from "./components/special/Confetti";
 export { CursorTrail } from "./components/special/CursorTrail";
+export { Carousel } from "./components/special/Carousel";
 
 // ─── New Layout ───────────────────────────────────────────────────────────────
 export { ScrollProgress } from "./components/layout/ScrollProgress";

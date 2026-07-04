@@ -99,13 +99,13 @@ export function KanbanBoard({
           >
             {/* Column header */}
             <div className="flex items-center justify-between px-4 py-3">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 min-w-0">
                 {col.color && (
                   <span className="h-2.5 w-2.5 rounded-full shrink-0" style={{ background: col.color }} />
                 )}
-                <h3 className="text-sm font-semibold text-neutral-800">{col.title}</h3>
+                <h3 className="text-sm font-semibold text-neutral-800 truncate">{col.title}</h3>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <span className={cn(
                   "text-xs font-medium px-1.5 py-0.5 rounded-full",
                   atLimit ? "bg-red-100 text-red-600" : "bg-neutral-200 text-neutral-500"

@@ -121,17 +121,17 @@ export function CodeBlock({
         "flex items-center justify-between px-4 py-2.5 border-b",
         isDark ? "border-[#313244] bg-[#181825]" : "border-neutral-200 bg-white"
       )}>
-        <div className="flex items-center gap-3">
-          <div className="flex gap-1.5">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="flex gap-1.5 shrink-0">
             {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
               <span key={c} className="h-3 w-3 rounded-full" style={{ background: c }} />
             ))}
           </div>
           {filename && (
-            <span className={cn("text-xs", isDark ? "text-[#6c7086]" : "text-neutral-500")}>{filename}</span>
+            <span className={cn("text-xs truncate min-w-0", isDark ? "text-[#6c7086]" : "text-neutral-500")}>{filename}</span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <span className={cn("text-xs px-2 py-0.5 rounded-md", isDark ? "bg-[#313244] text-[#cdd6f4]" : "bg-neutral-100 text-neutral-500")}>
             {langLabels[language] ?? language}
           </span>

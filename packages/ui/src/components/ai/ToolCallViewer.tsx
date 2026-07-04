@@ -113,7 +113,7 @@ export function ToolCallViewer({
         {/* Status badge */}
         <span
           className={cn(
-            "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
+            "inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
             badgeClass
           )}
         >
@@ -123,14 +123,14 @@ export function ToolCallViewer({
         {/* Pulsing dot for running */}
         {status === "running" && (
           <motion.span
-            className="inline-block h-2 w-2 rounded-full bg-blue-500"
+            className="inline-block h-2 w-2 shrink-0 rounded-full bg-blue-500"
             animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
             transition={{ repeat: Infinity, duration: 1 }}
           />
         )}
 
         {/* Tool name */}
-        <span className="font-mono text-sm font-medium text-neutral-800 dark:text-neutral-100">
+        <span className="min-w-0 flex-1 truncate font-mono text-sm font-medium text-neutral-800 dark:text-neutral-100">
           {name}
         </span>
       </div>

@@ -99,7 +99,7 @@ export function Timeline({ items, className }: TimelineProps) {
               <div className="flex items-start justify-between gap-2 pt-1">
                 <p
                   className={cn(
-                    "text-sm font-semibold leading-tight",
+                    "min-w-0 text-sm font-semibold leading-tight",
                     status === "pending"
                       ? "text-neutral-400"
                       : "text-neutral-900"

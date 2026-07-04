@@ -41,7 +41,7 @@ export function Drawer({ open, onClose, children, side = "right", size, classNam
     };
   }, [open, onClose]);
 
-  const defaultSize = side === "left" || side === "right" ? "w-80" : "h-64";
+  const defaultSize = side === "left" || side === "right" ? "w-80 max-w-full" : "h-64 max-w-full";
 
   return (
     <AnimatePresence>

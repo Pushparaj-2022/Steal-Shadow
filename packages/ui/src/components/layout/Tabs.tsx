@@ -40,8 +40,8 @@ export function TabsList({ children, className }: TabsListProps) {
   const ctx = useContext(TabsContext)!;
 
   const listStyles = {
-    underline: "flex border-b border-neutral-200 gap-0",
-    pill: "inline-flex bg-neutral-100 rounded-xl p-1 gap-1",
+    underline: "flex overflow-x-auto border-b border-neutral-200 gap-0",
+    pill: "inline-flex max-w-full overflow-x-auto bg-neutral-100 rounded-xl p-1 gap-1",
     enclosed: "flex border border-neutral-200 rounded-t-xl overflow-hidden",
   }[ctx.variant];
 
@@ -59,7 +59,7 @@ export function TabsTrigger({ value, children, className, disabled }: TabsTrigge
   const ctx = useContext(TabsContext)!;
   const isActive = ctx.active === value;
 
-  const triggerBase = "relative text-sm font-medium transition-colors focus-visible:outline-none cursor-pointer";
+  const triggerBase = "relative shrink-0 text-sm font-medium transition-colors focus-visible:outline-none cursor-pointer";
 
   const variantTrigger = {
     underline: cn("px-4 py-2.5 text-neutral-500 hover:text-neutral-900", isActive && "text-violet-600"),

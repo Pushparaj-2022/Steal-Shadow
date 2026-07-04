@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "../../lib/utils";
 import type { ReactNode } from "react";
 
 type Placement = "top" | "bottom" | "left" | "right";
 
-type PopoverProps = {
+type HoverCardProps = {
   trigger: ReactNode;
   children: ReactNode;
+  openDelay?: number;
+  closeDelay?: number;
   placement?: Placement;
   className?: string;
 };
@@ -28,53 +30,62 @@ const placementOrigin: Record<Placement, string> = {
   right: "origin-left",
 };
 
-export function Popover({
+export function HoverCard({
   trigger,
   children,
+  openDelay = 150,
+  closeDelay = 200,
   placement = "bottom",
   className,
-}: PopoverProps) {
+}: HoverCardProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const openTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearTimers = () => {
+    if (openTimer.current) clearTimeout(openTimer.current);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  const scheduleOpen = useCallback(() => {
+    clearTimers();
+    openTimer.current = setTimeout(() => setOpen(true), openDelay);
+  }, [openDelay]);
+
+  const scheduleClose = useCallback(() => {
+    clearTimers();
+    closeTimer.current = setTimeout(() => setOpen(false), closeDelay);
+  }, [closeDelay]);
 
   useEffect(() => {
     if (!open) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
+  useEffect(() => {
+    return () => clearTimers();
+  }, []);
+
   return (
-    <div ref={containerRef} className="relative inline-flex">
+    <div
+      ref={containerRef}
+      className="relative inline-flex"
+      onMouseEnter={scheduleOpen}
+      onMouseLeave={scheduleClose}
+    >
       <div
-        onClick={() => setOpen((prev) => !prev)}
-        role="button"
         tabIndex={0}
         aria-expanded={open}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setOpen((prev) => !prev);
-          }
-        }}
-        className="inline-flex cursor-pointer select-none"
+        onFocus={scheduleOpen}
+        onBlur={scheduleClose}
+        className="inline-flex"
       >
         {trigger}
       </div>
@@ -83,6 +94,8 @@ export function Popover({
         {open && (
           <motion.div
             role="dialog"
+            onMouseEnter={scheduleOpen}
+            onMouseLeave={scheduleClose}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
@@ -100,22 +113,4 @@ export function Popover({
       </AnimatePresence>
     </div>
   );
-}
-
-type PopoverTriggerProps = {
-  children: ReactNode;
-  className?: string;
-};
-
-export function PopoverTrigger({ children, className }: PopoverTriggerProps) {
-  return <div className={className}>{children}</div>;
-}
-
-type PopoverContentProps = {
-  children: ReactNode;
-  className?: string;
-};
-
-export function PopoverContent({ children, className }: PopoverContentProps) {
-  return <div className={className}>{children}</div>;
 }
