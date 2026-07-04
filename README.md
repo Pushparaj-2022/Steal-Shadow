@@ -2,7 +2,7 @@
 
 ### Build beautiful interfaces faster with modern React components.
 <p align="center">
-<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75"/>
+<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75"/ width=50px;>
 </p>
 
 <p>
