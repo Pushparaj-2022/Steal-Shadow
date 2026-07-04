@@ -34,6 +34,10 @@ export function Carousel({
     return () => clearInterval(id);
   }, [autoPlay, autoPlayInterval, count]);
 
+  useEffect(() => {
+    setIndex((i) => Math.min(i, Math.max(count - 1, 0)));
+  }, [count]);
+
   if (count === 0) return null;
 
   return (

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "../../lib/utils";
+import { cn, OVERLAY_MAX_W, useDismissableLayer } from "../../lib/utils";
 
 export interface NavigationMenuItem {
   id: string;
@@ -20,26 +20,7 @@ export function NavigationMenu({ items, className }: NavigationMenuProps) {
   const [openId, setOpenId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!openId) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setOpenId(null);
-      }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenId(null);
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [openId]);
+  useDismissableLayer(openId !== null, () => setOpenId(null), containerRef);
 
   return (
     <nav
@@ -93,7 +74,7 @@ export function NavigationMenu({ items, className }: NavigationMenuProps) {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: -4 }}
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  className="absolute left-0 top-full z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] origin-top-left rounded-xl border border-neutral-200 bg-white p-2 shadow-lg"
+                  className={cn("absolute left-0 top-full z-50 mt-2 w-64 origin-top-left rounded-xl border border-neutral-200 bg-white p-2 shadow-lg", OVERLAY_MAX_W)}
                 >
                   {item.children!.map((child) => (
                     <a

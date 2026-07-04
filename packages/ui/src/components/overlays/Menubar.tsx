@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "../../lib/utils";
+import { cn, OVERLAY_MAX_W, useDismissableLayer } from "../../lib/utils";
 import type { DropdownMenuItem } from "./DropdownMenu";
 
 interface MenubarContextValue {
@@ -29,29 +29,7 @@ export function Menubar({ children, className }: MenubarProps) {
   const [openId, setOpenId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!openId) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        setOpenId(null);
-      }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenId(null);
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [openId]);
+  useDismissableLayer(openId !== null, () => setOpenId(null), containerRef);
 
   return (
     <MenubarContext.Provider value={{ openId, setOpenId }}>
@@ -109,7 +87,10 @@ export function MenubarMenu({ label, items, className }: MenubarMenuProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="absolute z-50 top-full mt-2 left-0 origin-top-left min-w-[200px] max-w-[calc(100vw-2rem)] rounded-xl border border-neutral-200/80 bg-white/95 p-1 shadow-xl backdrop-blur-xl"
+            className={cn(
+              "absolute z-50 top-full mt-2 left-0 origin-top-left min-w-[200px] rounded-xl border border-neutral-200/80 bg-white/95 p-1 shadow-xl backdrop-blur-xl",
+              OVERLAY_MAX_W
+            )}
           >
             {items.map((item) => {
               if (item.separator) {

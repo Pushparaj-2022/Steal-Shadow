@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "../../lib/utils";
+import { cn, OVERLAY_MAX_W, useDismissableLayer } from "../../lib/utils";
 import type { ReactNode } from "react";
 
 type Placement = "top" | "bottom" | "left" | "right";
@@ -37,29 +37,7 @@ export function Popover({
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open]);
+  useDismissableLayer(open, () => setOpen(false), containerRef);
 
   return (
     <div ref={containerRef} className="relative inline-flex">
@@ -88,7 +66,8 @@ export function Popover({
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className={cn(
-              "absolute z-50 min-w-max max-w-[calc(100vw-2rem)] rounded-xl border border-neutral-200 bg-white p-4 shadow-lg",
+              "absolute z-50 rounded-xl border border-neutral-200 bg-white p-4 shadow-lg",
+              OVERLAY_MAX_W,
               placementOrigin[placement],
               placementStyles[placement],
               className

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "../../lib/utils";
+import { cn, OVERLAY_MAX_W, useDismissableLayer } from "../../lib/utils";
 import type { ReactNode } from "react";
 
 export interface DropdownMenuItem {
@@ -43,32 +43,9 @@ export function DropdownMenu({
 }: DropdownMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open]);
-
   const close = () => setOpen(false);
+
+  useDismissableLayer(open, close, containerRef);
 
   return (
     <div ref={containerRef} className="relative inline-flex">
@@ -98,7 +75,8 @@ export function DropdownMenu({
             exit={{ opacity: 0, scale: 0.95, y: -4 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className={cn(
-              "absolute z-50 top-full mt-2 min-w-[200px] max-w-[calc(100vw-2rem)] rounded-xl border border-neutral-200/80 bg-white/95 p-1 shadow-xl backdrop-blur-xl",
+              "absolute z-50 top-full mt-2 min-w-[200px] rounded-xl border border-neutral-200/80 bg-white/95 p-1 shadow-xl backdrop-blur-xl",
+              OVERLAY_MAX_W,
               alignOrigin[align],
               alignStyles[align],
               className

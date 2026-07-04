@@ -28,6 +28,12 @@ const COLS_MAP = {
   4: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
 };
 
+const COL_SPAN_MAP = {
+  1: "",
+  2: "sm:col-span-2",
+  3: "sm:col-span-2 lg:col-span-3",
+};
+
 export function BentoGrid({ children, cols = 3, className }: BentoGridProps) {
   return (
     <div className={cn("grid gap-4", COLS_MAP[cols], className)}>
@@ -53,10 +59,10 @@ export function BentoCard({
       transition={{ duration: 0.2, ease: "easeOut" }}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900",
+        COL_SPAN_MAP[colSpan],
         className
       )}
       style={{
-        gridColumn: colSpan > 1 ? `span ${colSpan}` : undefined,
         gridRow: rowSpan > 1 ? `span ${rowSpan}` : undefined,
       }}
     >

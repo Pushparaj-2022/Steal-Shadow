@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { cn } from "../../lib/utils";
+import { cn, OVERLAY_MAX_W } from "../../lib/utils";
 import type { ReactNode } from "react";
 
 type Placement = "top" | "bottom" | "left" | "right";
@@ -81,7 +81,6 @@ export function HoverCard({
       onMouseLeave={scheduleClose}
     >
       <div
-        tabIndex={0}
         aria-expanded={open}
         onFocus={scheduleOpen}
         onBlur={scheduleClose}
@@ -101,7 +100,8 @@ export function HoverCard({
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             className={cn(
-              "absolute z-50 min-w-max max-w-[calc(100vw-2rem)] rounded-xl border border-neutral-200 bg-white p-4 shadow-lg",
+              "absolute z-50 rounded-xl border border-neutral-200 bg-white p-4 shadow-lg",
+              OVERLAY_MAX_W,
               placementOrigin[placement],
               placementStyles[placement],
               className
