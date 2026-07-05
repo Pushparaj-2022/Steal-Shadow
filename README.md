@@ -1,82 +1,64 @@
  <div align="center">
 
-### Build beautiful interfaces faster with modern React components.
-<p align="center">
-<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75"/ width=150px;>
-</p>
+<img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75" width="140" />
 
-<p>
-A collection of beautifully designed, animated, accessible and production-ready React components built for modern web applications.
-</p>
+# Steal Shadow UI
 
-<p>
+Build beautiful interfaces faster with modern React components.
 
-<img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
-<img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js"/>
-<img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Open_Source-MIT-success?style=for-the-badge"/>
- 
-</p>
+A collection of accessible, animated, production-ready React components for modern web applications.
 
 <p>
 
-<a href="https://steal-shadow.vercel.app">
-<img src="https://img.shields.io/badge/🌐_Website-Live-blue?style=for-the-badge"/>
-</a>
+<img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react"/>
+<img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js"/>
+<img src="https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss"/>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript"/>
+<img src="https://img.shields.io/badge/License-MIT-success?style=flat-square"/>
+
+</p>
+
+<p>
+
+<a href="https://steal-shadow.vercel.app">Documentation</a>
+•
+<a href="https://steal-shadow.vercel.app">Website</a>
 
 </p>
 
 </div>
 
----
+## About
 
- 
+Steal Shadow UI is an open-source React component library built for developers who want to create polished user interfaces without spending hours building components from scratch.
 
+It includes reusable UI components, animations, effects, and application-ready building blocks that work well with React, Next.js, Tailwind CSS, and TypeScript.
 
+Whether you're building a dashboard, SaaS platform, portfolio, AI application, admin panel, or landing page, the goal is simple—ship faster while keeping your codebase clean and maintainable.
 
----
+## Installation
 
-# 📖 About
-
-Steal Shadow UI is a modern open-source React component library designed to help developers build beautiful interfaces without reinventing the wheel.
-
-Whether you're creating dashboards, landing pages, SaaS products, AI tools, portfolios, or enterprise applications, the library provides reusable components that are easy to customize and production-ready.
-
-Designed with simplicity, accessibility, animation, and performance in mind.
-
-# 🚀 Installation
-
-Install Steal Shadow and its required peer dependency:
+Install the package using npm.
 
 ```bash
-npm install @stealshadow/ui  
+npm install @stealshadow/ui
 ```
 
 ### Requirements
 
 - React 18+
 - Tailwind CSS 3+
-- lucide-react 1+
+- lucide-react
 
----
+## Getting Started
 
-# ⚡ Quick Start
-
-## 1. Import the Styles
-
-Import the default stylesheet once in your application.
+Import the stylesheet once.
 
 ```tsx
-// app/layout.tsx or pages/_app.tsx
 import "@stealshadow/ui/styles";
 ```
 
----
-
-## 2. Wrap Your Application
-
-Wrap your application with the `ThemeProvider`.
+Wrap your application with the ThemeProvider.
 
 ```tsx
 import { ThemeProvider } from "@stealshadow/ui";
@@ -94,12 +76,10 @@ export default function RootLayout({
 }
 ```
 
----
-
-## 3. Start Using Components
+Now you're ready to use components.
 
 ```tsx
-import { Badge, Button, Card } from "@stealshadow/ui";
+import { Button, Card, Badge } from "@stealshadow/ui";
 
 export default function Example() {
   return (
@@ -114,15 +94,13 @@ export default function Example() {
 }
 ```
 
----
+## Components
 
-# 📦 Components
-
-## 🧩 Primitives
+### Core
 
 - Button
-- Card
 - Input
+- Card
 - Badge
 - Avatar
 - Chip
@@ -131,230 +109,149 @@ export default function Example() {
 - OTPInput
 - Rating
 
----
-
-## 📝 Forms
+### Forms
 
 - Checkbox
+- Radio Group
 - Switch
-- RadioGroup
 - Select
 - Textarea
-- RangeSlider
-- SmartForm
+- Range Slider
+- Smart Form
 
----
-
-## 🎭 Overlays
+### Overlays
 
 - Modal
 - Drawer
-- Tooltip
 - Popover
-- ToastProvider
+- Tooltip
+- Toast
 
----
-
-## 💬 Feedback
+### Feedback
 
 - Spinner
 - Skeleton
 - Progress
-- CircularProgress
+- Circular Progress
 - Alert
 
----
-
-## 📐 Layout
+### Layout
 
 - Accordion
 - Tabs
 - Stepper
-- EmptyState
-- CommandPalette
-- PageTransition
+- Empty State
+- Command Palette
+- Page Transition
 
----
+### Data Display
 
-## 📊 Data Display
-
-- DataTable
-- KanbanBoard
+- Data Table
+- Kanban Board
 - Calendar
-- FileUploader
-- RichEditor
 - Timeline
 - Pagination
+- Rich Editor
+- File Uploader
 
----
+### Animation
 
-## ✨ Animated Components
+- Blur Text
+- Glitch Text
+- Reveal Text
+- Morph Text
+- Typewriter Text
+- Split Text
+- Count Up
+- Magnetic Button
+- Scroll Reveal
+- Floating Elements
+- Particle Field
 
-- BlurText
-- GlitchText
-- MorphText
-- TypewriterText
-- SplitText
-- RevealText
-- CountUp
-- MagneticButton
-- FloatingElements
-- ScrollReveal
-- ParticleField
-- AnimatedIcon
+### Effects
 
----
-
-## 🌈 Visual Effects
-
-- GlassCard
-- LiquidGlass
-- ShimmerButton
-- SpotlightCard
-- AuroraBackground
-- NeonGlow
-- GradientBorder
-- BorderBeam
+- Glass Card
+- Aurora Background
+- Border Beam
+- Gradient Border
+- Spotlight Card
+- Neon Glow
+- Liquid Glass
 - Meteors
 
----
-
-## 🎨 Advanced Components
+### Advanced
 
 - Dock
-- TiltCard
-- FlipCard
-- InfiniteMarquee
-- SwipeCards
-- NumberFlow
-- WaveText
-- TextScramble
-- MultiSelect
-- ContextMenu
-- GlowingOrb
-- PricingTable
+- Flip Card
+- Tilt Card
+- Infinite Marquee
+- Swipe Cards
+- Multi Select
+- Pricing Table
+- Context Menu
+- Number Flow
+- Wave Text
+- Text Scramble
 
----
-
-## 🤖 AI Components
+### AI
 
 - Chat
-- CodeBlock
-- StreamingText
-- PromptEditor
-- AgentStatus
-- ToolCallViewer
+- Prompt Editor
+- Streaming Text
+- Code Block
+- Agent Status
+- Tool Call Viewer
 
----
+## Tailwind Configuration
 
-# 🎨 Tailwind CSS Configuration
-
-Add the compiled package to your Tailwind content paths so Tailwind can detect all utility classes.
+Add the package to your Tailwind content configuration.
 
 ```js
-// tailwind.config.js
-
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@stealshadow/ui/dist/**/*.js",
   ],
 };
 ```
 
----
+## Contributing
 
-# 💙 You're Ready
-
-```tsx
-import { Button } from "@stealshadow/ui";
-
-export default function App() {
-  return (
-    <Button>
-      Hello, Steal Shadow!
-    </Button>
-  );
-}
-```
-
-Build beautiful, animated interfaces with production-ready React components.
-
-# 🤝 Contributing
-
-We welcome contributions from everyone.
-
-1. Fork the repository
-
-2. Create your feature branch
+Contributions are always welcome.
 
 ```bash
-git checkout -b feature/amazing-feature
+git checkout -b feature/my-feature
+git commit -m "Add new component"
+git push origin feature/my-feature
 ```
 
-3. Commit your changes
+Then open a Pull Request.
 
-```bash
-git commit -m "Added amazing feature"
-```
+Before submitting:
 
-4. Push your branch
+- Follow the existing coding style
+- Keep components reusable
+- Write clear commit messages
+- Test your changes
 
-```bash
-git push origin feature/amazing-feature
-```
+## Reporting Issues
 
-5. Open a Pull Request
+If you find a bug or have a feature request, please open an issue with:
 
----
-
-# 🐞 Found a Bug?
-
-Please create an issue with:
-
-- Description
-- Screenshots
+- A clear description
 - Steps to reproduce
 - Expected behavior
+- Screenshots (if applicable)
 
----
+## License
 
-# ⭐ Show Your Support
+This project is licensed under the MIT License.
 
-If this project helped you, please consider giving it a ⭐ on GitHub.
-
-It helps the project grow and motivates future development.
-
-
-
----
-
-# ❤️ Community
-
-- Report Issues
-- Feature Requests
-- Discussions
-- Pull Requests
-
-Everyone is welcome.
-
----
-
-# 📜 License
-
-Distributed under the **MIT License**.
-
-See `LICENSE` for more information.
-
----
+See the `LICENSE` file for details.
 
 <div align="center">
 
-## ⭐ Build Faster. Design Better.
-
-Made with ❤️
-
-**Happy Coding! 🚀**
+Built with React, TypeScript and Tailwind CSS.
 
 </div>
