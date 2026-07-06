@@ -4,8 +4,6 @@
 
 Build beautiful interfaces faster with modern React components.
 
-A collection of accessible, animated, production-ready React components for modern web applications.
-
 <p>
 
 <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react"/>
