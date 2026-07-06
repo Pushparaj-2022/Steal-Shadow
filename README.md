@@ -30,7 +30,7 @@ Steal Shadow UI is an open-source React component library built for developers w
 
 It includes reusable UI components, animations, effects, and application-ready building blocks that work well with React, Next.js, Tailwind CSS, and TypeScript.
 
-Whether you're building a dashboard, SaaS platform, portfolio, AI application, admin panel, or landing page, the goal is simple—ship faster while keeping your codebase clean and maintainable.
+Whether you're building a dashboard, SaaS platform, portfolio, AI application, admin panel, or landing page, the goal is simple ship faster while keeping your codebase clean and maintainable.
 
 ## Installation
 
