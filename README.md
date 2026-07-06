@@ -2,8 +2,6 @@
 
 <img src="https://steal-shadow.vercel.app/_next/image?url=%2Flogo.png&w=1920&q=75" width="140" />
 
-# Steal Shadow UI
-
 Build beautiful interfaces faster with modern React components.
 
 A collection of accessible, animated, production-ready React components for modern web applications.
