@@ -7,9 +7,9 @@ Build beautiful interfaces faster with modern React components.
 <p>
 
 <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react"/>
-<img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js"/>
-<img src="https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript"/>
+<img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=nextdotjs"/>
+<img src="https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?style=flat-square&logo=tailwindcss"/>
+<img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript"/>
 <img src="https://img.shields.io/badge/License-MIT-success?style=flat-square"/>
 
 </p>
